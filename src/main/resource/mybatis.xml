@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+<!--配置别名  -->
+  <typeAliases>
+     <!-- <typeAlias type="com.lyh.User" alias="user"/> -->
+     <package name="com.itguigu.crud.dao"/>
+     <package name="com.itguigu.crud.bean"/>
+  </typeAliases>
+  
+  
+  <!--pagehelper分页插件配置  -->
+  <plugins>
+    <!-- com.github.pagehelper为PageHelper类所在包名 -->
+    <plugin interceptor="com.github.pagehelper.PageInterceptor">
+
+	</plugin>
+</plugins>
+  
+  <!--加载映射文件  -->
+	<!-- <mappers>
+		<mapper resource="com/lyh/web/backoffice/mapper/IteamsMapper.xml" />
+		<package name="com/lyh/web/backoffice/mapper"/>
+	</mappers> -->
+
+	<!-- 配置mybatis的开发环境 -->
+<!-- 	<environments default="development">
+		<environment id="development">
+		 配置JDBC事务控制，由mybatis进行管理 
+			<transactionManager type="JDBC" />
+			配置数据源，采用dbcp连接池 
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8" />
+				<property name="username" value="root" />
+				<property name="password" value="root" />
+			</dataSource>
+		</environment>
+	</environments> -->
+	
+	
+	
+	
+</configuration>

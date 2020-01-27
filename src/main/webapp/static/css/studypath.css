@@ -1,0 +1,133 @@
+
+.center_studypath{
+	width: 1200px;
+	height: 596px;
+	margin: 0 auto;
+	box-shadow: 0 0 20px #e0e1e1;
+	background: rgb(255 140 0);
+	margin-top: 20px;
+}
+
+.center_studypath .studypath_left{
+	width: 242px;
+	height: auto;
+	/*background: pink;*/
+	float: left;
+	zoom: 1;
+		
+}
+
+.center_studypath .studypath_right{
+	margin-top: 30px;
+	width: 958px;
+	height: auto;
+	float: left;
+	background: rgba(	255 140 0);
+	zoom: 1;
+}
+
+/*左*/
+
+.left_T {
+	color: #fff;
+	font-weight: 700;
+	font-size:30px;	
+	padding-top: 10px;
+	
+}
+
+.left_img{
+
+	width: 182px;
+	height: 100px;
+	margin-left: 30px;
+	margin-top: 30px;
+	opacity: 0.9;
+	border-radius: 5px;
+}
+
+.empoly_t{
+	margin: 13px 0 25px;
+	width: 182px;
+	height: 32px;
+	color: #ea641b;
+	text-indent: 15px;
+	font-size: 18px;
+	line-height: 32px;
+	background: #fff;
+}
+.left_info{
+	/*width: 200px;
+	height: 569px;
+	background: black;*/
+	margin: 20px 0 0 30px;
+}
+
+.cricle_box{
+	position: relative;
+}
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.cricle_s{
+	width: 8px;
+	height: 8px;
+	border-radius: 100%;
+	background: #fff;
+}
+
+.cricle_txt{
+	position: absolute;
+	top: -6px;
+	left: 15px;
+	color: #fff;
+	font-size: 15px;
+}
+.line_s{
+	position: relative;
+	left: 3px;
+	width: 0;
+	height: 35px;
+	border-left: 2px dashed #fff;
+}
+/*.center_studypath .studypath_right{}*/
+
+
+/*右*/
+
+.right_img{
+	display: table-cell;
+	width: 224px;
+	height: 93px;
+	vertical-align: middle;
+	text-align: center;
+	
+}
+
+.right_con{
+	float: left;
+	width: 235px;
+	height: 250px;
+	background: white;
+	margin-left: 4px;
+	text-align: center;
+}
+.right_con1{
+	float: left;
+	width: 235px;
+	height: 250px;
+	background: white;
+	margin-left: 4px;
+	text-align: center;
+	margin-top: 30px;
+}
+.btn {
+	width: 120px;
+	border-radius: 30px;
+}
+
+
+
+

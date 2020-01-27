@@ -1,0 +1,177 @@
+.javapath_center{
+    width: 1000px;
+    height: auto;
+    margin-top: 30px;
+    margin-left: 150px;
+    background: rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.stage{
+    position: relative;
+    margin-top: 20px;
+}
+.cricle_stage{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #3bb149;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    float: left;
+}
+.stage span{
+    font-size: 30px;
+    float: left;
+    margin-left: 50px;
+    color: #3bb149;
+
+}
+.line_s{
+    position: relative;
+    left: 20px;
+    top: 40px;
+    width: 0;
+    height: 1000px;
+    border-left: 2px solid #5994a4;
+}
+
+.path1{
+    position: absolute;
+    width: 800px;
+    height: auto;
+    left: 100px;
+    top: 50px;
+    background: pink;
+
+}
+
+.path1_1{
+    width: 240px;
+    height: 450px;
+    background: rgba(255,255,255,0.5);
+    left: 10px;
+    top: 20px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 6;
+}
+.path1_2{
+    width: 240px;
+    height: 450px;
+    background: rgba(255,255,255,0.5);
+    left: 280px;
+    top: 20px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 5;
+}
+.path1_3{
+    width: 240px;
+    height: 450px;
+    background: rgba(255,255,255,0.5);
+    left: 550px;
+    top: 20px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 4;
+}
+.path1_4{
+    width: 240px;
+    height: 450px;
+    background: rgba(255,255,255,0.5);
+    left: 10px;
+    top: 480px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 3;
+}
+.path1_5{
+    width: 240px;
+    height: 450px;
+    background: rgba(255,255,255,0.5);
+    left: 280px;
+    top: 480px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 3;
+}
+.path1_6{
+    width: 240px;
+    height: 450px;
+    background: rgba(255,255,255,0.5);
+    left: 550px;
+    top: 480px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 3;
+}
+
+.path1_1:hover{
+    overflow:visible;
+
+}
+.path1_2:hover{
+    overflow:visible;
+
+}
+.path1_3:hover{
+    overflow:visible;
+
+}
+.path1_4:hover{
+    overflow:visible;
+
+}
+.path1_5:hover{
+    overflow:visible;
+
+}
+.path1_6:hover{
+    overflow:visible;
+
+}
+
+.path1_7:hover{
+    overflow:visible;
+
+}
+
+.path1_8:hover{
+    overflow:visible;
+
+}
+
+.path1_9:hover{
+    overflow:visible;
+
+}
+
+.path1_10:hover{
+    overflow:visible;
+
+}
+
+
+.path1 ul li{
+    width: 240px;
+    height: 50px;
+    background: rgba(255,255,255,0.9);
+    list-style: none;
+    text-align: center;
+    margin-top: 0px;
+    line-height: 40px;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+
+
+}
+.path1 ul li:first-child{
+    width: 220px;
+    height: 50px;
+    font-size: 20px;
+    background: rgba(0, 255 ,0 ,0.5);
+    line-height: 50px;
+
+
+}
