@@ -115,7 +115,7 @@
                                     <li><a href="#">个人信息</a></li>
                                     <li><a href="#">发帖</a></li>
                                     <li><a href="#">帖子</a></li>
-                                    <li><a href="#">签到</a></li>
+                                    <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>
                                     <li><a href="#">退出</a></li>
                                 </ul>
                             </div>
@@ -130,29 +130,7 @@
 
 </body>
 <script >
-    var folatinfo = document.querySelector(".folat_info");
-    var touxiangimg = document.querySelector(".touxiang_img");
 
-
-            touxiangimg.onmouseover=function () {
-                folatinfo.style.opacity="1";
-                folatinfo.style.width="100px";
-                folatinfo.style.height="auto";
-            }
-        touxiangimg.onmouseout=function () {
-                folatinfo.style.opacity="0";
-            }
-            folatinfo.onmouseover=function () {
-                folatinfo.style.opacity="1";
-                folatinfo.style.width="100px";
-                folatinfo.style.height="auto";
-            }
-             folatinfo.onmouseout=function () {
-                folatinfo.style.opacity="1";
-                 folatinfo.style.width="0";
-                 folatinfo.style.height="0";
-                 folatinfo.style.overflow="hidden";
-        }
 
 
 </script>

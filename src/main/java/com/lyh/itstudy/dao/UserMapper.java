@@ -61,9 +61,12 @@ public interface UserMapper {
      * @mbg.generated Sun Jan 26 12:38:17 GMT+08:00 2020
      */
     User selectByPrimaryKey(Integer uid);
+    User selectByName(String username);
 
     User selectBynameAndpsw(@Param("key_username") String username ,@Param("key_password") String password);
 
+
+    int updateUser(@Param("score") int score,@Param("username") String username);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 

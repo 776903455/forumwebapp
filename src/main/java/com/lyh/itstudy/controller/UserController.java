@@ -3,14 +3,24 @@ package com.lyh.itstudy.controller;
 
 import com.lyh.itstudy.model.User;
 import com.lyh.itstudy.service.UserService;
+import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * @author lyh
@@ -36,6 +46,24 @@ public class UserController {
 
         userService.register(user);
         return "registersuccess";
+    }
+
+
+    /*校验用户存不存在*/
+
+    @RequestMapping(value=("checkUser"))
+    public void cheackUser(@RequestParam("username") String username, HttpServletResponse response) throws IOException {
+
+        boolean flag=userService.cheakUser(username);
+        PrintWriter writer = response.getWriter();
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf8");
+        if(flag==true){
+            writer.print("username isexit");
+        }else {
+            writer.print("username can use");
+        }
+
     }
 
     @RequestMapping("reglog")
@@ -65,6 +93,20 @@ public class UserController {
             Model model1 = model.addAttribute("error", "账号或密码错误");
             return "login";
         }
+        return "index";
+    }
+
+
+    /*签到获取金币*/
+    @RequestMapping("getScore")
+    public String getMoney(@RequestParam("score")int score,@RequestParam("username")String username,Model model){
+        Random random=new Random();
+        System.out.println(score+"-"+username);
+        int num=random.nextInt(5)+10;
+        score=score+num;
+        System.out.println(num+"-"+score);
+        int i=userService.addScore(score,username);
+        model.addAttribute("scoreInfo",num);
         return "index";
     }
 }

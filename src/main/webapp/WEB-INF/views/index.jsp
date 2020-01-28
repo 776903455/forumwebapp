@@ -15,6 +15,26 @@
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <title>IT在线学习平台</title>
+
+    <style>
+        .scoreInfo{
+            display: inline-block;
+            width: 300px;
+            height: 50px;
+            position: absolute;
+            top: 250px;
+            left: 500px;
+            border-radius: 5px;
+            background: gold;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            opacity: 0;
+        }
+        .scoreInfo span{
+            padding-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <%@include file="menu.jsp"%>
@@ -206,6 +226,9 @@
     </div>
 </div>
 
+<%--弹出获得的金币--%>
+    <span class="scoreInfo"><span>本次签到获得${scoreInfo}枚金币</span></span>
+
 
 <div class="buttom_index">
     <div class="buttom_index_top">
@@ -273,4 +296,37 @@
 
 
 </body>
+<
+<script>
+    var folatinfo = document.querySelector(".folat_info");
+    var touxiangimg = document.querySelector(".touxiang_img");
+    var hidegold = document.querySelector(".click_hide_gold");
+    var scoreInfo = document.querySelector(".scoreInfo");
+
+
+    touxiangimg.onmouseover=function () {
+        folatinfo.style.opacity="1";
+        folatinfo.style.width="100px";
+        folatinfo.style.height="auto";
+    }
+    touxiangimg.onmouseout=function () {
+        folatinfo.style.opacity="0";
+    }
+    folatinfo.onmouseover=function () {
+        folatinfo.style.opacity="1";
+        folatinfo.style.width="100px";
+        folatinfo.style.height="auto";
+    }
+    folatinfo.onmouseout=function () {
+        folatinfo.style.opacity="1";
+        folatinfo.style.width="0";
+        folatinfo.style.height="0";
+        folatinfo.style.overflow="hidden";
+    }
+
+    hidegold.onclick=function () {
+           scoreInfo.style.opacity="1";
+    }
+
+</script>
 </html>

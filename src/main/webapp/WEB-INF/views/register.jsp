@@ -100,7 +100,10 @@
                     <td >
                         <font size="4px" ><i>用户名</i></font>
                     </td>
-                    <td> <input class="error"  placeholder="用户名" type="text" name="username"></td>
+                    <td> <input class="error"  id="userid" placeholder="用户名" type="text" name="username">
+                        <span style="color: red" class="checkuserspan"></span>
+                    </td>
+
                 </tr>
 
                 <tr height="40px">
@@ -239,11 +242,30 @@
 </body>
 <script>
 
-    $.validator.addMethod("isMobile", function(value, element) {
+   /* $.validator.addMethod("isMobile", function(value, element) {
         var length = value.length;
         var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
         return this.optional(element) || (length == 11 && mobile.test(value));
-    }, "请正确填写您的手机号码");
+    }, "请正确填写您的手机号码");*/
+
+
+    /*用ajax校验用户存不存在*/
+    var userExsit = document.querySelector(".error");
+
+
+    var checkuserspan = document.querySelector(".checkuserspan");
+   userExsit.onblur=function () {
+       $.ajax({
+           type :"post",
+           url  :"${pageContext.request.contextPath}/checkUser.do",
+           data: "username="+userExsit.value,
+           success : function(result) {
+               checkuserspan.innerHTML=result;
+           }
+       } );
+   };
+
+/*
 
     $(function () {
 
@@ -299,6 +321,13 @@
 
         });
     });
+*/
+
+
+
+
+
+
 </script>
 
 </html>

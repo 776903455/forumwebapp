@@ -2,8 +2,11 @@ package com.lyh.itstudy.service;
 
 import com.lyh.itstudy.dao.UserMapper;
 import com.lyh.itstudy.model.User;
+import com.lyh.itstudy.model.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author lyh
@@ -23,8 +26,26 @@ public class UserService {
     /*登录功能*/
     public User login(String username,String password){
         User user1 = userMapper.selectBynameAndpsw( username, password);
+
         return user1;
 
     }
 
+    public int addScore(int score,String username) {
+        int i = userMapper.updateUser(score,username);
+        return i;
+    }
+
+    public boolean cheakUser(String username) {
+        boolean flag=true;
+
+    User user = userMapper.selectByName(username);
+
+        if(user!=null){
+            flag=true;
+        }else {
+            flag=false;
+        }
+        return flag;
+    }
 }
