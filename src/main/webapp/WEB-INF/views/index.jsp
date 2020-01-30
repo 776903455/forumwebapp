@@ -32,7 +32,7 @@
             opacity: 0;
         }
         .scoreInfo span{
-            padding-top: 10px;
+           margin-top: 20px;
         }
     </style>
 </head>
@@ -326,6 +326,7 @@
 
     hidegold.onclick=function () {
            scoreInfo.style.opacity="1";
+
     }
 
 </script>

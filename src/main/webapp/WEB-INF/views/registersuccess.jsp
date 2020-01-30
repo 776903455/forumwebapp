@@ -35,7 +35,8 @@
         }
         .main p span{
             position: absolute;
-            left: 350px;
+            left: 380px;
+
         }
     </style>
 </head>
@@ -45,8 +46,8 @@
 
 <div class="main">
     <img src="${pageContext.request.contextPath}/static/img/register_success_img.jpg">
-    <p><a href="login.html">将在5秒后自动跳转至登录界面,你也可以选择手动跳转</a>
-        <span class="miao">5</span>
+    <p><a href="${pageContext.request.contextPath}/toLogin.do">将在5秒后自动跳转至登录界面,如果没反应可以选择手动跳转</a>
+        <span class="miao"><strong>5</strong></span>
     </p>
 
 </div>

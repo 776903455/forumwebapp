@@ -148,7 +148,10 @@
                         <font size="4px" ><i>验证码</i></font>
                     </td>
                     <td>
+                        <p style="color: red">${codeEroor}</p>
                         <input  placeholder="验证码" type="text"  name="yzm"/>
+                        <img   src="${pageContext.request.contextPath }/cheackImg.do"
+                             width="100" height="34" id="verifyCodeImage" onclick="changeImage();">
                     </td>
                 </tr>
 
@@ -265,6 +268,10 @@
        } );
    };
 
+/*点击更换验证码*/
+   function changeImage() {
+       $('#verifyCodeImage').attr('src', '${pageContext.request.contextPath }/cheackImg.do?'+new Date().getTime());
+   }
 /*
 
     $(function () {

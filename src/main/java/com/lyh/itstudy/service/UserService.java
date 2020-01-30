@@ -31,11 +31,13 @@ public class UserService {
 
     }
 
+    /*添加金币*/
     public int addScore(int score,String username) {
         int i = userMapper.updateUser(score,username);
         return i;
     }
 
+    /*校验用户存不存在*/
     public boolean cheakUser(String username) {
         boolean flag=true;
 
@@ -48,4 +50,12 @@ public class UserService {
         }
         return flag;
     }
+
+
+
+    /*通过用户名查询某个用户*/
+    public User findUser(String username) {
+       return userMapper.selectByName(username);
+    }
+
 }

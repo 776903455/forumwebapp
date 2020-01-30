@@ -170,11 +170,11 @@
     insert into tbl_user (uid, username, password, 
       score, phone, addr, 
       state, code, email, 
-      uimage)
+      uimage,regtime,sex)
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{score,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{uimage,jdbcType=VARCHAR})
+      #{uimage,jdbcType=VARCHAR},#{regtime,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.itstudy.model.User">
     <!--

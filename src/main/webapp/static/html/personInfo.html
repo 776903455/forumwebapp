@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/index.css" rel="stylesheet" />
+    <title>Title</title>
+    <style>
+    	*{
+    		padding: 0;
+    		margin: 0;
+    	}
+    	.personInfo .imgs1{
+    		/*background: url(../img/personInfo.jpg);*/
+    		width: 1366px;
+    		height: 620px;
+    		position: absolute;
+    		opacity: 0.2;
+    		
+    		
+    		
+    	}
+    	
+    	.center{
+    		margin-left: 100px;
+    		margin-top: 20px;
+    		width: 1266px;
+    		height: auto;
+    	}
+    	.center_top{
+    		width: 1166px;
+    		height: 80px;
+    		border-bottom: 1px dashed gray;
+    		margin-bottom: 20px;
+    	}
+    	.center_top img{
+    		width: 50px;
+    		height: 50px;
+    	}
+    	.center_top span{
+    		font-size: 15px;
+    		margin-left: 20px;
+    	}
+    	
+    	.button_top{
+    		width: 1166px;
+    		height: auto;
+    	}
+    	.button_top .span1{
+    		width: 50px;
+    		height: 50px;
+    		display: inline-block;
+    		border: 1px solid grey;
+    		text-align: center;
+    		line-height: 50px;
+    			border-bottom: none;
+    	}
+    	.button_top .span2{
+    		width: 100px;
+    		height: 50px;
+    		display: inline-block;
+    		border: 1px solid grey;
+    		text-align: center;
+    		line-height: 50px;
+    		margin-left: 10px;
+    		border-bottom: none;
+    	}
+    	.button_top a{
+    		/*text-decoration: none;*/
+    		color: #000000;
+    		font-size: 15px;
+    	}
+    	
+    	.center_buttom table{
+    		width: 1166px;
+    		height: auto;
+    		border: solid 1px grey;
+    	
+    	}
+    	.center_buttom table tr{
+    		border-bottom: 1px dashed grey;
+    	}
+    	.center_buttom table p{
+    		
+    		margin-left: 20px;
+    	}
+    	.center_buttom table span{
+    		
+    		margin-left: 20px;
+    	}
+    	
+    	.buttom{
+    		width: 100%;
+    		height: 50px;
+    		background: rgba(0,0,0,0.9);
+    		margin-top: 5px;
+    		font-size: 15px;
+    		color: white;
+    	   text-align: center;
+    	}
+    	.buttom span{
+    		display: inline-block;
+    		width: 300px;
+    		height: 30px;
+    		padding-top: 10px;
+    
+    	}
+    </style>
+		
+	</head>
+	<body>
+		
+	<div class="personInfo" >
+		<img class="imgs1" src="../img/personIn.jpg" />
+		<div class="head_index">
+    <div class="head1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"> <img src="../img/title_left1.jpg" class="head1_left_img"></div>
+                <div class="col-md-1"><a href="index.html">首页</a></div>
+                <div class="col-md-1"><a href="freeresourse.html">免费资源</a></div>
+                <div class="col-md-1"><a href="studypath.html">学习路线</a></div>
+                <div class="col-md-1"><a href="studypath.html">技术交流</a></div>
+                <div class="col-md-1"><a href="#">礼品兑换</a></div>
+                <div class="col-md-1"><a href="#">最新活动</a></div>
+                <div class="col-md-1" >
+                <input  id="search_info" value=""/>
+                <a href="#">
+                    <img src="../img/search_img.jpg" class="search_img" />
+
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a href="login.html" style="font-size: 15px; margin-top: 70px;margin-left: 120px;">登录 </a>
+                <a href="register.html" style="font-size: 15px; margin-top: 70px;margin-left: 10px;">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+	
+			<!--路径导航-->
+			<div class="path_navigation">
+			    <ol class="breadcrumb">
+			        <li><a href="index.html">首页</a></li>
+			        <li><a href="index.html">用户名</a></li>
+			        <li><a href="#">个人信息</a></li>
+			    </ol>
+			</div>
+			
+			
+			<div class="center">
+				<div class="center_top">
+					<a href="#"><img src="../img/touxiang.jpg" /></a>
+					<span>776903455</span>
+				</div>
+				
+				<div class="center_buttom">
+					<div class="button_top">
+						<span class="span1"><a href="#">主题</a></span>
+						<span class="span2"><a href="#">个人资料</a></span>
+					</div>
+					<table >
+						<tr height="50px">
+							<th colspan="3">
+								<p>776903455(UID:9212)</p>
+								<p>邮箱状态 &nbsp;&nbsp;未验证</p>
+							</th>
+						</tr>
+						<tr height="30px">
+							<th colspan="3">
+								<span>统计信息</span>&nbsp;
+								<span> 好友数20</span>&nbsp;
+								<span> 回帖数 60</span>&nbsp;
+								<span>主题数4</span>
+							</th>
+						
+						</tr>
+						<tr height="30px">
+							<th><span>性别 &nbsp;保密</span></th>
+							<th colspan="2">
+								<span>生日：xxxx</span>
+							</th>
+					
+						</tr>
+						<tr height="80px">
+							<th>
+								<p>活跃概况</p>
+								<p>用户组&nbsp;中级会员 </p>
+								<p>注册时间&nbsp;2018-11-8 &nbsp;14.52</p>
+								<p>上次访问IP&nbsp;59.33.171.191:41190 - - 中国广东惠州</p>
+							</th>
+							<th>
+								<p>最后访问时间&nbsp;2020-1-29 19:05</p>
+								<p>上次活动时间 2020-1-29 19:05</p>
+							</th>
+							<th>
+								<p>注册IP&nbsp;14.211.16.200 - - 中国广东中山</p>
+								<p>上次发表时间&nbsp;" 2019-8-31 23:09</p>
+							</th>
+						</tr>
+						<tr>
+							<th>
+								<p>统计信息</p>
+								<p>已用空间&nbsp;0B</p>
+							</th>
+							<th colspan="2">
+								<p>金币&nbsp;250</p>
+							</th>
+						
+						</tr>
+						
+					</table>
+				</div>
+			</div>
+			
+			<div style="width: 100%; height:50px ;"></div>
+	</div>
+	
+		<div class="buttom">
+			<span>©2020电科大嵌入B班lyh毕业设计&nbsp</span>
+		</div>
+	</body>
+</html>

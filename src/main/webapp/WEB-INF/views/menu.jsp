@@ -106,17 +106,17 @@
                     <c:if test="${sessionScope.user!=null}">
                         <div class="touxiang_event">
                             <p  style="width: 50px;height: 50px;display: inline">
-                               <a href="#"><img  class="touxiang_img"  style="width: 50px;height: 50px;border-radius: 50%" src="${sessionScope.user.uimage}" ></a>
+                               <a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}"><img  class="touxiang_img"  style="width: 50px;height: 50px;border-radius: 50%" src="${sessionScope.user.uimage}" ></a>
                             </p>
                             <span class="username_hide">${sessionScope.user.username}</span>
 
                             <div class="folat_info">
                                 <ul>
-                                    <li><a href="#">个人信息</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
                                     <li><a href="#">发帖</a></li>
                                     <li><a href="#">帖子</a></li>
                                     <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>
-                                    <li><a href="#">退出</a></li>
+                                    <li><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>
                                 </ul>
                             </div>
                         </div>
