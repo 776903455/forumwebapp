@@ -113,7 +113,7 @@
                             <div class="folat_info">
                                 <ul>
                                     <li><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
-                                    <li><a href="#">发帖</a></li>
+                                    <li><span class="faitie_span" style="cursor: pointer">发帖</span></li>
                                     <li><a href="#">帖子</a></li>
                                     <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>
                                     <li><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>

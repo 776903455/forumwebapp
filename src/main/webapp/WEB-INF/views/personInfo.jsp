@@ -187,7 +187,7 @@
 
                 </tr>
                 <tr height="30px">
-                    <th><span>性别 &nbsp;保密</span></th>
+                    <th><span>性别 &nbsp;${userInfo.sex}</span></th>
                     <th colspan="2">
                         <span>生日：xxxx</span>
                     </th>

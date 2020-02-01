@@ -137,15 +137,15 @@ public class UserController {
     @RequestMapping("getScore")
 
     public  String  getMoney(@RequestParam("score")int score,@RequestParam("username")String username,Model model,HttpServletResponse response) throws IOException {
-        Random random=new Random();
-        System.out.println(score+"-"+username);
-        int num=random.nextInt(5)+10;
-        score=score+num;
-        System.out.println(num+"-"+score);
-        int i=userService.addScore(score,username);
-        model.addAttribute("scoreInfo",num);
 
-        return "index";
+            Random random=new Random();
+            int num=random.nextInt(5)+10;
+            score=score+num;
+            int i=userService.addScore(score,username);
+            model.addAttribute("scoreInfo",num);
+            /*model.addAttribute("info","签到");*/
+            return "index";
+
 
     }
 

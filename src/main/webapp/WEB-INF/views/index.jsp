@@ -17,6 +17,9 @@
     <title>IT在线学习平台</title>
 
     <style>
+        *{margin: 0;
+            padding: 0;}
+
         .scoreInfo{
             display: inline-block;
             width: 300px;
@@ -34,6 +37,56 @@
         .scoreInfo span{
            margin-top: 20px;
         }
+        .u1_title{
+            padding-top: 50px;
+            height: 250px;
+            list-style: none;
+            border-right:1px gray solid ;
+        }
+        .u1_title li{
+            cursor: pointer;
+            padding-top: 5px;
+
+        }
+        .u1_title li:hover{
+            background: rgba(0,0,0,0.05);
+        }
+        .modal-body	.row{
+
+            height: 250px;
+            border: 1px gray solid ;
+            position: relative;
+        }
+
+        .skill{
+            width: 200px;
+            position: absolute;
+            opacity: 0;
+            height: 250px;
+            list-style: none;
+            border-right:1px gray solid ;
+        }
+        .free{
+            width: 200px;
+            height: 250px;
+            position: absolute;
+            opacity: 0;
+            list-style: none;
+            border-right:1px gray solid ;
+
+        }
+        .skill li{
+            cursor: pointer;
+            padding-top: 5px;
+        }
+
+        .free li{
+            cursor: pointer;
+            padding-top: 5px;
+
+        }
+
+
     </style>
 </head>
 <body>
@@ -98,8 +151,8 @@
             </div>
             <div class="col-md-3" id="lunbotu_ringt">
                 <div class="lunbotu_ringt_top">
-                    <button type="button" class="btn btn-info"
-                            style="width: 120px;height: 50px; border-radius:10px;font-size: 20px;">发帖</button>
+                    <button type="button" class="btn btn-info"  id="b2"
+                            style="width: 120px;height: 50px; border-radius:10px;font-size: 20px;" >发帖</button>
                     <button type="button" class="btn btn-success"
                             style="width: 120px;height: 50px; border-radius:10px;font-size: 20px;margin-left: 15px;">回帖</button>
                 </div>
@@ -230,6 +283,81 @@
     <span class="scoreInfo"><span>本次签到获得${scoreInfo}枚金币</span></span>
 
 
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        主题选择
+                    </h4>
+
+                    <!--<span class="span1"></span> / <span class="span2"></span>-->
+                    <span class="span3">
+					<em class="span1"></em>/<em class="span2"></em>
+				</span>
+                </div>
+
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <ul class="u1_title">
+                                <li class="study_free">免费资源</li>
+                                <li class="study_path">学习路线</li>
+                                <li class="study_skill">学习技术</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5 ">
+
+                            <!--<span></span>-->
+                            <ul class="skill">
+                                <li>java技术交流</li>
+                                <li>Python+人工智能技术交流</li>
+                                <li>c/c++技术交流</li>
+                                <li>PHP+H5技术交流</li>
+                                <li>Ul/UE技术交流</li>
+                                <li>大数据技术交流</li>
+                                <li>新媒体+Android技术交流</li>
+                                <li>linux云计算技术交流</li>
+                            </ul>
+
+                            <ul class="free">
+                                <li>javaEE资源</li>
+                                <li>Python+人工智能资源</li>
+                                <li>c/c++技术资源</li>
+                                <li>前端资源</li>
+                                <li>Ul/UE资源</li>
+                                <li>大数据资源</li>
+                                <li>新媒体+Android资源</li>
+                                <li>linux云计算资源</li>
+                            </ul>
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="guanbi_btn">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" id="faitie_btn">
+                        发帖
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+
 <div class="buttom_index">
     <div class="buttom_index_top">
         <div class="container">
@@ -302,6 +430,26 @@
     var touxiangimg = document.querySelector(".touxiang_img");
     var hidegold = document.querySelector(".click_hide_gold");
     var scoreInfo = document.querySelector(".scoreInfo");
+    var b2 = document.querySelector("#b2");
+    var free=document.querySelectorAll(".free li");
+    var skill=document.querySelectorAll(".skill li");
+    var ul_title=document.querySelectorAll(".u1_title li");
+    var span1=document.querySelector(".span1");
+    var span2=document.querySelector(".span2");
+    var span3=document.querySelector(".span3");
+    var faitiebtn=document.querySelector("#faitie_btn");
+    var guanbibtn=document.querySelector("#guanbi_btn");
+
+
+    b2.onclick=function () {
+        if(${sessionScope.user==null}){
+            window.location.href="${pageContext.request.contextPath}/toLogin.do";
+        }else {
+            /*显示模态框*/
+            $('#myModal').modal("show");
+        }
+    }
+
 
 
     touxiangimg.onmouseover=function () {
@@ -328,6 +476,83 @@
            scoreInfo.style.opacity="1";
 
     }
+
+
+    for(var j=0;j<ul_title.length;j++) {
+        ul_title[j].onclick=function(){
+            span1.innerHTML=this.innerHTML;
+            span2.innerHTML="";
+        }
+    }
+
+    /*点击对应的li使其背景颜色改变*/
+
+    for(var j=0;j<free.length;j++) {
+        free[j].onclick=function(){
+            for(var i=0;i<free.length;i++){
+                free[i].style.background="rgba(0,0,0,0)";
+                span2.innerHTML=this.innerHTML;
+            }
+            this.style.background="rgba(0,0,0,0.05)";
+        }
+
+    }
+
+    for(var j=0;j<skill.length;j++) {
+        skill[j].onclick=function(){
+            for(var i=0;i<skill.length;i++){
+                skill[i].style.background="rgba(0,0,0,0)";
+                span2.innerHTML=this.innerHTML;
+
+            }
+            this.style.background="rgba(0,0,0,0.05)";
+        }
+    }
+
+    /*点击发帖按钮将选择的主题文本传到发帖界面*/
+    faitiebtn.onclick=function(){
+
+        var text=(span3.innerText);
+
+        if(text.length<=9){
+            alert("请选择正确的主题");
+        }else{
+            window.location.href="${pageContext.request.contextPath}/tofatiejiemian.do?text="+text;
+        }
+
+    }
+    /*点击模态框关闭按钮，清空所选的主题*/
+    guanbibtn.onclick=function(){
+        span1.innerText="";
+        span2.innerText="";
+    }
+
+    /*切换主题*/
+
+    $(document).ready(function(){
+        $(".study_skill").click(function(){
+            $(".skill").css("opacity","1");
+            $(".free").css("opacity","0");
+
+            $(".skill").css("z-index","2");
+            $(".free").css("z-index","1");
+        });
+
+
+        $(".study_free").click(function(){
+
+            $(".free").css("opacity","1");
+            $(".skill").css("opacity","0");
+
+            $(".free").css("z-index","2");
+            $(".skill").css("z-index","1");
+        });
+
+        $(".faitie_span").click(function () {
+            $('#myModal').modal("show");
+        });
+
+    });
 
 </script>
 </html>
