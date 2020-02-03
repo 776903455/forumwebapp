@@ -1,0 +1,543 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@page isELIgnored="false"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/allpath.css" rel="stylesheet">
+    <title>Title</title>
+   <style>
+
+       *{
+           margin: 0;
+           padding: 0;
+       }
+       .javapath_head{
+           width: 1366px;
+           height: 326px;
+           position: relative;
+       }
+       .javapath_head .head_left_text{
+           position: absolute;
+           font-size: 35px;
+           left: 580px;
+           top: 30px;
+           color: black;
+       }
+
+       .javapath_head .head_left_text1 {
+           position: absolute;
+           font-size: 20px;
+           left: 450px;
+           top: 100px;
+           overflow: hidden;
+           width: 550px;
+           height: 200px;
+       }
+
+
+       .head_left{
+           width: 683px;
+           height: 326px;
+           background: pink;
+           float: left;
+
+       }
+       .head_right{
+           width: 683px;
+           height: 326px;
+           background: black;
+           float: left;
+
+       }
+
+
+
+
+
+   </style>
+</head>
+
+<body>
+<%@include file="../menu.jsp"%>
+<!--路径导航-->
+<div class="path_navigation">
+    <ol class="breadcrumb">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../index.html">学习交流</a></li>
+        <li><a href="../studypath.html">学习路线图</a></li>
+        <li><a href="#">java学习路线</a></li>
+    </ol>
+</div>
+
+    <div class="javapath_head">
+        <p class="head_left_text">JAVA学习路线</p>
+        <p class="head_left_text1">Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点， 还摒弃了C++里难以理解的多继承、
+            指针等概念，因此Java语言具有功能强大和简单易用两个特征。 此套Java课程路线紧跟热门互联网行业，采用真实企业项目实战，
+            并特设专业技能提升课，让学员保持长足的成长</p>
+        <div class="head_left">
+            <img src="${pageContext.request.contextPath}/static/img/allpath_head_img.jpg">
+        </div>
+        <div class="head_right">
+            <img src="${pageContext.request.contextPath}/static/img/allpath_head_img.jpg">
+        </div>
+    </div>
+
+
+
+    <div class="javapath_center">
+        <div class="stage">
+            <div class="cricle_stage">1</div>
+            <span>第一阶段 JAVA核心基础</span>
+
+            <div class="line_s"></div>
+            <div  class="path1">
+               <div class="path1_1">
+                   <ul>
+                       <li>JavaSE编程基础</li>
+                       <li>DOS常用命令</li>
+                       <li>Java的注释</li>
+                       <li>标识符、标识符的命名规范</li>
+                       <li>Java 关键字、数据类型</li>
+                       <li>Java的运算符、表达式</li>
+                       <li>Java的流程控制</li>
+                       <li>方法的定义</li>
+                       <li>方法的形参和实参</li>
+                       <li>有无返回值方法的应用</li>
+                       <li>方法的重写</li>
+                       <li>方法的重载</li>
+
+                   </ul>
+               </div>
+                <div class="path1_2">
+                    <ul>
+                        <li>Java数组</li>
+                        <li>Java 数组的定义</li>
+                        <li>数组的静态赋值、动态赋值</li>
+                        <li>数组的遍历访问及取值</li>
+                        <li>数组的多种排序方法</li>
+                        <li>可变参数的应用</li>
+                        <li>Arrays工具类的使用</li>
+                        <li>二维数组的使用</li>
+                        <li></li>
+
+                    </ul>
+                </div>
+                <div class="path1_3">
+                    <ul>
+                        <li>集合</li>
+                        <li>集合框架与数组的对比</li>
+                        <li>熟知List、Set、Map集合</li>
+                        <li>ArrayList和LinkedList的使用</li>
+                        <li>迭代器的使用</li>
+                        <li>HashSet和TreeSet的使用</li>
+                        <li>HashMap和TreeMap的使用</li>
+                        <li>分析Map和Set的之间的关系</li>
+                        <li>Collections工具类</li>
+
+                    </ul>
+                </div>
+                <div class="path1_4">
+                    <ul>
+                        <li>Java面向对象</li>
+                        <li>面向对象的分析与设计</li>
+                        <li>面向对象与面向过程的区别</li>
+                        <li>类与对象的定义</li>
+                        <li>面向对象的封装特性</li>
+                        <li>static静态属性、方法、代码块</li>
+                        <li>内部类的使用</li>
+                        <li>工具类的概念及工具类的制作</li>
+                        <li>this、super关键字的使用及理解</li>
+                        <li>反射机制</li>
+                        <li>equals及toString方法的正确理解</li>
+                        <li>抽象类，接口，多态、封装</li>
+                        <li>Java中的包机制</li>
+                        <li>Java的内存分析</li>
+
+                    </ul>
+                </div>
+                <div class="path1_5">
+                    <ul>
+                        <li>多线程</li>
+                        <li>Java程序运行原理和JVM的启动原理</li>
+                        <li>线程调度及获取和设置线程优先级</li>
+                        <li>线程控制之守护线程</li>
+                        <li>线程安全问题的产生原因分析</li>
+                        <li>多线程死锁问题概述和使用</li>
+                        <li>生产者消费者问题描述</li>
+                        <li>生产者消费者之等待唤醒机制代码分析</li>
+                        <li>线程池的概述和使用</li>
+
+                    </ul>
+                </div>
+                <div class="path1_6">
+                    <ul>
+                        <li>常用基础类</li>
+                        <li>常用数据类型的包装类</li>
+                        <li>String、StringBuffer、StringBuilder</li>
+                        <li>Date的使用</li>
+                        <li>SimpleDataFormate的使用</li>
+                        <li>Calendar日历类的使用</li>
+                        <li>Math常用方法</li>
+                        <li>Random、Runtime、System类</li>
+                        <li>java8新特性</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="stage">
+            <div class="cricle_stage">2</div>
+            <span>第二阶段  JavaWeb</span>
+            <div class="line_s"></div>
+            <div  class="path1">
+                <div class="path1_1">
+                    <ul>
+                        <li>前端技术</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>Javascript</li>
+                        <li>jQuery</li>
+                        <li>ajax</li>
+                        <li>BootStrap</li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="path1_5">
+                    <ul>
+                        <li>数据库</li>
+                        <li>数据库的安装、配置</li>
+                        <li>oracle增删改查用户</li>
+                        <li>mysql创建、删除、查询库</li>
+                        <li>DQL\DML\DDL\DCL</li>
+                        <li>视图、存储过程</li>
+                        <li>数据库的四大特性</li>
+                        <li>数据库连接池</li>
+                        <li></li>
+
+                    </ul>
+                </div>
+                <div class="path1_3">
+                    <ul>
+                        <li>JDBC</li>
+                        <li>了解JDBC的概念</li>
+                        <li>JDBC的开发</li>
+                        <li>Statement</li>
+                        <li>PreparedStatement</li>
+                        <li>连接池</li>
+                        <li>JDBC事务管理</li>
+                        <li></li>
+                        <li></li>
+
+                    </ul>
+                </div>
+                <div class="path1_2">
+                    <ul>
+                        <li>jsp/servlet</li>
+                        <li>了解servlet的生命周期</li>
+                        <li>了解servlet常用接口和类</li>
+                        <li>了解jsp的概念jsp的动作指令</li>
+                        <li>jsp的九大内置对象</li>
+                        <li>增删改查 分页</li>
+                        <li>文件上传下载 </li>
+                        <li>监听器、过滤器</li>
+                        <li>this、super关键字的使用及理解</li>
+
+                    </ul>
+                </div>
+                <div class="path1_4">
+                    <ul>
+                        <li>Tomcat/AJAX</li>
+                        <li>安装与启动体系结构</li>
+                        <li>掌握Tomcat的配置</li>
+                        <li>熟悉进行web工程的部署</li>
+                        <li>了解ajax json</li>
+                        <li>xmlhttprequest对象</li>
+                        <li>使用jquery实现ajax</li>
+                        <li>SVN项目开发、项目部署</li>
+                        <li></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="stage">
+            <div class="cricle_stage">3</div>
+            <span>第三阶段 SSH/SSM</span>
+            <div class="line_s"></div>
+            <div  class="path1">
+            <div class="path1_1">
+                <ul>
+                    <li>Struts2</li>
+                    <li>Struts2 servlet API</li>
+                    <li>Struts2和from表单交互</li>
+                    <li>模型驱动ModelDriver</li>
+                    <li>OGNL语法</li>
+                    <li>J拦截器、国际化</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+
+                </ul>
+            </div>
+            <div class="path1_2">
+                <ul>
+                    <li>hibernate</li>
+                    <li>了解hibernate的概念</li>
+                    <li>hibernate配置文件/映射文件</li>
+                    <li>基本的增删改查</li>
+                    <li>关联映射：</li>
+                    <li>一对一</li>
+                    <li>一对多</li>
+                    <li>多对多</li>
+                    <li>hql语句、缓存、性能优化</li>
+
+                </ul>
+            </div>
+            <div class="path1_3">
+                <ul>
+                    <li>spring</li>
+                    <li>spring框架概念</li>
+                    <li>ioc、DL、aop了解掌握</li>
+                    <li>配置Bean的方式</li>
+                    <li>作用域、生命周期</li>
+                    <li>注解开发、元注解</li>
+                    <li>jdk动态代理</li>
+                    <li>aop xml与注解方式</li>
+                    <li>AspectJ6种通知</li>
+                    <li>jdbc template/事务/ssh整合</li>
+
+
+                </ul>
+            </div>
+            <div class="path1_4">
+                <ul>
+                    <li>Mybatis</li>
+                    <li>mybatis简介、框架原理</li>
+                    <li>使用mybatis实现基本的增删改查</li>
+                    <li>原始dao/mapper代理开发</li>
+                    <li>动态sql、输入映射、输出映射</li>
+                    <li>yiduiy、一对多、多对多</li>
+                    <li>缓存</li>
+                    <li>ssm整合与curd操作</li>
+                    <li></li>
+
+
+
+                </ul>
+            </div>
+            <div class="path1_5">
+                <ul>
+                    <li>SpringMvc</li>
+                    <li>springmvc简介 原理</li>
+                    <li>Springmvc入门程序</li>
+                    <li>处理器映射3个 适配器2个</li>
+                    <li>注解开发 RequestMapping详解</li>
+                    <li>基础数据类型的参数传递</li>
+                    <li>对象、数组、集合的参数传递</li>
+                    <li>包装对象、乱码的解决方法</li>
+                    <li>日期处理 crud案列 转发和冲定向</li>
+                    <li>url模板映射</li>
+                    <li>文件上转/下载、拦截器</li>
+
+                </ul>
+            </div>
+
+            </div>
+        </div>
+        <div class="stage">
+            <div class="cricle_stage">4</div>
+            <span>第四阶段   进阶阶段</span>
+            <div class="line_s"></div>
+            <div  class="path1">
+                <div class="path1_1">
+                    <ul>
+                        <li>GIT和Maven</li>
+                        <li>为什么用框架</li>
+                        <li>流行的框架</li>
+                        <li>Maven概述</li>
+                        <li>使用Maven的优势</li>
+                        <li>依赖管理</li>
+                        <li>使用Maven核心概念介绍</li>
+                        <li>Maven与第三方Elicpse整合</li>
+                        <li>如何在Eclipse中使用Maven</li>
+                        <li>Maven私服Nexus的安装使用</li>
+                        <li>如何使用Maven构建Web应用</li>
+                        <li>使用Maven构建SSH应用</li>
+                        <li>使用Maven进行多模块和继承使用</li>
+
+                    </ul>
+                </div>
+                <div class="path1_2">
+                    <ul>
+                        <li>分布式架构</li>
+                        <li>分布式通信协议分析</li>
+                        <li>分布式通信-序列化</li>
+                        <li>分布式通信协议-http</li>
+                        <li>分布式通信框架-rmi</li>
+                        <li>分布式通信框架-webservice</li>
+                        <li>分布式协调服务-zookeeper</li>
+                        <li>分布式协调服务</li>
+                        <li>分布式服务治理-dubbo</li>
+                        <li>分布式服务治理</li>
+                        <li>分布式事务解决方案</li>
+                        <li>nio原理详解</li>
+                        <li>netty设计原理</li>
+
+                    </ul>
+                </div>
+                <div class="path1_3">
+                    <ul>
+                        <li>SpringBoot</li>
+                        <li>SpringBoot开始入门</li>
+                        <li>SpringBoot配置</li>
+                        <li>SpringBoot WEB开发</li>
+                        <li>SpingBoot 部署</li>
+                        <li>SpringBoot与缓存</li>
+                        <li>SpringBoot与消息</li>
+                        <li>SpringBoot与检索</li>
+                        <li>SpringBoot与任务</li>
+                        <li>SpringBoot与安全</li>
+                        <li>SpringBoot与分布式</li>
+                        <li>SpringBoot与开发热部署</li>
+                        <li>SpringBoot与监控管理</li>
+
+
+                    </ul>
+                </div>
+                <div class="path1_4">
+                    <ul>
+                        <li>SpringCloud</li>
+                        <li>配置中心</li>
+                        <li>服务发现与注册</li>
+                        <li>高可用服务治理</li>
+                        <li>Ribbon</li>
+                        <li>Hystrix</li>
+                        <li>服务调用、服务网关</li>
+                        <li>消息驱动整合</li>
+                        <li>消息总线</li>
+                        <li>分布式应用跟踪</li>
+
+
+
+                    </ul>
+                </div>
+                <div class="path1_5">
+                    <ul>
+                        <li>Redis/MongoDB</li>
+                        <li>redis安装</li>
+                        <li>redis数据类型</li>
+                        <li>redis操作</li>
+                        <li>java操作redis</li>
+                        <li>redis写个带分页好友关系处理系统</li>
+                        <li>Linux平台安装MongDB</li>
+                        <li>MongDB插入、更新、删除、查询文档</li>
+                        <li>MongoDB排序、索引、聚合、复制、分片</li>
+                        <li>uMongoDB与java、MongoDB数据库引用</li>
+                        <li>java写一个MongoDB的操作</li>
+
+                    </ul>
+                </div>
+
+                <div class="path1_6">
+                    <ul>
+                        <li>SpringData</li>
+                        <li>Spring Data 概述</li>
+                        <li>Repository</li>
+                        <li>CrudRepository</li>
+                        <li>PagingAndSortingRepository</li>
+                        <li>JpaRepository</li>
+                        <li>条件查询</li>
+                        <li>使用@Query自定义查询</li>
+                        <li>@Query 与 @Modifying 执行更新操作</li>
+                        <li>索引参数与命名参数</li>
+                        <li>用@Query来指定本地查询</li>
+                        <li>@为某一个Repository添加自定义方法</li>
+                        <li>@所有的Repository添加自实现的方法</li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+<div class="buttom_index">
+    <div class="buttom_index_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="${pageContext.request.contextPath}/static/img/button_index_img3.png"/>
+                    <span>足不出户学编程</span>
+                </div>
+                <div class="col-md-4">
+                    <img src="${pageContext.request.contextPath}/static/img/button_index_img1.png"/>
+                    <span>学习经验共分享</span>
+                </div>
+                <div class="col-md-4">
+                    <img src="${pageContext.request.contextPath}/static/img/button_index_img2.png"/>
+                    <span>前沿技术实时更新</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttom_index_buttom">
+        <p style="font-size: 18px; color: white;margin-top: 30px;margin-left: 150px;">友情链接:</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul>
+                        <li><a href="http://jquery.cuishifeng.cn/">前端</a></li>
+                        <li><a href="#">SpringCloud</a></li>
+                        <li><a href="#">SpringBoot</a></li>
+                        <li><a href="#">Redis</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+
+                    <ul>
+                        <li><a href="#">人工智能</a></li>
+                        <li><a href="#">区块链/go</a></li>
+                        <li><a href="#">消息队列</a></li>
+                        <li><a href="#">微服务框架</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+
+                    <ul>
+                        <li><a href="#">大数据</a></li>
+                        <li><a href="#">Linux</a></li>
+                        <li><a href="#">Spring</a></li>
+                        <li><a href="#">并发编程</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <img width="200px" height="100px" style="border-radius: 10px;opacity: 0.8;" src="${pageContext.request.contextPath}/static/img/run.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p style="text-align: center;margin-top: 30px; font-size: 15px;">
+        <font color="cornflowerblue">©2020电科大嵌入B班lyh毕业设计&nbsp;</font>
+    </p>
+</div>
+
+
+</body>
+</html>

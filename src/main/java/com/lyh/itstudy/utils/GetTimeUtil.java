@@ -15,4 +15,9 @@ public class GetTimeUtil {
         String time = sdf.format(date);
         return time;
     }
+    public  static Date getDateFormat(){
+        Date date=new Date();
+
+        return date;
+    }
 }

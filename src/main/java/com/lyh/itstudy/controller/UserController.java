@@ -35,11 +35,7 @@ public class UserController {
     private UserService userService;
 
 
-  /*去首页*/
-  @RequestMapping("toIndex")
-  public String toIndex(){
-      return "index";
-  }
+
 
 
     /*去用户注册界面*/

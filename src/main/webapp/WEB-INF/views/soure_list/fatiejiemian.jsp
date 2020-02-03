@@ -54,7 +54,7 @@
         .center_tiezi_title{
             top: 60px;
             border: 1px solid rgba(0,0,0,0.01);
-            width: 1008px;
+            width: 1038px;
             height: 60px;
             background:  rgba(0,0,0,0.1);
             position: relative;
@@ -77,7 +77,8 @@
         .text_content{
             padding-top: 90px;
             padding-left: 30px;
-            line-height: 20px;
+            padding-right: 30px;
+            line-height: 22px;
             text-indent: 2em;
         }
 
@@ -118,8 +119,10 @@
     <p class="center_fabiaotiezi_text"><span>发表帖子</span></p>
 
     <div class="center_zhuti">
-        <form action="#" >
-            主题分类：<input type="text"  name="zhuti" size="30" value="${text.replaceAll(" ","+")}"/><br />
+        <form action="${pageContext.request.contextPath}/saveTieZi.do" method="post">
+            <input type="hidden" name="uid" value="${uid}">
+            主题分类：<input  type="text"  name="typename" size="30" value="${text.replaceAll(" ","+")}"/><br /><br /><br />
+            帖子名称：<input type="text" name="aname" size="30"/>
             <div class="center_tiezi_title">
            					<span class="select_biaoqing" >
                                 <img style="width: 30px; height: 30px" src="${pageContext.request.contextPath}/static/img/hot/biaoqing/0.gif" />
@@ -134,14 +137,14 @@
             </div>
             <!--文本框-->
             <td>
-                <textarea name="text" rows="20" cols="120" class="text_content">
+                <textarea name="atext" rows="20" cols="120" class="text_content">
 
                  </textarea>
             </td>
 
             <div class="sellGold">
                 主题售价<br />
-                售价：<input type="text"  name="sellGold" size="3" />金币
+                售价：<input type="text"  name="amoney" size="3" />金币
             </div>
 
             <input class="btn btn-info" id="fabiaotiezi" type="submit" value="发表帖子" />

@@ -84,11 +84,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2"> <img src="${pageContext.request.contextPath}/static/img/title_left1.jpg" class="head1_left_img"></div>
-                <div class="col-md-1"><a href="#">首页</a></div>
-                <div class="col-md-1"><a href="freeresourse.html">免费资源</a></div>
-                <div class="col-md-1"><a href="studypath.html">学习路线</a></div>
-                <div class="col-md-1"><a href="skillexchange.html">技术交流</a></div>
-                <div class="col-md-1"><a href="#">礼品兑换</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toFreeSource.do">免费资源</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toStudyPath.do">学习路线</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toSkillExchange.do">技术交流</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toProducts.do">礼品兑换</a></div>
                 <div class="col-md-1"><a href="#">最新活动</a></div>
                 <div class="col-md-2">
                     <input  id="search_info" value=""/>

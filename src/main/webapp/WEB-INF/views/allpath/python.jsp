@@ -1,0 +1,381 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@page isELIgnored="false"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/allpath.css" rel="stylesheet">
+    <title>Title</title>
+   <style>
+
+       *{
+           margin: 0;
+           padding: 0;
+       }
+       .javapath_head{
+           width: 1366px;
+           height: 326px;
+           position: relative;
+       }
+       .javapath_head .head_left_text{
+           position: absolute;
+           font-size: 35px;
+           left: 580px;
+           top: 30px;
+           color: black;
+       }
+
+       .javapath_head .head_left_text1 {
+           position: absolute;
+           font-size: 20px;
+           left: 450px;
+           top: 100px;
+           overflow: hidden;
+           width: 550px;
+           height: 200px;
+       }
+
+
+       .head_left{
+           width: 683px;
+           height: 326px;
+           background: pink;
+           float: left;
+
+       }
+       .head_right{
+           width: 683px;
+           height: 326px;
+           background: black;
+           float: left;
+
+       }
+
+
+       .line_s{
+           position: relative;
+           left: 20px;
+           top: 40px;
+           width: 0;
+           height: 2000px;
+           border-left: 2px solid #5994a4;
+       }
+
+       .path1_7 {
+           width: 240px;
+           height: 450px;
+           background: rgba(255, 255, 255, 0.5);
+           left: 10px;
+           top: 950px;
+           overflow: hidden;
+           position: absolute;
+           z-index: 2;
+       }
+       .path1_8 {
+           width: 240px;
+           height: 450px;
+           background: rgba(255, 255, 255, 0.5);
+           left: 280px;
+           top: 950px;
+           overflow: hidden;
+           position: absolute;
+           z-index: 2;
+       }
+       .path1_9 {
+           width: 240px;
+           height: 450px;
+           background: rgba(255, 255, 255, 0.5);
+           left: 550px;
+           top: 950px;
+           overflow: hidden;
+           position: absolute;
+           z-index: 2;
+       }
+       .path1_10 {
+           width: 240px;
+           height: 450px;
+           background: rgba(255, 255, 255, 0.5);
+           left: 10px;
+           top: 1430px;
+           overflow: hidden;
+           position: absolute;
+           z-index: 2;
+       }
+
+
+
+
+   </style>
+</head>
+
+<body>
+
+<<%@include file="../menu.jsp"%>
+<!--路径导航-->
+<div class="path_navigation">
+    <ol class="breadcrumb">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../index.html">学习交流</a></li>
+        <li><a href="../studypath.html">学习路线图</a></li>
+        <li><a href="#">python学习路线</a></li>
+    </ol>
+</div>
+
+    <div class="javapath_head">
+        <p class="head_left_text">Python学习路线</p>
+        <p class="head_left_text1">python是一种计算机程序设计语言，可应用于网页开发和软件开发等方面，2010年，python被TIOBE编程语言排行榜评为年度语言。
+            python的创始人为Guido van Rossum，python的开发受到Modula-3语言的影响，python具有易读、可扩展、简洁等特点</p>
+        <div class="head_left">
+            <img src="${pageContext.request.contextPath}/static/img/allpath_head_img.jpg">
+        </div>
+        <div class="head_right">
+            <img src="${pageContext.request.contextPath}/static/img/allpath_head_img.jpg">
+        </div>
+    </div>
+
+
+
+    <div class="javapath_center">
+        <div class="stage">
+            <div class="cricle_stage">1</div>
+            <span>Python</span>
+
+            <div class="line_s"></div>
+            <div  class="path1">
+               <div class="path1_1">
+                   <ul>
+                       <li>语言基础</li>
+                       <li>python基础语法</li>
+                       <li>Jpython字符串解析</li>
+                       <li>python时间和日历</li>
+                       <li>python文件操作，数据处理</li>
+                       <li>python界面编程</li>
+                       <li>python面向对象高级语法</li>
+                       <li>命名空间和作用域应用案例分析</li>
+
+                   </ul>
+               </div>
+                <div class="path1_2">
+                    <ul>
+                        <li>语言高级</li>
+                        <li>python处理txt，csv，pdf，jsons</li>
+                        <li>python平台迁移linux</li>
+                        <li>python常用第三方库</li>
+                        <li>python发送邮件</li>
+                        <li>python发送短信</li>
+                        <li>python高级语法</li>
+                        <li>python正则表达式</li>
+                        <li>python网络编程</li>
+                        <li>python系统编程</li>
+                        <li>python pyGame</li>
+                        <li>python Office办公自动化</li>
+                        <li>python 数据库开发</li>
+                        <li>jpython</li>
+
+                    </ul>
+                </div>
+                <div class="path1_3">
+                    <ul>
+                        <li>全栈前段</li>
+                        <li>HTMP-HTML5</li>
+                        <li>CSS-CSS3</li>
+                        <li>JavaScript</li>
+                        <li>JQuerry</li>
+                        <li>JQuerry EasyUI</li>
+                        <li>jQuery Mobile</li>
+                        <li>Bootstrap</li>
+                        <li>PhotoShop</li>
+
+                    </ul>
+                </div>
+                <div class="path1_4">
+                    <ul>
+                        <li>全栈后端</li>
+                        <li>linux网站配置</li>
+                        <li>Python Github 项目代码管理</li>
+                        <li>项目开发流程敏捷、代码重构</li>
+                        <li>测试驱动开发、自动化</li>
+                        <li>Python网站框架Django开发</li>
+                        <li>Python网站框架Flash开发</li>
+                        <li>Pythonn web server框架Tornado开发</li>
+                        <li>RESTful接口开发</li>
+                        <li>tPython全栈后端项目</li>
+
+
+                    </ul>
+                </div>
+                <div class="path1_5">
+                    <ul>
+                        <li>linux自动化</li>
+                        <li>linux指令实战</li>
+                        <li>linux shell指令实战</li>
+                        <li>linux运维自动化实战：</li>
+                        <li> 系统基础信息模块</li>
+                        <li> 业务服务监控</li>
+                        <li> 定制业务质量报表</li>
+                        <li> python与系统安全</li>
+                        <li> 运维常见工具</li>
+                        <li> python运维阶段项目</li>
+                        <li> linux系统安全审计</li>
+
+                    </ul>
+                </div>
+                <div class="path1_6">
+                    <ul>
+                        <li>KaliLinux</li>
+                        <li>Klilinux简介</li>
+                        <li>Kliliux信息收集</li>
+                        <li>Kliliux信息收集</li>
+                        <li>Kalilinux漏洞分析</li>
+                        <li>Kalilinux数据库评估</li>
+                        <li>Kalilinuxweb评估</li>
+                        <li>Kalilinux密码破解</li>
+                        <li>Kali linux无线安全</li>
+                        <li>Kali linux嗅探欺骗</li>
+                        <li>Kali linux权限维持</li>
+                        <li>Kali Linux社会工程学</li>
+
+                    </ul>
+                </div>
+
+                <div class="path1_7">
+                    <ul>
+                        <li>数据分析</li>
+                        <li>numpy数据处理</li>
+                        <li>pandas数据分析</li>
+                        <li>matplotib数据可视化</li>
+                        <li>scipy数据统计分析</li>
+                        <li>python金融数据分析</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+
+
+                    </ul>
+                </div>
+                <div class="path1_8">
+                <ul>
+                    <li>人工智能</li>
+                    <li>机器学习基础知识简介</li>
+                    <li>KNN算法</li>
+                    <li>线性回归</li>
+                    <li>逻辑斯蒂回归算法</li>
+                    <li>决策树算法</li>
+                    <li>朴素贝叶斯算法</li>
+                    <li>支持向量机</li>
+                    <li>聚类k-means算法</li>
+
+
+                </ul>
+            </div>
+                <div class="path1_9">
+                    <ul>
+                        <li>大数据</li>
+                        <li>机Hadoop HDFS</li>
+                        <li>Hadoop Mapreduce</li>
+                        <li>python Spark编程</li>
+                        <li>spark推荐系统引擎</li>
+                        <li>spark Mlib</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+
+
+
+                    </ul>
+                </div>
+                <div class="path1_10">
+                    <ul>
+                        <li>项目实战</li>
+                        <li>分布式爬虫+elasticsearch造搜索引擎</li>
+                        <li>微信公众号平台</li>
+                        <li>在线教育平台</li>
+                        <li>1688电商网站</li>
+                        <li>清华大学ERP系统</li>
+                        <li>链家房产网</li>
+                        <li>B/S自动化运维平台</li>
+                        <li>大数据分析</li>
+                        <li>人工智能深度学习tensorflow项目</li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<div class="buttom_index">
+    <div class="buttom_index_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="${pageContext.request.contextPath}/static/img/button_index_img3.png"/>
+                    <span>足不出户学编程</span>
+                </div>
+                <div class="col-md-4">
+                    <img src="${pageContext.request.contextPath}/static/img/button_index_img1.png"/>
+                    <span>学习经验共分享</span>
+                </div>
+                <div class="col-md-4">
+                    <img src="${pageContext.request.contextPath}/static/img/button_index_img2.png"/>
+                    <span>前沿技术实时更新</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttom_index_buttom">
+        <p style="font-size: 18px; color: white;margin-top: 30px;margin-left: 150px;">友情链接:</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul>
+                        <li><a href="http://jquery.cuishifeng.cn/">前端</a></li>
+                        <li><a href="#">SpringCloud</a></li>
+                        <li><a href="#">SpringBoot</a></li>
+                        <li><a href="#">Redis</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+
+                    <ul>
+                        <li><a href="#">人工智能</a></li>
+                        <li><a href="#">区块链/go</a></li>
+                        <li><a href="#">消息队列</a></li>
+                        <li><a href="#">微服务框架</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+
+                    <ul>
+                        <li><a href="#">大数据</a></li>
+                        <li><a href="#">Linux</a></li>
+                        <li><a href="#">Spring</a></li>
+                        <li><a href="#">并发编程</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <img width="200px" height="100px" style="border-radius: 10px;opacity: 0.8;" src="${pageContext.request.contextPath}/static/img/run.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p style="text-align: center;margin-top: 30px; font-size: 15px;">
+        <font color="cornflowerblue">©2020电科大嵌入B班lyh毕业设计&nbsp;</font>
+    </p>
+</div>
+
+
+</body>
+</html>

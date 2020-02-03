@@ -87,6 +87,15 @@
     -->
     csid, csname, cid
   </sql>
+
+
+  <select id="selectByCsname" parameterType="java.lang.String" resultMap="BaseResultMap">
+
+    select * FROM  tbl_categorysecond
+    WHERE csname=#{csname}
+
+  </select>
+
   <select id="selectByExample" parameterType="com.lyh.itstudy.model.CategorysecondExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

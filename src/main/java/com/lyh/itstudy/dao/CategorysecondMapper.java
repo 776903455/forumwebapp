@@ -53,6 +53,9 @@ public interface CategorysecondMapper {
      *
      * @mbg.generated Sun Jan 26 12:38:17 GMT+08:00 2020
      */
+
+    Categorysecond selectByCsname(String csname);
+
     List<Categorysecond> selectByExample(CategorysecondExample example);
 
     /**

@@ -282,6 +282,12 @@
 <%--弹出获得的金币--%>
     <span class="scoreInfo"><span>本次签到获得${scoreInfo}枚金币</span></span>
 
+    <%--当游客点击发帖按钮时，提示他先登录--%>
+    <p class="login_tips" style="opacity: 0;position: absolute;width: 500px;
+    height: 50px;text-align: center;top: 200px;left: 350px;background: orange;
+    font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
+      游客请先登录之后才能发帖！
+    </p>
 
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -319,21 +325,22 @@
                                 <li>Python+人工智能技术交流</li>
                                 <li>c/c++技术交流</li>
                                 <li>PHP+H5技术交流</li>
-                                <li>Ul/UE技术交流</li>
+                                <li>UI/UE设计技术交流</li>
                                 <li>大数据技术交流</li>
-                                <li>新媒体+Android技术交流</li>
-                                <li>linux云计算技术交流</li>
+                                <li>新媒体+Android+物联网技术交流</li>
+                                <li>Linux云计算技术交流</li>
                             </ul>
 
                             <ul class="free">
                                 <li>javaEE资源</li>
-                                <li>Python+人工智能资源</li>
-                                <li>c/c++技术资源</li>
+                                <li>Python资源</li>
+                                <li>C/C++资源</li>
                                 <li>前端资源</li>
                                 <li>Ul/UE资源</li>
                                 <li>大数据资源</li>
-                                <li>新媒体+Android资源</li>
+                                <li>Android资源</li>
                                 <li>linux云计算资源</li>
+                                <li>学习经历</li>
                             </ul>
                         </div>
 
@@ -357,8 +364,8 @@
     </div>
 
 
-
-<div class="buttom_index">
+    <%--底部信息--%>
+    <div class="buttom_index">
     <div class="buttom_index_top">
         <div class="container">
             <div class="row">
@@ -439,11 +446,17 @@
     var span3=document.querySelector(".span3");
     var faitiebtn=document.querySelector("#faitie_btn");
     var guanbibtn=document.querySelector("#guanbi_btn");
+    var logintips = document.querySelector(".login_tips");
 
 
     b2.onclick=function () {
         if(${sessionScope.user==null}){
-            window.location.href="${pageContext.request.contextPath}/toLogin.do";
+            logintips.style.opacity="1";
+           setInterval(function () {
+                window.location.href="${pageContext.request.contextPath}/toLogin.do";
+                logintips.style.opacity="0";
+            },2000);
+
         }else {
             /*显示模态框*/
             $('#myModal').modal("show");
@@ -514,10 +527,10 @@
 
         var text=(span3.innerText);
 
-        if(text.length<=9){
+        if(text.length<9){
             alert("请选择正确的主题");
         }else{
-            window.location.href="${pageContext.request.contextPath}/tofatiejiemian.do?text="+text;
+            window.location.href="${pageContext.request.contextPath}/tofatiejiemian.do?uid=${sessionScope.user.uid}&text="+text;
         }
 
     }
