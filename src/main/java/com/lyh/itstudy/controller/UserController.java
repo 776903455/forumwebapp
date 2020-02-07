@@ -54,6 +54,9 @@ public class UserController {
         String time=GetTimeUtil.getDate();
         user.setRegtime(time);
 
+        /*交易次数*/
+        user.setExchangenumber(0);
+
         /*默认头像*/
         user.setUimage("static/img/touxiang/defaultImg.jpg");
 

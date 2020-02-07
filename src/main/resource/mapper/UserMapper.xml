@@ -17,6 +17,7 @@
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="uimage" jdbcType="VARCHAR" property="uimage" />
+    <result column="exchangenumber" jdbcType="VARCHAR" property="exchangenumber" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -140,6 +141,15 @@
         username=#{username}
 
     </select>
+
+
+  <select id="selectByUid"  parameterType="java.lang.Integer"  resultMap="BaseResultMap">
+
+    SELECT * FROM tbl_user
+    WHERE
+    uid=#{uid}
+
+  </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -308,6 +318,13 @@
     set  score = #{score}
     WHERE
     username=#{username}
+  </update>
+
+  <update id="updateUserbyUid"  >
+    update tbl_user
+    set  score = #{score},exchangenumber=#{exchangenumber}
+    WHERE
+    uid=#{uid}
   </update>
 
   <update id="updateByExample" parameterType="map">

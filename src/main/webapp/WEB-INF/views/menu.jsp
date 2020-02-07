@@ -86,8 +86,8 @@
                 <div class="col-md-2"> <img src="${pageContext.request.contextPath}/static/img/title_left1.jpg" class="head1_left_img"></div>
                 <div class="col-md-1"><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></div>
                 <div class="col-md-1"><a href="${pageContext.request.contextPath}/toFreeSource.do">免费资源</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toStudyPath.do">学习路线</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toSkillExchange.do">技术交流</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toStudyPath.do" >学习路线</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toSkillExchange.do?cid=3">技术交流</a></div>
                 <div class="col-md-1"><a href="${pageContext.request.contextPath}/toProducts.do">礼品兑换</a></div>
                 <div class="col-md-1"><a href="#">最新活动</a></div>
                 <div class="col-md-2">

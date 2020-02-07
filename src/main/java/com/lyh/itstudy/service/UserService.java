@@ -58,4 +58,15 @@ public class UserService {
        return userMapper.selectByName(username);
     }
 
+    /*更新用户信息*/
+    public void updateUserbyUid(Integer uid, Integer score,Integer exchangenumber) {
+        userMapper.updateUserbyUid(uid,score,exchangenumber);
+
+    }
+
+    /*更新后在根据id查询用户功能*/
+    public User selectByUid(Integer uid){
+
+        return userMapper.selectByUid(uid);
+    }
 }

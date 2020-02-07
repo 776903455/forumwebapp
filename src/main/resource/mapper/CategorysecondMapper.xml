@@ -10,7 +10,28 @@
     <id column="csid" jdbcType="INTEGER" property="csid" />
     <result column="csname" jdbcType="VARCHAR" property="csname" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="csimage" jdbcType="VARCHAR" property="csimage" />
+
+
   </resultMap>
+
+  <resultMap id="ArticleByCsid" type="com.lyh.itstudy.model.Categorysecond">
+
+    <id column="csid" jdbcType="INTEGER" property="csid" />
+    <result column="csname" jdbcType="VARCHAR" property="csname" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="csimage" jdbcType="VARCHAR" property="csimage" />
+
+  <collection property="artList" ofType="article">
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+    <result column="atxte" jdbcType="INTEGER" property="atxte" />
+    <result column="adate" jdbcType="VARCHAR" property="adate" />
+  </collection>
+  </resultMap>
+
+
+
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
@@ -87,6 +108,16 @@
     -->
     csid, csname, cid
   </sql>
+
+
+
+<select id="findArticleByCsid" parameterType="java.lang.Integer" resultMap="ArticleByCsid">
+
+    SELECT  cs.*,a.aid,a.aname,a.atxte,a.adate FROM tbl_categorysecond cs,tbl_article a
+   WHERE cs.csid=a.csid
+   AND  cs.csid=#{csid}
+
+  </select>
 
 
   <select id="selectByCsname" parameterType="java.lang.String" resultMap="BaseResultMap">

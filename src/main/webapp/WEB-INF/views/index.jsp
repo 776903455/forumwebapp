@@ -327,7 +327,7 @@
                                 <li>PHP+H5技术交流</li>
                                 <li>UI/UE设计技术交流</li>
                                 <li>大数据技术交流</li>
-                                <li>新媒体+Android+物联网技术交流</li>
+                                <li>新媒体+Android技术交流</li>
                                 <li>Linux云计算技术交流</li>
                             </ul>
 

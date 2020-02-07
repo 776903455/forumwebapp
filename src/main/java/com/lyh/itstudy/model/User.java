@@ -12,7 +12,15 @@ public class User implements Serializable{
      */
     private Integer uid;
 
+    private  Integer exchangenumber;
 
+    public Integer getExchangenumber() {
+        return exchangenumber;
+    }
+
+    public void setExchangenumber(Integer exchangenumber) {
+        this.exchangenumber = exchangenumber;
+    }
 
     /**
      *

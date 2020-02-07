@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lyh.itstudy.model.Category;
 import com.lyh.itstudy.model.CategoryExample;
+import com.lyh.itstudy.model.Categorysecond;
 import org.apache.ibatis.annotations.Param;
 
 public interface CategoryMapper {
@@ -94,4 +95,6 @@ public interface CategoryMapper {
      * @mbg.generated Sun Jan 26 12:38:17 GMT+08:00 2020
      */
     int updateByPrimaryKey(Category record);
+
+    List<Category> findCategory(Integer cid);
 }

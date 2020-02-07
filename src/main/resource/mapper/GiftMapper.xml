@@ -15,7 +15,8 @@
     <result column="gdesc" jdbcType="VARCHAR" property="gdesc" />
     <result column="gdate" jdbcType="TIMESTAMP" property="gdate" />
     <result column="is_hot" jdbcType="INTEGER" property="isHot" />
-    <result column="gmoney" jdbcType="INTEGER" property="gmoney" />
+    <result column="gmoney" jdbcType="INTEGER" property="gmoney"/>
+    <result column="number" jdbcType="INTEGER" property="number" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -93,6 +94,29 @@
     -->
     gid, gname, market_price, show_price, gimage, gdesc, gdate, is_hot, gmoney
   </sql>
+
+
+  <select id="selectGiftHot"  resultMap="BaseResultMap">
+    SELECT * FROM tbl_gift
+    WHERE is_hot=#{i}
+    limit #{ii}
+
+  </select>
+
+  <select id="selectGiftNews"  resultMap="BaseResultMap">
+    SELECT * FROM tbl_gift
+    WHERE is_hot=#{news}
+    limit #{ii}
+
+  </select>
+
+
+  <select id="selectGiftByGid"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * FROM tbl_gift
+    WHERE
+    gid=#{gid}
+  </select>
+
   <select id="selectByExample" parameterType="com.lyh.itstudy.model.GiftExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

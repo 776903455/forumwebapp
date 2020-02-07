@@ -93,4 +93,8 @@ public interface UserMapper {
      * @mbg.generated Sun Jan 26 12:38:17 GMT+08:00 2020
      */
     int updateByPrimaryKey(User record);
+
+    void updateUserbyUid(@Param("uid") Integer uid, @Param("score") Integer score,@Param("exchangenumber")Integer exchangenumber);
+
+    User selectByUid(Integer uid);
 }

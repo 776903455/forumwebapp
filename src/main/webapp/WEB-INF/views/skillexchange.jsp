@@ -134,63 +134,15 @@
         <div class="plate_content">
             <div class="plate_content_left">
                 <ul>
+                    <c:forEach items="${csList}" var="cs">
                     <li>
-                        <a href=""><img src="${pageContext.request.contextPath}/static/img/javaskill.png"></a>
-                        <span><a style="text-decoration: none" href="">java技术交流</a></span>
-                        <em>主题：2w 贴数：2w</em>
-                        <p><a href="">C/C++领域钩子HOOK技术肆虐经典 前天 23:12 Maz</a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020-1-20 23:12</span>
-
+                        <a href=""><img src="${pageContext.request.contextPath}/${cs.csimage}"></a>
+                        <span><a style="text-decoration: none" href="">${cs.csname}</a></span>
+                        <em>主题：2w 贴数：${cs.artList.size()}</em>
+                        <p><a href="">${cs.artList.get(0).aname} </a></p>
+                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">${cs.artList.get(0).adate}</span>
                     </li>
-                    <li>
-                        <a href=""> <img src="${pageContext.request.contextPath}/static/img/pyhon+人工智能技术.png"></a>
-                        <span><a style="text-decoration: none" href="">Python+人工智能技术交流</a></span>
-                        <em>主题：2w 贴数：2w</em>
-                        <p><a href="">C/C++领域钩子HOOK技术肆虐经典 前天 23:12 Maz</a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020-1-20 23:12</span>
-                    </li>
-                    <li>
-                        <a href=""> <img src="${pageContext.request.contextPath}/static/img/c_or_c++.png"></a>
-                        <span><a style="text-decoration: none" href="">C/C++技术交流</a></span>
-                        <em>主题：2w 贴数：2w</em>
-                        <p><a href="">C/C++领域钩子HOOK技术肆虐经典 前天 23:12 Maz</a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020-1-20 23:12</span>
-                    </li>
-                    <li>
-                        <a href=""> <img src="${pageContext.request.contextPath}/static/img/php+h5.png"></a>
-                        <span><a style="text-decoration: none" href="">PHP+H5全栈技术交流</a></span>
-                        <em>主题：2w 贴数：2w</em>
-                        <p><a href="">C/C++领域钩子HOOK技术肆虐经典 前天 23:12 Maz</a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020-1-20 23:12</span>
-                    </li>
-                    <li>
-                        <a href=""> <img src="${pageContext.request.contextPath}/static/img/ui_or_ue.png"></a>
-                        <span><a style="text-decoration: none" href="">UI/UE设计技术交流</a></span>
-                        <em>主题：2w 贴数：2w</em>
-                        <p><a href="">C/C++领域钩子HOOK技术肆虐经典 前天 23:12 Maz</a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020-1-20 23:12</span>
-                    </li>
-                    <li>
-                        <a href="">  <img src="${pageContext.request.contextPath}/static/img/bigdatabase.png"></a>
-                        <span><a style="text-decoration: none" href="">大数据技术交流</a></span>
-                        <em>主题：2w 贴数：2w</em>
-                        <p><a href="">C/C++领域钩子HOOK技术肆虐经典 前天 23:12 Maz</a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020-1-20 23:12</span>
-                    </li>
-                    <li>
-                        <a href=""> <img src="${pageContext.request.contextPath}/static/img/android.png"></a>
-                        <span><a style="text-decoration: none" href="">新媒体+Android+物联网技术交流</a></span>
-                        <em>主题：2w 贴数：2w</em>
-                        <p><a href="">C/C++领域钩子HOOK技术肆虐经典 前天 23:12 Maz</a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020-1-20 23:12</span>
-                    </li>
-                    <li>
-                        <a href="">  <img src="${pageContext.request.contextPath}/static/img/javaskill.png"></a>
-                        <span><a style="text-decoration: none" href="">Linux云计算+运维</a></span>
-                        <em>主题：2w 贴数：2w</em>
-                        <p><a href="">C/C++领域钩子HOOK技术肆虐经典 前天 23:12 Maz</a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020-1-20 23:12</span>
-                    </li>
+                    </c:forEach>
                 </ul>
             </div>
             <div class="plate_content_right">

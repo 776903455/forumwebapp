@@ -94,4 +94,10 @@ public interface GiftMapper {
      * @mbg.generated Sun Jan 26 12:38:17 GMT+08:00 2020
      */
     int updateByPrimaryKey(Gift record);
+
+     List<Gift> selectGiftHot(@Param("i")Integer i,@Param("ii")Integer ii);
+
+    List<Gift> selectGiftNews(@Param("news")Integer news,@Param("ii")Integer ii);
+
+    Gift selectGiftByGid(Integer gid);
 }

@@ -8,8 +8,8 @@
 <!--配置别名  -->
   <typeAliases>
      <!-- <typeAlias type="com.lyh.User" alias="user"/> -->
-     <package name="com.itguigu.crud.dao"/>
-     <package name="com.itguigu.crud.bean"/>
+     <package name="com.lyh.itstudy.dao"/>
+     <package name="com.lyh.itstudy.model"/>
   </typeAliases>
   
   
