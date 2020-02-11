@@ -115,12 +115,12 @@ public class UserController {
     @RequestMapping("login")
     public String login(@RequestParam("username") String username , @RequestParam("password") String password , Model model,
                         HttpServletRequest request) {
-
         User user = userService.login(username, password);
 
         if(user!=null){
           HttpSession session= request.getSession();
-          session.setAttribute("user",user);
+            session.setAttribute("user",user);
+
         }else{
 
             Model model1 = model.addAttribute("error", "账号或密码错误");

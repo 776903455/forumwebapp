@@ -27,6 +27,11 @@
     <result column="aname" jdbcType="VARCHAR" property="aname" />
     <result column="atxte" jdbcType="INTEGER" property="atxte" />
     <result column="adate" jdbcType="VARCHAR" property="adate" />
+    <result column="areplay" jdbcType="VARCHAR" property="areplay" />
+    <result column="apraise" jdbcType="VARCHAR" property="apraise" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="amoney" jdbcType="VARCHAR" property="amoney" />
+
   </collection>
   </resultMap>
 

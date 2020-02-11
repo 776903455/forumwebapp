@@ -285,7 +285,7 @@
                     if(${giftInfo.gmoney>sessionScope.user.score}){
                         alert("兑换礼品失败，你的金币不足!");
                     }else {
-                        window.location.href="${pageContext.request.contextPath}/exchangeGift.do?uid=${sessionScope.user.uid}&gid=${giftInfo.gid}&gmoney=${giftInfo.gmoney}&score=${sessionScope.user.score}&exchangenumber=${sessionScope.user.exchangenumber}";
+                        window.location.href="${pageContext.request.contextPath}/exchangeGift.do?uid=${sessionScope.user.uid}&gid=${giftInfo.gid}&gmoney=${giftInfo.gmoney}&score=${sessionScope.user.score}&exchangenumber=${sessionScope.user.exchangenumber}&number=${giftInfo.number}";
                     }
                 }else {
                     alert("请先登录!");
@@ -293,7 +293,5 @@
 
             }
         </script>
-
-
 </html>
 

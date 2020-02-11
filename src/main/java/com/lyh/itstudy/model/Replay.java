@@ -11,6 +11,15 @@ public class Replay {
      * @mbg.generated Sun Jan 26 12:38:17 GMT+08:00 2020
      */
     private Integer repid;
+    private Integer aid;
+
+    public Integer getAid() {
+        return aid;
+    }
+
+    public void setAid(Integer aid) {
+        this.aid = aid;
+    }
 
     /**
      *
@@ -61,6 +70,17 @@ public class Replay {
      */
     public void setRepid(Integer repid) {
         this.repid = repid;
+    }
+
+
+    private  String repname;
+
+    public String getRepname() {
+        return repname;
+    }
+
+    public void setRepname(String repname) {
+        this.repname = repname;
     }
 
     /**
@@ -133,5 +153,16 @@ public class Replay {
      */
     public void setReptxt(String reptxt) {
         this.reptxt = reptxt == null ? null : reptxt.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Replay{" +
+                "repid=" + repid +
+                ", aid=" + aid +
+                ", repdate=" + repdate +
+                ", repname=" + repname +
+                ", reptxt='" + reptxt + '\'' +
+                '}';
     }
 }

@@ -20,4 +20,12 @@ public class GetTimeUtil {
 
         return date;
     }
+
+    /*将传进来的日期数据转换为指定的格式*/
+    public  static String getDate(Date date){
+
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(date);
+        return time;
+    }
 }

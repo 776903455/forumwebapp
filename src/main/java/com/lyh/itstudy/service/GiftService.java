@@ -34,8 +34,8 @@ public class GiftService {
 
     }
 
-    public void updateGift(Integer pid) {
-
+    public void updateGift(Integer gid,Integer number) {
+        giftMapper.updateGift(gid,number);
 
     }
 }

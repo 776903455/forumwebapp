@@ -49,12 +49,12 @@
         }
 
         .new_product{
-            height: 500px;
+            height: 520px;
             width: 800px;
         }
 
         .hot_product{
-            height: 500px;
+            height: 520px;
             width: 800px;
 
 

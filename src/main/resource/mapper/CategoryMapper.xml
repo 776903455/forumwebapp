@@ -98,12 +98,11 @@
 
   <select id="findCategory" parameterType="java.lang.Integer" resultMap="CsNameMap">
 
-    select c.* ,cs.*,a.*
+    select c.* ,cs.*
     FROM
-    tbl_category c,tbl_categorysecond cs,tbl_article a
+    tbl_category c,tbl_categorysecond cs
     WHERE
     c.cid=cs.cid
-    AND cs.csid=a.csid
     AND
     c.cid=#{cid}
 

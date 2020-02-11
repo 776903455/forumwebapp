@@ -100,4 +100,6 @@ public interface GiftMapper {
     List<Gift> selectGiftNews(@Param("news")Integer news,@Param("ii")Integer ii);
 
     Gift selectGiftByGid(Integer gid);
+
+    void updateGift(@Param("gid") Integer gid, @Param("number") Integer number);
 }

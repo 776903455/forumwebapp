@@ -1,6 +1,7 @@
 package com.lyh.itstudy.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Article {
     /**
@@ -142,6 +143,25 @@ public class Article {
      */
     public Date getAdate() {
         return adate;
+    }
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    private List<Replay> replist;
+
+    public List<Replay> getReplist() {
+        return replist;
+    }
+
+    public void setReplist(List<Replay> replist) {
+        this.replist = replist;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**

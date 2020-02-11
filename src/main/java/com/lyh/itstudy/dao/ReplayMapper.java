@@ -118,4 +118,7 @@ public interface ReplayMapper {
      * @mbg.generated Sun Jan 26 12:38:17 GMT+08:00 2020
      */
     int updateByPrimaryKey(Replay record);
+
+
+    List<Replay> selectRepByAid(Integer aid);
 }

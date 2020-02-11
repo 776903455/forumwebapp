@@ -43,6 +43,7 @@ public class ProductController {
     @RequestMapping("exchangeGift")
     public String exchangeGift(@RequestParam("uid")Integer uid, @RequestParam("gid")Integer gid,
                                @RequestParam("gmoney")Integer gmoney, @RequestParam("score")Integer score,
+                               @RequestParam("number")Integer number,
                                @RequestParam("exchangenumber")Integer exchangenumber,HttpSession session,Model model){
         /*更新用户信息*/
         score=score-gmoney;
@@ -52,8 +53,11 @@ public class ProductController {
         session.setAttribute("user",user);
         model.addAttribute("changeInfo"," 兑换礼物成功，礼品将在三天之内发货，注意提供地址哦，亲!");
         System.out.println(user.getExchangenumber());
-        /*更新礼品信息*//*
-        giftService.updateGift(pid);*/
+        /*更新礼品信息*/
+        number=number-1;
+        giftService.updateGift(gid,number);
+        Gift giftInfo = giftService.selectGiftByGid(gid);
+        model.addAttribute("giftInfo",giftInfo);
         return "products";
     }
 

@@ -137,10 +137,10 @@
                     <c:forEach items="${csList}" var="cs">
                     <li>
                         <a href=""><img src="${pageContext.request.contextPath}/${cs.csimage}"></a>
-                        <span><a style="text-decoration: none" href="">${cs.csname}</a></span>
-                        <em>主题：2w 贴数：${cs.artList.size()}</em>
-                        <p><a href="">${cs.artList.get(0).aname} </a></p>
-                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">${cs.artList.get(0).adate}</span>
+                        <span><a style="text-decoration: none" href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${cs.csid}">${cs.csname}</a></span>
+                        <em>主题：2w 贴数：2w</em>
+                        <p><a href="">$阿诗丹顿 </a></p>
+                        <span class="plate_time" style="top: 100px; left: 250px;position: absolute;color: rgb(30 144 255);">2020.3.2</span>
                     </li>
                     </c:forEach>
                 </ul>

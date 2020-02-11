@@ -49,6 +49,7 @@ public class ToOtherJieMian {
                 List<Categorysecond> csList = c.getCsList();
                 model.addAttribute("csList",csList);
 
+
                /* *//*根据二级目录id查找对应的帖子信息*//*
                 for (Categorysecond cs:csList) {
                     Categorysecond categorysecond= categorySecondService.findArticleByCsid(cs.getCsid());

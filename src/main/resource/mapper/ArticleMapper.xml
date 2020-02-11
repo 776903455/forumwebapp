@@ -15,7 +15,33 @@
     <result column="csid" jdbcType="INTEGER" property="csid" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="amoney" jdbcType="INTEGER" property="amoney" />
+      <result column="atxte" jdbcType="INTEGER" property="atxte" />
   </resultMap>
+
+    <resultMap id="BaseResultMap1" type="com.lyh.itstudy.model.Article">
+
+        <id column="aid" jdbcType="INTEGER" property="aid" />
+        <result column="aname" jdbcType="VARCHAR" property="aname" />
+        <result column="adate" jdbcType="TIMESTAMP" property="adate" />
+        <result column="areplay" jdbcType="INTEGER" property="areplay" />
+        <result column="apraise" jdbcType="INTEGER" property="apraise" />
+        <result column="csid" jdbcType="INTEGER" property="csid" />
+        <result column="amoney" jdbcType="INTEGER" property="amoney" />
+
+        <association property="user" javaType="user">
+            <result column="username" jdbcType="VARCHAR" property="username" />
+        </association>
+
+      <!--<collection property="replist" ofType="replay">-->
+        <!--<id column="repid" jdbcType="INTEGER" property="repid" />-->
+        <!--<result column="repdate" jdbcType="TIMESTAMP" property="repdate" />-->
+        <!--<result column="reptxt" jdbcType="TIMESTAMP" property="reptxt" />-->
+        <!--<result column="repname" jdbcType="INTEGER" property="repname" />-->
+        <!--<result column="aid" jdbcType="INTEGER" property="aid" />-->
+      <!--</collection>-->
+    </resultMap>
+
+
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lyh.itstudy.model.Article">
     <!--
       WARNING - @mbg.generated
@@ -108,6 +134,32 @@
     -->
     atxte
   </sql>
+
+
+
+  <select id="findHotArt" parameterType="Integer" resultMap="BaseResultMap">
+  SELECT  * from tbl_article
+  WHERE csid=#{csid}
+  ORDER  BY apraise DESC
+  LIMIT 7
+</select>
+
+  <select id="findNewsArt" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT  * from tbl_article
+    WHERE csid=#{csid}
+    ORDER  BY adate DESC
+    LIMIT 7
+  </select>
+
+  <select id="selectArtByAid" parameterType="Integer" resultMap="BaseResultMap1">
+    SELECT
+    a.aid,a.aname,a.atxte,a.adate,a.areplay,a.apraise,a.csid,a.amoney,u.username
+    from tbl_article a,tbl_user u,tbl_replay r
+       WHERE  a.uid=u.uid
+		  AND a.aid=#{aid}
+
+  </select>
+
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ArticleExample" resultMap="ResultMapWithBLOBs">
     <!--
       WARNING - @mbg.generated

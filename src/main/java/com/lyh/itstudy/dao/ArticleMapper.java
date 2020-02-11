@@ -118,4 +118,10 @@ public interface ArticleMapper {
      * @mbg.generated Sun Jan 26 12:38:17 GMT+08:00 2020
      */
     int updateByPrimaryKey(Article record);
+
+    List<Article> findHotArt(Integer csid);
+
+    List<Article> findNewsArt(Integer csid);
+
+    Article selectArtByAid(Integer aid);
 }
