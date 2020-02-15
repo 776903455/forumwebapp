@@ -18,6 +18,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="uimage" jdbcType="VARCHAR" property="uimage" />
     <result column="exchangenumber" jdbcType="VARCHAR" property="exchangenumber" />
+    <result column="qdstatus" jdbcType="INTEGER" property="qdstatus" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -184,7 +185,8 @@
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{score,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{uimage,jdbcType=VARCHAR},#{regtime,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR})
+      #{uimage,jdbcType=VARCHAR},#{regtime,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR}),
+      #{qdstatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.itstudy.model.User">
     <!--
@@ -315,7 +317,8 @@
 
   <update id="updateUser"  >
     update tbl_user
-    set  score = #{score}
+    set  score = #{score},
+    qdstatus=#{qdstatus}
     WHERE
     username=#{username}
   </update>

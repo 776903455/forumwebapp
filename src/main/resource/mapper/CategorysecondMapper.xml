@@ -25,12 +25,12 @@
   <collection property="artList" ofType="article">
     <id column="aid" jdbcType="INTEGER" property="aid" />
     <result column="aname" jdbcType="VARCHAR" property="aname" />
-    <result column="atxte" jdbcType="INTEGER" property="atxte" />
-    <result column="adate" jdbcType="VARCHAR" property="adate" />
-    <result column="areplay" jdbcType="VARCHAR" property="areplay" />
-    <result column="apraise" jdbcType="VARCHAR" property="apraise" />
-    <result column="uid" jdbcType="VARCHAR" property="uid" />
-    <result column="amoney" jdbcType="VARCHAR" property="amoney" />
+    <result column="atxte" jdbcType="VARCHAR" property="atxte" />
+    <result column="adate" jdbcType="TIMESTAMP" property="adate" />
+    <result column="areplay" jdbcType="INTEGER" property="areplay" />
+    <result column="apraise" jdbcType="INTEGER" property="apraise" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="amoney" jdbcType="INTEGER" property="amoney" />
 
   </collection>
   </resultMap>
@@ -118,7 +118,7 @@
 
 <select id="findArticleByCsid" parameterType="java.lang.Integer" resultMap="ArticleByCsid">
 
-    SELECT  cs.*,a.aid,a.aname,a.atxte,a.adate FROM tbl_categorysecond cs,tbl_article a
+    SELECT  cs.*,a.* FROM tbl_categorysecond cs,tbl_article a
    WHERE cs.csid=a.csid
    AND  cs.csid=#{csid}
 

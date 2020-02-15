@@ -14,6 +14,16 @@ public class User {
 
     private  Integer exchangenumber;
 
+   private Integer qdstatus;
+
+    public Integer getQdstatus() {
+        return qdstatus;
+    }
+
+    public void setQdstatus(Integer qdstatus) {
+        this.qdstatus = qdstatus;
+    }
+
     public Integer getExchangenumber() {
         return exchangenumber;
     }

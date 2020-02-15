@@ -32,8 +32,8 @@ public class UserService {
     }
 
     /*添加金币*/
-    public int addScore(int score,String username) {
-        int i = userMapper.updateUser(score,username);
+    public int addScore(int score,String username,Integer qdstatus) {
+        int i = userMapper.updateUser(score,username,qdstatus);
         return i;
     }
 

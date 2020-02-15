@@ -33,6 +33,7 @@
             color: white;
             font-size: 20px;
             opacity: 0;
+
         }
         .scoreInfo span{
            margin-top: 20px;
@@ -153,8 +154,8 @@
                 <div class="lunbotu_ringt_top">
                     <button type="button" class="btn btn-info"  id="b2"
                             style="width: 120px;height: 50px; border-radius:10px;font-size: 20px;" >发帖</button>
-                    <button type="button" class="btn btn-success"
-                            style="width: 120px;height: 50px; border-radius:10px;font-size: 20px;margin-left: 15px;">回帖</button>
+                    <button type="button" class="btn btn-warning" id="qiandao"
+                            style="width: 120px;height: 50px; border-radius:10px;font-size: 20px;margin-left: 15px;"></button>
                 </div>
                 <div class="lunbotu_ringt_button">
                     <p style="font-size: 20px; padding-top: 20px;margin-left: 20px;">最新活动</p>
@@ -280,7 +281,7 @@
 </div>
 
 <%--弹出获得的金币--%>
-    <span class="scoreInfo"><span>本次签到获得${scoreInfo}枚金币</span></span>
+    <span class="scoreInfo"><span>本次签到获得<em id="em_score"></em>枚金币</span></span>
 
     <%--当游客点击发帖按钮时，提示他先登录--%>
     <p class="login_tips" style="opacity: 0;position: absolute;width: 500px;
@@ -288,7 +289,18 @@
     font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
       游客请先登录之后才能发帖！
     </p>
-
+    <%--当游客点击发签到按钮时，提示他先登录--%>
+    <p class="qiandao_tips" style="opacity: 0;position: absolute;width: 500px;
+    height: 50px;text-align: center;top: 200px;left: 350px;background: orange;
+    font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
+        游客登录之后才能签到！
+    </p>
+    <%--显示游客签到获取积分--%>
+    <p class="qiandao_getscore" style="opacity: 0;position: absolute;width: 500px;
+    height: 50px;text-align: center;top: 200px;left: 350px;background: orange;
+    font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
+       恭喜你，获得<span id="qd_getscore"></span>枚金币！
+    </p>
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -435,9 +447,11 @@
 <script>
     var folatinfo = document.querySelector(".folat_info");
     var touxiangimg = document.querySelector(".touxiang_img");
-    var hidegold = document.querySelector(".click_hide_gold");
     var scoreInfo = document.querySelector(".scoreInfo");
     var b2 = document.querySelector("#b2");
+    var qiandao = document.querySelector("#qiandao");
+    var qdgetscore = document.querySelector("#qd_getscore");
+    var emscore = document.querySelector("#em_score");
     var free=document.querySelectorAll(".free li");
     var skill=document.querySelectorAll(".skill li");
     var ul_title=document.querySelectorAll(".u1_title li");
@@ -447,6 +461,8 @@
     var faitiebtn=document.querySelector("#faitie_btn");
     var guanbibtn=document.querySelector("#guanbi_btn");
     var logintips = document.querySelector(".login_tips");
+    var qiandaotips = document.querySelector(".qiandao_tips");
+    var qiandaogetscore = document.querySelector(".qiandao_getscore");
 
 
     b2.onclick=function () {
@@ -462,6 +478,48 @@
             $('#myModal').modal("show");
         }
     }
+
+    if(${sessionScope.user==null}){
+        qiandao.innerHTML="签到";
+    }else {
+        if(${sessionScope.user.qdstatus==0}){
+            qiandao.innerHTML="签到";
+        }else {
+            qiandao.innerHTML="已签到";
+        }
+    }
+
+
+
+
+    /*d点击签到按钮执行的事件*/
+    qiandao.onclick=function () {
+        if(${sessionScope.user!=null}){
+            if(qiandao.innerHTML=="签到"){
+            window.location.href="${pageContext.request.contextPath}/getScore.do?username=${sessionScope.user.username}&score=${sessionScope.user.score}&qdstatus=${sessionScope.user.qdstatus}";
+            }else {
+                qiandao.style.cursor="not-allowed";
+                alert("今天已经签到，请明天继续！")
+            }
+         }else {
+            qiandaotips.style.opacity="1";
+            setInterval(function () {
+                window.location.href="${pageContext.request.contextPath}/toLogin.do";
+                qiandaotips.style.opacity="0";
+            },2000);
+        }
+    };
+
+
+    /*弹出用户获取金币功能*/
+        if(${scoreInfo!=null}){
+            qdgetscore.innerHTML=${scoreInfo}
+            qiandaogetscore.style.opacity="1";
+            setInterval(function () {
+                qiandaogetscore.style.opacity="0";
+            },2000);
+        }
+
 
 
 
@@ -485,10 +543,7 @@
         folatinfo.style.overflow="hidden";
     }
 
-    hidegold.onclick=function () {
-           scoreInfo.style.opacity="1";
 
-    }
 
 
     for(var j=0;j<ul_title.length;j++) {

@@ -36,4 +36,10 @@ public class ArticleService {
     public Article selectArtByAid(Integer aid) {
         return  articleMapper.selectArtByAid(aid);
     }
+
+
+    /*根据csid查询帖子*/
+    public List<Article> findArtByCsid(Integer csid) {
+        return articleMapper.findArtByCsid(csid);
+    }
 }

@@ -31,4 +31,8 @@ public class CategorySecondService {
        Categorysecond cs= categorysecondMapper.findArticleByCsid(csid);
         return cs;
     }
+
+    public List<Categorysecond> selectAll() {
+        return categorysecondMapper.selectByExample(null);
+    }
 }

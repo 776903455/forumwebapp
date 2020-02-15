@@ -79,8 +79,6 @@ public class TieZiController {
             System.out.println("帖子保存失败");
         }
 
-
-
         return null;
     }
 
@@ -90,6 +88,7 @@ public class TieZiController {
     @RequestMapping("selectAllArtByCsid")
     public  String selectAllArtByCsid(@RequestParam("csid")Integer csid,@RequestParam(value = "pn",defaultValue="1")int pn,Model model){
 
+        System.out.println("进来没");
         /*查询热门主题帖*/
         List<Article> hotList=  articleService.findHotArt(csid);
         model.addAttribute("hotList",hotList);
@@ -97,30 +96,22 @@ public class TieZiController {
         List<Article> newsList=  articleService.findNewsArt(csid);
         model.addAttribute("newsList",newsList);
 
-            Categorysecond categorysecond= categorySecondService.findArticleByCsid(csid);
-            /*使用pagehelper分页插件进行分页*/
-           /* PageHelper.startPage(pn,5);
-            List<Article> artLists = categorysecond.getArtList();*/
 
-        //用PageInfo对结果进行包装,把PageInfo传递给页面就行
-		//第二个参数是传入连续显示的页数
-        /*     PageInfo page = new PageInfo(artLists);
-             System.out.println("每页的数量"+page.getPageSize());
-            System.out.println("总记录数"+page.getTotal());
-            System.out.println("总页数"+page.getPages());
-            System.out.println("当前页"+page.getPageNum());
-            System.out.println("当前页数量"+page.getSize());
-        List<Article> list = page.getList();
-        for (Article l:list){
-            System.out.println(l);
+            //使用pagehelper分页插件进行分页
+
+           /*  Categorysecond categorysecond= categorySecondService.findArticleByCsid(csid);
+           *   List<Article> artLists = categorysecond.getArtList();
+           * */
+            PageHelper.startPage(pn,5);
+           List<Article> artLists= articleService.findArtByCsid(csid);
+           PageInfo page = new PageInfo(artLists,5);
+        int[] navigatepageNums =page.getNavigatepageNums();
+        for(int l:navigatepageNums){
+            System.out.println("l:"+l);
         }
-*/
+        model.addAttribute("pageInfo",page);
 
-
-
-
-
-        return "soure_list/forum-100-1";
+             return "soure_list/forum-100-1";
     }
 
 
@@ -148,4 +139,18 @@ public class TieZiController {
 
         return "soure_list/forum_TZJM";
     }
+
+
+
+    /*根据csid查询帖所有对应的帖子*/
+    @RequestMapping("selectall")
+    public  String selectall(@RequestParam(value = "pn",defaultValue="1")int pn,Model model){
+
+            PageHelper.startPage(pn,3);
+           List<Categorysecond> categorysecond= categorySecondService.selectAll();
+            PageInfo pageInfo=new PageInfo(categorysecond,5);
+            model.addAttribute("pageInfo",pageInfo);
+        return "soure_list/forum-100-1";
+    }
+
 }

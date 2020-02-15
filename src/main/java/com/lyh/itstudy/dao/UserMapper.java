@@ -66,7 +66,7 @@ public interface UserMapper {
     User selectBynameAndpsw(@Param("key_username") String username ,@Param("key_password") String password);
 
 
-    int updateUser(@Param("score") int score,@Param("username") String username);
+    int updateUser(@Param("score") int score,@Param("username") String username,@Param("qdstatus")int qdstatus);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 

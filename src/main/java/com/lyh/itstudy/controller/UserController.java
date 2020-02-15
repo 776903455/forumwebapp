@@ -21,6 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -134,17 +135,30 @@ public class UserController {
     /*签到获取金币*/
 
     @RequestMapping("getScore")
+    public  String  getMoney(@RequestParam("score")int score,@RequestParam("username")String username,
+                           @RequestParam("qdstatus")Integer qdstatus, Model model,HttpSession session) throws IOException {
 
-    public  String  getMoney(@RequestParam("score")int score,@RequestParam("username")String username,Model model,HttpServletResponse response) throws IOException {
-
+            /*改变签到状态*/
+            qdstatus=1;
+            /*获取随机金币数*/
             Random random=new Random();
             int num=random.nextInt(5)+10;
             score=score+num;
-            int i=userService.addScore(score,username);
+            int i=userService.addScore(score,username,qdstatus);
             model.addAttribute("scoreInfo",num);
-            /*model.addAttribute("info","签到");*/
-            return "index";
 
+            /*查询更新后用户数据*/
+             User user = userService.findUser(username);
+            if(user!=null){
+                session.setMaxInactiveInterval(60*60*30);
+                session.setAttribute("user",user);
+
+            }else {
+                System.out.println("没有此用户！");
+            }
+
+
+            return "index";
 
     }
 

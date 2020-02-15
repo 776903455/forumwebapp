@@ -160,6 +160,12 @@
 
   </select>
 
+
+  <select id="findArtByCsid" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT  * from tbl_article
+    WHERE csid=#{csid}
+  </select>
+
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ArticleExample" resultMap="ResultMapWithBLOBs">
     <!--
       WARNING - @mbg.generated

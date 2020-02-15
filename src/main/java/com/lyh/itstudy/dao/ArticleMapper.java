@@ -124,4 +124,6 @@ public interface ArticleMapper {
     List<Article> findNewsArt(Integer csid);
 
     Article selectArtByAid(Integer aid);
+
+    List<Article> findArtByCsid(Integer csid);
 }
