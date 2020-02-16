@@ -126,4 +126,6 @@ public interface ArticleMapper {
     Article selectArtByAid(Integer aid);
 
     List<Article> findArtByCsid(Integer csid);
+
+    void updateLookNum(@Param("aid") Integer aid,@Param("looknum")Integer looknum);
 }

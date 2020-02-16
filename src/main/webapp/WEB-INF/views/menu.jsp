@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2020/1/26
-  Time: 14:25
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
@@ -23,6 +16,7 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
 <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/forum_TZJM.css">
 <head>
     <title>Title</title>
 

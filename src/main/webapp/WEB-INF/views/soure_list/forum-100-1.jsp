@@ -1,203 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<html>
+    <html>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/forum-100-1.css">
+    <html>
 <head>
-
     <style>
-        * {
-            padding: 0;
-            margin: 0;
+        .head1 .container .row .search_img{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 25px;
+            right: 20px;
 
         }
 
-        .head_title {
-            width: 1266px;
-            height: 150px;
+        .touxiang_event{
             position: relative;
-            margin-top: 0;
-            margin-left: 100px;
-        }
-        .head_title_text {
-
-            line-height: 20px;
-            width: 450px;
-            height: 150px;
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.8);
-            position: absolute;
-            top: 0px;
-            font-size: 30px;
-        }
-
-        .jishidian {
-            display: inline;
-            position: absolute;
-            top: 80px;
-            left: 120px;
-            font-size: 20px;
 
         }
 
-        .head_title_img {
-            position: absolute;
-            border: 1px black solid;
-            right: 0;
+        .folat_info{
+            width:100px;
+            height:auto;
+            background:rgba(255,236,139,0.8);
+            opacity:0;
+            position:absolute;
+            top:55px;
+            right:90px;
+            z-index:10;
         }
-
-        .center_centers{
-            width: 1200px;
+        .folat_info ul{
+            margin: 0;
+            padding: 0;
+            width: 100px;
             height: auto;
-
-            margin-left: 100px;
-            margin-top: 20px;
         }
+        .folat_info ul li{
 
-        /*滚动信息*/
-        .centers_head{
-            width: 1200px;
+            width: 100px;
             height: 30px;
-            background: aliceblue;
-
-        }
-        .centers_head p img{
-            margin-left: 30px;
-        }
-        .centers_head p a{
-            margin-left: 20px;
-        }
-
-        .centers_buttom table{
-            width: 1200px;
-            height: auto;
-            background: rgb(255 250 250);
-
-        }
-        .centers_buttom table tr td ul li{
-
             list-style: none;
-            width: 580px;
-            height: 40px;
-
-            line-height: 40px;
-            padding-left: 20px;
-            margin-top: 2px;
-            margin-left: 10px;
+            margin-top: 5px;
+            border-bottom: 1px solid gray;
             font-size: 15px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-
-        /*帖子列表*/
-
-
-        .center_button table{
-            width: 1200px;
-            height: auto;
-
-            margin-top: 20px;
-            margin-left: 100px;
-        }
-
-        .center_button table tr{
-            height: 50px;
-        }
-
-        .centers_tital_text{
-            margin-top: 20px;
-            border: 1px solid rgba(0,0,0,0.3);
-            line-height: 30px;
-            height: 50px;
-            width: 1200px;
-            margin-left: 100px;
-            padding: 5px;
-        }
-
-
-        .fenye {
-            width: 1200px;
-            height: 60px;
-
-            margin-left: 100px;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(0,0,0,0.2);
-        }
-
-        #btn_fatie{
-            margin: 0;
-            padding: 0;
-            width: 100px;
-            height: 40px;
-            padding: 5px;
-            position: absolute;
-            left: 0px;
-            font-size: 20px;
-            top: 10px;
-        }
-        #btn_fatie1{
-            margin: 0;
-            padding: 0;
-            width: 100px;
-            height: 40px;
-            padding: 5px;
-            position: absolute;
-            left: 0px;
-            font-size: 20px;
-            top: 10px;
-        }
-        .page_fenye{
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            left: 750px;
-            top: 0px;
-            width: 450px;
-
-        }
-
-
-        .button_tiezi_list1{
-            background: rgba(0,0,0,0.1);
-            height: 50px;
-        }
-
-
-        .button_tiezi_list2 .button_tiezi_list2_td1{
-            width: 50px;
-            height: auto;
-            text-align: center;
             line-height: 20px;
         }
-        .button_tiezi_list2 .button_tiezi_list2_td2{
-            width: 750px;
-            height: auto;
-            padding-left: 20px;
-            line-height: 20px;
+        .folat_info ul li:hover{
+            color: white;
 
-        }
-        .button_tiezi_list2 .button_tiezi_list2_td3{
-            width: 133px;
-            height: auto;
-
-            line-height: 20px;
-        }
-        .button_tiezi_list2 .button_tiezi_list2_td4{
-            width: 133px;
-            height: auto;
-            line-height: 20px;
-        }
-        .button_tiezi_list2 .button_tiezi_list2_td5{
-            width: 133px;
-            height: auto;
-            line-height: 20px;
-        }
-
-        .center_button table tr:hover{
-            background:rgb(250 240 230)
         }
 
 
@@ -205,7 +67,56 @@
 </head>
 <body>
 
-<%@include file="../menu.jsp"%>
+<div class="head_index">
+
+    <div class="head1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"> <img src="${pageContext.request.contextPath}/static/img/title_left1.jpg" class="head1_left_img"></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toFreeSource.do">免费资源</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toStudyPath.do" >学习路线</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toSkillExchange.do?cid=3">技术交流</a></div>
+                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toProducts.do">礼品兑换</a></div>
+                <div class="col-md-1"><a href="#">最新活动</a></div>
+                <div class="col-md-2">
+                    <input  id="search_info" value=""/>
+                    <a href="#">
+                        <img src="${pageContext.request.contextPath}/static/img/search_img.jpg" class="search_img" />
+                    </a>
+                </div>
+
+                <div class="col-md-2" >
+                    <c:if test="${sessionScope.user==null}">
+                        <a href="${pageContext.request.contextPath}/toLogin.do" style="font-size: 15px; margin-top: 70px;margin-left: 120px;">登录 </a>
+                        <a href="${pageContext.request.contextPath}/toRegister.do" style="font-size: 15px; margin-top: 70px;margin-left: 10px;">注册</a>
+                    </c:if>
+
+                    <c:if test="${sessionScope.user!=null}">
+                        <div class="touxiang_event">
+                            <p  style="width: 50px;height: 50px;display: inline">
+                                <a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}"><img  class="touxiang_img"  style="width: 50px;height: 50px;border-radius: 50%" src="${sessionScope.user.uimage}" ></a>
+                            </p>
+                            <span class="username_hide">${sessionScope.user.username}</span>
+
+                            <div class="folat_info">
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
+                                    <li><span class="faitie_span" style="cursor: pointer">发帖</span></li>
+                                    <li><a href="#">帖子</a></li>
+                                        <%--    <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>--%>
+                                    <li><span class="click_hide_gold">积分：${sessionScope.user.score}</span></li>
+                                    <li><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </c:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!--center-->
 <div style="background: url(${pageContext.request.contextPath}/static/img/tieziback.jpg);">
@@ -347,90 +258,20 @@
 
                 </tr>
 
-
+                <c:forEach items="${pageInfo.list}" var="artpageinfo">
                 <tr class="button_tiezi_list2" >
 
-                    <td class="button_tiezi_list2_td1">2</td>
+                    <td class="button_tiezi_list2_td1">${artpageinfo.aid}</td>
                     <td class="button_tiezi_list2_td2">
-                        <a href="#">
-                            springmvc拦截器入门及其执行顺序源码分析springmvc拦截器入门及其执行顺序源码分析
+                        <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${artpageinfo.aid}">
+                            ${artpageinfo.aname}
                         </a>
                     </td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
+                    <td class="button_tiezi_list2_td3">${artpageinfo.user.username}</td>
+                    <td class="button_tiezi_list2_td4">28/${artpageinfo.looknum}</td>
                     <td class="button_tiezi_list2_td5">asdahjas</td>
                 </tr>
-
-<%--
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>
-
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>
-
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>
-
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>
-
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>
-
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>
-                <tr class="button_tiezi_list2" >
-                    <td class="button_tiezi_list2_td1">255</td>
-                    <td class="button_tiezi_list2_td2">springmvc拦截器入门及其执行顺序源码分析</td>
-                    <td class="button_tiezi_list2_td3">lyh</td>
-                    <td class="button_tiezi_list2_td4">2846</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
-                </tr>--%>
-
+                </c:forEach>
             </table>
         </div>
 
@@ -469,68 +310,7 @@
 
 
     <!--底部-->
-    <div class="buttom_index">
-
-        <div class="buttom_index_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="${pageContext.request.contextPath}/static/img/button_index_img3.png" />
-                        <span >足不出户学编程</span>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="${pageContext.request.contextPath}/static/img/button_index_img1.png" />
-                        <span>学习经验共分享</span>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="${pageContext.request.contextPath}/static/img/button_index_img2.png" />
-                        <span>前沿技术实时更新</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="buttom_index_buttom">
-            <p style="font-size: 18px; color: white;margin-top: 30px;margin-left: 150px;">友情链接:</p>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <ul>
-                            <li><a href="http://jquery.cuishifeng.cn/">前端</a></li>
-                            <li><a href="#">SpringCloud</a></li>
-                            <li><a href="#">SpringBoot</a></li>
-                            <li><a href="#">Redis</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-
-                        <ul>
-                            <li><a href="#">人工智能</a></li>
-                            <li><a href="#">区块链/go</a></li>
-                            <li><a href="#">消息队列</a></li>
-                            <li><a href="#">微服务框架</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-
-                        <ul>
-                            <li><a href="#">大数据</a></li>
-                            <li><a href="#">Linux</a></li>
-                            <li><a href="#">Spring</a></li>
-                            <li><a href="#">并发编程</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <img width="200px" height="100px" style="border-radius: 10px;opacity: 0.8;" src="${pageContext.request.contextPath}/static/img/run.jpg" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <p style="text-align: center;margin-top: 30px; font-size: 15px;">
-            <font color="cornflowerblue">©2020电科大嵌入B班lyh毕业设计&nbsp;</font>
-        </p>
-    </div>
+        <%@include file="../buttom.jsp"%>
 </div>
 </body>
 </html>

@@ -152,6 +152,16 @@ public class Article {
 
     private List<Replay> replist;
 
+    private Integer looknum;
+
+    public Integer getLooknum() {
+        return looknum;
+    }
+
+    public void setLooknum(Integer looknum) {
+        this.looknum = looknum;
+    }
+
     public List<Replay> getReplist() {
         return replist;
     }
@@ -343,4 +353,5 @@ public class Article {
                 ", atxte='" + atxte + '\'' +
                 '}';
     }
+
 }

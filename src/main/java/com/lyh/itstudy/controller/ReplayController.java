@@ -28,13 +28,15 @@ public class ReplayController {
 
     /*保存回帖信息*/
     @RequestMapping("savaReplay")
-    public void savaReplay(@RequestParam("username")String username,@RequestParam("aid")Integer aid,
+    public void savaReplay(@RequestParam("uid")Integer uid,@RequestParam("aid")Integer aid,
                              @RequestParam("textearetext")String textearetext,Model model){
+
         Replay replay=new Replay();
         replay.setRepdate(GetTimeUtil.getDateFormat());
         replay.setReptxt(textearetext);
-        replay.setRepname(username);
+        replay.setUid(uid);
         replay.setAid(aid);
+
         replayService.savaReplay(replay);
 
         /*保存帖子后，查询更新后的帖子数据，并遍历在前台*/

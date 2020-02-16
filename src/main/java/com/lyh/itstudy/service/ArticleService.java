@@ -42,4 +42,9 @@ public class ArticleService {
     public List<Article> findArtByCsid(Integer csid) {
         return articleMapper.findArtByCsid(csid);
     }
+
+//    增加查看数
+    public void addLookNum(Integer aid,Integer looknum) {
+        articleMapper.updateLookNum(aid,looknum);
+    }
 }

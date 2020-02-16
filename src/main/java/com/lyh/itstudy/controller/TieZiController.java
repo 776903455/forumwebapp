@@ -5,9 +5,11 @@ import com.github.pagehelper.PageInfo;
 import com.lyh.itstudy.model.Article;
 import com.lyh.itstudy.model.Categorysecond;
 import com.lyh.itstudy.model.Replay;
+import com.lyh.itstudy.model.User;
 import com.lyh.itstudy.service.ArticleService;
 import com.lyh.itstudy.service.CategorySecondService;
 import com.lyh.itstudy.service.ReplayService;
+import com.lyh.itstudy.service.UserService;
 import com.lyh.itstudy.utils.GetTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +36,9 @@ public class TieZiController {
 
     @Autowired
     private ReplayService replayService;
+
+    @Autowired
+    private UserService userService;
 
     /*去发帖界面*/
     @RequestMapping("tofatiejiemian")
@@ -88,7 +93,7 @@ public class TieZiController {
     @RequestMapping("selectAllArtByCsid")
     public  String selectAllArtByCsid(@RequestParam("csid")Integer csid,@RequestParam(value = "pn",defaultValue="1")int pn,Model model){
 
-        System.out.println("进来没");
+
         /*查询热门主题帖*/
         List<Article> hotList=  articleService.findHotArt(csid);
         model.addAttribute("hotList",hotList);
@@ -104,6 +109,9 @@ public class TieZiController {
            model.addAttribute("pageInfo",page);
 
 
+            List<Article> list = page.getList();
+
+
         /*根据aid获取帖子的回复数据*/
 
 
@@ -116,9 +124,24 @@ public class TieZiController {
     public String selectArtByAid(@RequestParam("aid")Integer aid,Model model){
         /*根据aid查询帖子信息*/
         Article article=articleService.selectArtByAid(aid);
+        /*通过uid查找发帖用户*/
+        Integer uid = article.getUid();
+        User artUser = userService.selectByUid(uid);
+        /*格式化时间*/
+        List<Replay> replist = article.getReplist();
+        /*查看人数增加*/
+        Integer loonum=article.getLooknum()+1;
+         articleService.addLookNum(aid,loonum);
+
         String artTime= GetTimeUtil.getDate(article.getAdate());
+        /*获取文章内容，并且根据"."将其分成一个字符串数组，然后返回前端页面*/
+        String[] arrTxt = article.getAtxte().split("。");
+
+
+        model.addAttribute("arrTxt",arrTxt);
         model.addAttribute("article",article);
         model.addAttribute("artTime",artTime);
+        model.addAttribute("artUser",artUser);
 
 
         /*根据aid获取帖子的回复数据*/
@@ -128,7 +151,12 @@ public class TieZiController {
         int[] navigatepageNums =reppage.getNavigatepageNums();
         if(replay.size()>0){
             for (Replay rep : replay) {
-                System.out.println(rep);
+                Article article1 = rep.getArticle();
+                User user = rep.getUser();
+                System.out.println(rep.getRepid()+"-"+rep.getReptxt()+"-"+rep.getRepdate()+"-"+rep.getUid()+"-"+
+                        article.getAid()+"-"+article.getAname()+"-"+article.getUid()+"-"+
+                        user.getUid()+"-"+user.getUsername()+"-"+user.getUimage()
+                            );
             }
             /*时间解析*/
 
@@ -140,12 +168,12 @@ public class TieZiController {
         }
 
         return "soure_list/forum_TZJM";
-       /* return "test";*/
+
     }
 
 
 
-    /*根据csid查询帖所有对应的帖子*/
+  /*  *//*根据csid查询帖所有对应的帖子*//*
     @RequestMapping("selectall")
     public  String selectall(@RequestParam(value = "pn",defaultValue="1")int pn,Model model){
 
@@ -154,6 +182,6 @@ public class TieZiController {
             PageInfo pageInfo=new PageInfo(categorysecond,5);
             model.addAttribute("pageInfo",pageInfo);
         return "soure_list/forum-100-1";
-    }
+    }*/
 
 }
