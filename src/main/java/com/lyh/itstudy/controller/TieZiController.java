@@ -98,18 +98,14 @@ public class TieZiController {
 
 
             //使用pagehelper分页插件进行分页
-
-           /*  Categorysecond categorysecond= categorySecondService.findArticleByCsid(csid);
-           *   List<Article> artLists = categorysecond.getArtList();
-           * */
             PageHelper.startPage(pn,5);
            List<Article> artLists= articleService.findArtByCsid(csid);
            PageInfo page = new PageInfo(artLists,5);
-        int[] navigatepageNums =page.getNavigatepageNums();
-        for(int l:navigatepageNums){
-            System.out.println("l:"+l);
-        }
-        model.addAttribute("pageInfo",page);
+           model.addAttribute("pageInfo",page);
+
+
+        /*根据aid获取帖子的回复数据*/
+
 
              return "soure_list/forum-100-1";
     }
@@ -126,18 +122,25 @@ public class TieZiController {
 
 
         /*根据aid获取帖子的回复数据*/
+        PageHelper.startPage(1,5);
         List<Replay> replay =replayService.selectRepByAid(aid);
-
+        PageInfo<Replay> reppage = new PageInfo(replay,5);
+        int[] navigatepageNums =reppage.getNavigatepageNums();
         if(replay.size()>0){
             for (Replay rep : replay) {
                 System.out.println(rep);
             }
+            /*时间解析*/
+
+            model.addAttribute("replaylist",reppage);
+
         }else {
 
             System.out.println("还没有回复哦，亲！");
         }
 
         return "soure_list/forum_TZJM";
+       /* return "test";*/
     }
 
 
