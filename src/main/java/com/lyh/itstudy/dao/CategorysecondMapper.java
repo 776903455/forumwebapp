@@ -101,4 +101,6 @@ public interface CategorysecondMapper {
     int updateByPrimaryKey(Categorysecond record);
 
     Categorysecond findArticleByCsid(Integer csid);
+
+    List<Categorysecond> findCategory(Integer cid);
 }

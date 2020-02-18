@@ -15,6 +15,24 @@
 
   </resultMap>
 
+  <resultMap id="findCategoryMap" type="com.lyh.itstudy.model.Categorysecond">
+
+
+    <id column="csid" jdbcType="INTEGER" property="csid" />
+    <result column="csname" jdbcType="VARCHAR" property="csname" />
+    <result column="csimage" jdbcType="VARCHAR" property="csimage" />
+
+    <collection property="artList" ofType="article">
+      <id column="aid" jdbcType="INTEGER" property="aid" />
+      <result column="aname" jdbcType="VARCHAR" property="aname" />
+      <result column="adate" jdbcType="TIMESTAMP" property="adate" />
+
+    </collection>
+
+  </resultMap>
+
+
+
   <resultMap id="ArticleByCsid" type="com.lyh.itstudy.model.Categorysecond">
 
     <id column="csid" jdbcType="INTEGER" property="csid" />
@@ -127,10 +145,22 @@
 
   <select id="selectByCsname" parameterType="java.lang.String" resultMap="BaseResultMap">
 
-    select * FROM  tbl_categorysecond
+   select * FROM  tbl_categorysecond
     WHERE csname=#{csname}
 
   </select>
+
+
+  <select id="findCategory" parameterType="java.lang.Integer" resultMap="findCategoryMap">
+
+
+    select cs.csid,cs.csname,cs.csimage,a.aid,a.aname,a.adate
+    from tbl_categorysecond cs ,(select * from tbl_article a ORDER BY  a.adate desc) a
+    where a.csid=cs.csid
+    and cid=#{cid}
+
+  </select>
+
 
   <select id="selectByExample" parameterType="com.lyh.itstudy.model.CategorysecondExample" resultMap="BaseResultMap">
     <!--

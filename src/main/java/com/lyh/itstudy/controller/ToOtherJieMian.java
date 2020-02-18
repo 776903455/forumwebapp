@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author lyh
@@ -43,29 +44,13 @@ public class ToOtherJieMian {
     public String toSkillExchange(@RequestParam("cid")Integer cid, Model model)
     {
         /*根据一级目录的id查找二级目录*/
-        List<Category>CList= categoryService.findCategory(cid);
+     /*   List<Category>CList= categoryService.findCategory(cid);
         if(CList!=null) {
             for (Category c: CList) {
-                List<Categorysecond> csList = c.getCsList();
-                model.addAttribute("csList",csList);
+                List<Categorysecond> csList = c.getCsList();*/
 
-
-               /* *//*根据二级目录id查找对应的帖子信息*//*
-                for (Categorysecond cs:csList) {
-                    Categorysecond categorysecond= categorySecondService.findArticleByCsid(cs.getCsid());
-                    System.out.println(categorysecond.getCsname());
-
-                    List<Article> artList = categorysecond.getArtList();
-                    for (Article art:artList){
-                        System.out.println(art.getAid()+"-"+art.getAname()+"-"+art.getAtxte()+"-"+art.getAdate());
-                    }
-                }*/
-            }
-        }else {
-            System.out.println("没查到");
-        }
-
-
+        List<Categorysecond> CList= categorySecondService.findCategory(cid);
+        model.addAttribute("csList",CList);
 
         return "skillexchange";
     }
@@ -80,8 +65,21 @@ public class ToOtherJieMian {
     /*免费资源界面*/
 
     @RequestMapping("toFreeSource")
-    public String toFreeSource(){
-        return "freesource";
+    public String toFreeSource( @RequestParam("cid")Integer cid,Model model){
+        /*根据一级目录的id查找二级目录*/
+        List<Categorysecond> CList= categorySecondService.findCategory(cid);
+
+        model.addAttribute("freeCsList",CList);
+       /* for (Categorysecond cs:CList){
+            System.out.println("cs:"+cs);
+            List<Article> artList = cs.getArtList();
+            for (Article art:artList){
+                System.out.println("art:"+art);
+            }
+
+        }*/
+
+        return "freeresourse";
     }
 
     /*去商品界面*/

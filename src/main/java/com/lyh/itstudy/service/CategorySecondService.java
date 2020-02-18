@@ -35,4 +35,9 @@ public class CategorySecondService {
     public List<Categorysecond> selectAll() {
         return categorysecondMapper.selectByExample(null);
     }
+
+    /*根据cid查找对应的二级目录*/
+    public List<Categorysecond> findCategory(Integer cid) {
+        return categorysecondMapper.findCategory(cid);
+    }
 }

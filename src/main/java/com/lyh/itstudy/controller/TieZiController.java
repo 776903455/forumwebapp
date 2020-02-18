@@ -45,6 +45,10 @@ public class TieZiController {
     public String tofatiejiemian(@RequestParam("text")String text,@RequestParam("uid")Integer uid,Model model){
 
         text=text.replaceAll(" ","+");
+        /*判断是免费资源模块还是技术交流模块*/
+        String text1=text.substring(0,4);
+
+        model.addAttribute("text1",text1);
         model.addAttribute("text",text);
         model.addAttribute("uid",uid);
         return "soure_list/fatiejiemian";
@@ -52,6 +56,8 @@ public class TieZiController {
 /*保存帖子*/
     @RequestMapping("saveTieZi")
     public String saveTieZi(Article article, HttpServletRequest request){
+        System.out.println("money="+article.getAmoney());
+
         /*文本内容*/
         String text=request.getParameter("atext");
         article.setAtxte(text);
@@ -78,6 +84,7 @@ public class TieZiController {
             System.out.println("没传过来");
         }
         Integer i=articleService.saveArticle(article);
+
         if(i>0){
             System.out.println("帖子保存成功");
         }else {

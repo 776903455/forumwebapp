@@ -326,7 +326,7 @@
                             <ul class="u1_title">
                                 <li class="study_free">免费资源</li>
                                 <li class="study_path">学习路线</li>
-                                <li class="study_skill">学习技术</li>
+                                <li class="study_skill">技术交流</li>
                             </ul>
                         </div>
                         <div class="col-md-5 ">
@@ -351,8 +351,8 @@
                                 <li>Ul/UE资源</li>
                                 <li>大数据资源</li>
                                 <li>Android资源</li>
-                                <li>linux云计算资源</li>
-                                <li>学习经历</li>
+                                <li>学习路径资源</li>
+                                <li>学习经历资源</li>
                             </ul>
                         </div>
 
