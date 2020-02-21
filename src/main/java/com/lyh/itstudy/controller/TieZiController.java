@@ -98,7 +98,8 @@ public class TieZiController {
 
     /*根据csid查询帖所有对应的帖子*/
     @RequestMapping("selectAllArtByCsid")
-    public  String selectAllArtByCsid(@RequestParam("csid")Integer csid,@RequestParam(value = "pn",defaultValue="1")int pn,Model model){
+    public  String selectAllArtByCsid(@RequestParam("csid")Integer csid,
+                                      @RequestParam(value = "pn",defaultValue="1")int pn,Model model){
 
 
         /*查询热门主题帖*/
@@ -109,17 +110,20 @@ public class TieZiController {
         model.addAttribute("newsList",newsList);
 
 
-            //使用pagehelper分页插件进行分页
+        /*根据csid查找二级目录名字*/
+        Categorysecond cs=categorySecondService.findCsByCsid(csid);
+        model.addAttribute("cs",cs);
+
+
+        //使用pagehelper分页插件进行分页
             PageHelper.startPage(pn,5);
            List<Article> artLists= articleService.findArtByCsid(csid);
            PageInfo page = new PageInfo(artLists,5);
+
+
+
            model.addAttribute("pageInfo",page);
-
-
-            List<Article> list = page.getList();
-
-
-        /*根据aid获取帖子的回复数据*/
+           model.addAttribute("csid",csid);
 
 
              return "soure_list/forum-100-1";
@@ -179,16 +183,34 @@ public class TieZiController {
     }
 
 
+    /*
+     *功能描述 根据主页热门主题查询相应帖子
+     * @author lyh
+     * @date 2020/2/21
+     * @param [c1, c2, model]
+     * @return java.lang.String
+    */
+    @RequestMapping("findHotArtByCsid")
+    public String findHotArtByCsid(@RequestParam("c1") Integer c1,@RequestParam("c2") Integer c2,
+                                   @RequestParam(value = "pn",defaultValue="1")int pn,Model model){
 
-  /*  *//*根据csid查询帖所有对应的帖子*//*
-    @RequestMapping("selectall")
-    public  String selectall(@RequestParam(value = "pn",defaultValue="1")int pn,Model model){
+        /*查询热门主题帖*/
+        List<Article> hotList=  articleService.findAllHotArt(c1,c2);
+        model.addAttribute("hotList",hotList);
+        /*查询最新主题帖*/
+        List<Article> newsList=  articleService.findAllNewsArt(c1,c2);
+        model.addAttribute("newsList",newsList);
 
-            PageHelper.startPage(pn,3);
-           List<Categorysecond> categorysecond= categorySecondService.selectAll();
-            PageInfo pageInfo=new PageInfo(categorysecond,5);
-            model.addAttribute("pageInfo",pageInfo);
-        return "soure_list/forum-100-1";
-    }*/
+       PageHelper.startPage(pn,5);
+        List<Article> articles= articleService.findHotArtByCsid(c1,c2);
+        PageInfo page = new PageInfo(articles,5);
+
+
+
+        model.addAttribute("pageInfo",page);
+        model.addAttribute("c1",c1);
+        model.addAttribute("c2",c2);
+        return "soure_list/forum-100-2";
+    }
 
 }

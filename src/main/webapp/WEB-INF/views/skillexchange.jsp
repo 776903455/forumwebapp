@@ -107,21 +107,17 @@
             <div class="hot_top_buttom_buttom">
                 <div class="hot_top_buttom_buttom_left">
                     <ul>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表黑马程序员——2019年全年开班计划表黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
+                        <c:forEach items="${articles2}" var="article2">
+                            <li style="border-bottom: 1px grey dashed;"><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${article2.aid}">${article2.aname}</a></li>
+                        </c:forEach>
 
                     </ul>
                 </div>
                 <div class="hot_top_buttom_buttom_rigth">
                     <ul>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表年全年开班计划表黑马程序员——2019</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
+                        <c:forEach items="${articles3}" var="article3">
+                            <li style="border-bottom: 1px grey dashed;"><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${article3.aid}">${article3.aname}</a></li>
+                        </c:forEach>
 
                     </ul>
                 </div>

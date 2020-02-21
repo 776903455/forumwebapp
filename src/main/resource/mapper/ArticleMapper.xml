@@ -45,6 +45,28 @@
     </resultMap>
 
 
+
+
+  <resultMap id="findHotArtByCsidMap" type="com.lyh.itstudy.model.Article">
+
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+    <result column="atxte" jdbcType="VARCHAR" property="atxte" />
+    <result column="adate" jdbcType="TIMESTAMP" property="adate" />
+    <result column="areplay" jdbcType="INTEGER" property="areplay" />
+    <result column="apraise" jdbcType="INTEGER" property="apraise" />
+    <result column="csid" jdbcType="INTEGER" property="csid" />
+    <result column="amoney" jdbcType="INTEGER" property="amoney" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="looknum" jdbcType="INTEGER" property="looknum" />
+
+        <association property="user" javaType="user">
+            <result column="username" jdbcType="VARCHAR" property="username" />
+        </association>
+
+  </resultMap>
+
+
   <resultMap id="findArtByCsidMap" type="com.lyh.itstudy.model.Article">
 
     <id column="aid" jdbcType="INTEGER" property="aid" />
@@ -172,6 +194,21 @@
     LIMIT 7
   </select>
 
+
+  <select id="findAllHotArt" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT  * from tbl_article
+    WHERE csid in(#{c1},#{c2})
+    ORDER  BY apraise DESC
+    LIMIT 7
+  </select>
+
+  <select id="findAllNewsArt" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT  * from tbl_article
+    WHERE csid in(#{c1},#{c2})
+    ORDER  BY adate DESC
+    LIMIT 7
+  </select>
+
   <select id="selectArtByAid" parameterType="Integer" resultMap="BaseResultMap1">
     select a.aid,a.aname,a.atxte,a.adate,a.areplay,a.apraise,a.csid,a.amoney,a.uid,a.looknum,
     r.repid,r.repdate
@@ -186,6 +223,52 @@
 	from tbl_article a LEFT JOIN tbl_replay r on a.aid=r.aid  LEFT JOIN tbl_user u on a.uid=u.uid
 	WHERE csid=#{csid}
   </select>
+
+
+  <!--/*查询免费资源前五阅读最多主题*/-->
+  <select id="findLookest"  resultMap="BaseResultMap">
+    SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a
+    where a.csid BETWEEN 9 AND 17) b  limit 5
+  </select>
+
+  <!--/*查询免费资源第5-10条阅读最多主题*/-->
+  <select id="findLookest1"  resultMap="BaseResultMap">
+    SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a
+    where a.csid BETWEEN 9 AND 17) b  limit 5,5
+  </select>
+
+
+    <!--/*查询技术交流前五阅读最多主题*/-->
+    <select id="findLookest2"  resultMap="BaseResultMap">
+        SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a
+        where a.csid BETWEEN 1 AND 8) b  limit 5
+    </select>
+
+    <!--/*查询技术交流第5-10条阅读最多主题*/-->
+    <select id="findLookest3"  resultMap="BaseResultMap">
+        SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a
+        where a.csid BETWEEN  1 AND 8) b  limit 5,5
+    </select>
+
+  <!--/*查询所有帖子前五阅读最多主题*/-->
+  <select id="findLookest4"  resultMap="BaseResultMap">
+    SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a) b  limit 5
+  </select>
+
+  <!--/*查询所有帖子第5-10条阅读最多主题*/-->
+  <select id="findLookest5"  resultMap="BaseResultMap">
+    SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a) b  limit 5,5
+  </select>
+
+
+
+  <select id="findHotArtByCsid"  resultMap="findHotArtByCsidMap">
+   select a.*,u.username from (select * from tbl_article order by adate desc) a ,tbl_categorysecond cs,tbl_user u
+  where a.csid=cs.csid and a.uid=u.uid
+  and cs.csid in(#{c1},#{c2})
+
+  </select>
+
 
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ArticleExample" resultMap="ResultMapWithBLOBs">
     <!--

@@ -72,10 +72,12 @@
 .center_skillexchange .center_index_hot .hot_resource_buttom .hot_top_buttom_buttom_left ul li{
     list-style: none;
     padding-top: 10px;
+    border-bottom: 1px darkorange dashed;
     width: 400px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
 
 }
 .center_skillexchange .center_index_hot .hot_resource_buttom .hot_top_buttom_buttom_left ul li a{
@@ -100,6 +102,7 @@
     width: 400px;
     list-style: none;
     padding-top: 10px;
+    border-bottom: 1px darkorange dashed;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

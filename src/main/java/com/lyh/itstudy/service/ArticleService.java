@@ -47,4 +47,41 @@ public class ArticleService {
     public void addLookNum(Integer aid,Integer looknum) {
         articleMapper.updateLookNum(aid,looknum);
     }
+
+
+    public  List<Article> findLookest() {
+        return articleMapper.findLookest();
+    }
+
+    public  List<Article> findLookest1() {
+        return articleMapper.findLookest1();
+    }
+
+    public  List<Article> findLookest2() {
+        return articleMapper.findLookest2();
+    }
+
+    public  List<Article> findLookest3() {
+        return articleMapper.findLookest3();
+    }
+
+    public  List<Article> findLookest4() {
+        return articleMapper.findLookest4();
+    }
+
+    public  List<Article> findLookest5() {
+        return articleMapper.findLookest5();
+    }
+
+    public List<Article> findHotArtByCsid(Integer c1, Integer c2) {
+        return  articleMapper.findHotArtByCsid(c1,c2);
+    }
+
+    public List<Article> findAllHotArt(Integer c1, Integer c2) {
+        return articleMapper.findAllHotArt(c1,c2);
+    }
+
+    public List<Article> findAllNewsArt(Integer c1, Integer c2) {
+        return articleMapper.findAllNewsArt(c1,c2);
+    }
 }

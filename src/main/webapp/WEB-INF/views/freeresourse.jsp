@@ -107,21 +107,17 @@
             <div class="hot_top_buttom_buttom">
                 <div class="hot_top_buttom_buttom_left">
                     <ul>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表黑马程序员——2019年全年开班计划表黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
+                        <c:forEach items="${articles}" var="article">
+                        <li style="border-bottom: 1px grey dashed;"><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${article.aid}">${article.aname}</a></li>
+                        </c:forEach>
 
                     </ul>
                 </div>
                 <div class="hot_top_buttom_buttom_rigth">
                     <ul>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表年全年开班计划表黑马程序员——2019</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
+                        <c:forEach items="${articles1}" var="article1">
+                            <li style="border-bottom: 1px grey dashed;"><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${article1.aid}">${article1.aname}</a></li>
+                        </c:forEach>
 
                     </ul>
                 </div>
@@ -137,7 +133,7 @@
                     <cs:forEach items="${freeCsList}" var="freecsList">
                     <li>
                         <a href=""><img src="${pageContext.request.contextPath}/${freecsList.csimage}"></a>
-                        <span><a style="text-decoration: none" href="">${freecsList.csname}</a></span>
+                        <span><a style="text-decoration: none" href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${freecsList.csid}">${freecsList.csname}</a></span>
                         <em>主题：2w 贴数：${freecsList.artList.size()}</em>
                         <p><a href="">${freecsList.artList.get(0).aname}</a></p>
                         <span class="plate_time" style="top: 100px; left: 100px;position: absolute;color: rgb(30 144 255);">

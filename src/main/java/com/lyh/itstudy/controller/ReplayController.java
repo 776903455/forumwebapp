@@ -26,6 +26,7 @@ public class ReplayController {
     @Autowired
     private ReplayService replayService;
 
+
     /*保存回帖信息*/
     @RequestMapping("savaReplay")
     public void savaReplay(@RequestParam("uid")Integer uid,@RequestParam("aid")Integer aid,
@@ -39,12 +40,22 @@ public class ReplayController {
 
         replayService.savaReplay(replay);
 
-        /*保存帖子后，查询更新后的帖子数据，并遍历在前台*/
-        PageHelper.startPage(1,5);
+        /*保存帖子后，查询更新后的回帖数据，并遍历在前台*/
+        /*PageHelper.startPage(1,5);
         List<Replay> replays = replayService.selectRepByAid(aid);
         PageInfo<Replay> reppage = new PageInfo(replays,5);
+
+        List<Replay> list = reppage.getList();
+        for(Replay re:list){
+            System.out.println(re);
+        }
+
+
+
         int[] navigatepageNums =reppage.getNavigatepageNums();
-        model.addAttribute("replaylist",reppage);
+        model.addAttribute("replaylist",reppage);*/
+
+
 
     }
 }

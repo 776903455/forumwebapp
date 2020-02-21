@@ -136,21 +136,11 @@
             </div>
 
             <div class="head_title">
-               <c:if test="${cs.csid>=1&&cs.csid<=8}">
             <span class="head_title_text">
                 <img class="jishufenxiang" src="${pageContext.request.contextPath}/static/img/jishifenxiang.jpg">
-               <em style="line-height: 60px"> 技术交流</em>
+               <em style="line-height: 60px">热门主题</em>
                  <p class="jishidian">交流技术，巩固学习，早日成为技术大牛！</p>
             </span>
-               </c:if>
-                <c:if test="${cs.csid>=9&&cs.csid<=17}">
-            <span class="head_title_text">
-                <img class="mianfeiziyuan" src="${pageContext.request.contextPath}/static/img/mianfeiziyuan.jpg">
-               <em style="line-height: 60px"> 免费资源</em>
-                 <p class="jishidian">所有学科，全部资源，点击对应学科，通通免费下载啦！！</p>
-            </span>
-                </c:if>
-
                 <img class="head_title_img" src="${pageContext.request.contextPath}/static/img/2.jpg">
             </div>
         </div>
@@ -208,13 +198,13 @@
                 <nav style="width: 650px; padding-left: 20px;">
                     <ul class="pagination">
                         <li>
-                            <a href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${csid}&pn=1" aria-label="Next">
+                            <a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=${c1}&c2=${c2}&pn=1" aria-label="Next">
                                 <span aria-hidden="true">首页</span>
                             </a>
                         </li>
                         <c:if test="${pageInfo.hasPreviousPage}">
                             <li>
-                                <a href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${csid}&pn=${pageInfo.pageNum-1}" aria-label="Previous">
+                                <a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=${c1}&c2=${c2}&pn=${pageInfo.pageNum-1}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
@@ -226,13 +216,13 @@
                                 <li class="active"><a href="#">${navNums}</a></li>
                             </c:if>
                             <c:if test="${navNums!=pageInfo.pageNum}">
-                                <li ><a href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${csid}&pn=${navNums}">${navNums}</a></li>
+                                <li ><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=${c1}&c2=${c2}&pn=${navNums}">${navNums}</a></li>
                             </c:if>
                         </c:forEach>
 
                         <c:if test="${pageInfo.hasNextPage}">
                             <li>
-                                <a href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${csid}&pn=${pageInfo.pageNum+1}" aria-label="Next">
+                                <a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=${c1}&c2=${c2}&pn=${pageInfo.pageNum+1}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
@@ -240,7 +230,7 @@
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${csid}&pn=${pageInfo.pages}" aria-label="Next">
+                            <a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=${c1}&c2=${c2}&pn=${pageInfo.pages}" aria-label="Next">
                                 <span aria-hidden="true">尾页</span>
                             </a>
                         </li>

@@ -100,13 +100,12 @@
             <div class="col-md-1" id="lunbotu_left">
                 <ul>
                     <li><a href="#">热门主题</a></li>
-                    <li><a href="#">java</a></li>
-                    <li><a href="#">大数据</a></li>
-                    <li><a href="#">PHP</a></li>
-                    <li><a href="#">WEB前端</a></li>
-                    <li><a href="#">Phthon</a></li>
-                    <li><a href="#">人工智能</a></li>
-                    <li><a href="#">Linux</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=1&c2=9">java</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=6&c2=14">大数据</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=4&c2=12">PHP/WEB前端</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=2&c2=10">Phthon</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=3&c2=11">C/C++</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=7&c2=15">Android</a></li>
                 </ul>
             </div>
             <div class="col-md-8">
@@ -193,22 +192,17 @@
             <div class="hot_top_buttom_buttom">
                 <div class="hot_top_buttom_buttom_left">
                     <ul>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表黑马程序员——2019年全年开班计划表黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
+                        <c:forEach items="${articles4}" var="article4">
+                            <li style="border-bottom: 1px grey dashed;"><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${article4.aid}">${article4.aname}</a></li>
+                        </c:forEach>
 
                     </ul>
                 </div>
                 <div class="hot_top_buttom_buttom_rigth">
                     <ul>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表年全年开班计划表黑马程序员——2019</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-                        <li><a href="#">黑马程序员——2019年全年开班计划表</a></li>
-
+                        <c:forEach items="${articles5}" var="article5">
+                            <li style="border-bottom: 1px grey dashed;"><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${article5.aid}">${article5.aname}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>

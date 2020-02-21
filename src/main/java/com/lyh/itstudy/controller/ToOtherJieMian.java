@@ -4,6 +4,7 @@ import com.lyh.itstudy.model.Article;
 import com.lyh.itstudy.model.Category;
 import com.lyh.itstudy.model.Categorysecond;
 import com.lyh.itstudy.model.Gift;
+import com.lyh.itstudy.service.ArticleService;
 import com.lyh.itstudy.service.CategorySecondService;
 import com.lyh.itstudy.service.CategoryService;
 import com.lyh.itstudy.service.GiftService;
@@ -32,10 +33,25 @@ public class ToOtherJieMian {
     private CategorySecondService categorySecondService;
     @Autowired
     private GiftService giftService;
+    @Autowired
+    private ArticleService articleService;
+
 
     /*去首页*/
     @RequestMapping("toIndex")
-    public String toIndex(){
+    public String toIndex(Model model,HttpSession session){
+        /*查询前五阅读最多主题*/
+        List<Article> articles4= articleService.findLookest4();
+
+        /*查询第5-10条阅读最多主题*/
+        List<Article> articles5= articleService.findLookest5();
+
+        session.setAttribute("articles4",articles4);
+        session.setAttribute("articles5",articles5);
+
+       /* model.addAttribute("articles4",articles4);
+        model.addAttribute("articles5",articles5);*/
+
         return "index";
     }
 
@@ -43,14 +59,20 @@ public class ToOtherJieMian {
     @RequestMapping("toSkillExchange")
     public String toSkillExchange(@RequestParam("cid")Integer cid, Model model)
     {
-        /*根据一级目录的id查找二级目录*/
-     /*   List<Category>CList= categoryService.findCategory(cid);
-        if(CList!=null) {
-            for (Category c: CList) {
-                List<Categorysecond> csList = c.getCsList();*/
+
 
         List<Categorysecond> CList= categorySecondService.findCategory(cid);
         model.addAttribute("csList",CList);
+
+        /*查询前五阅读最多主题*/
+        List<Article> articles2= articleService.findLookest2();
+
+        /*查询第5-10条阅读最多主题*/
+        List<Article> articles3= articleService.findLookest3();
+
+        model.addAttribute("articles2",articles2);
+
+        model.addAttribute("articles3",articles3);
 
         return "skillexchange";
     }
@@ -66,19 +88,20 @@ public class ToOtherJieMian {
 
     @RequestMapping("toFreeSource")
     public String toFreeSource( @RequestParam("cid")Integer cid,Model model){
+
+        /*查找热门资源*/
+
         /*根据一级目录的id查找二级目录*/
         List<Categorysecond> CList= categorySecondService.findCategory(cid);
-
         model.addAttribute("freeCsList",CList);
-       /* for (Categorysecond cs:CList){
-            System.out.println("cs:"+cs);
-            List<Article> artList = cs.getArtList();
-            for (Article art:artList){
-                System.out.println("art:"+art);
-            }
 
-        }*/
+        /*查询前五阅读最多主题*/
+       List<Article> articles= articleService.findLookest();
+       /*查询第5-10条阅读最多主题*/
+       List<Article> articles1= articleService.findLookest1();
 
+       model.addAttribute("articles",articles);
+        model.addAttribute("articles1",articles1);
         return "freeresourse";
     }
 

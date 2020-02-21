@@ -103,4 +103,6 @@ public interface CategorysecondMapper {
     Categorysecond findArticleByCsid(Integer csid);
 
     List<Categorysecond> findCategory(Integer cid);
+
+    Categorysecond findCsByCsid(Integer csid);
 }

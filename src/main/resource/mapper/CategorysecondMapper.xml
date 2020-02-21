@@ -162,6 +162,11 @@
   </select>
 
 
+  <select id="findCsByCsid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select cs.* from tbl_categorysecond cs WHERE cs.csid=#{csid}
+  </select>
+
+
   <select id="selectByExample" parameterType="com.lyh.itstudy.model.CategorysecondExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

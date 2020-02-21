@@ -127,5 +127,17 @@ public interface ArticleMapper {
 
     List<Article> findArtByCsid(Integer csid);
 
+    List<Article> findLookest();
+    List<Article> findLookest1();
+    List<Article> findLookest2();
+    List<Article> findLookest3();
+    List<Article> findLookest4();
+    List<Article> findLookest5();
     void updateLookNum(@Param("aid") Integer aid,@Param("looknum")Integer looknum);
+
+    List<Article> findHotArtByCsid(@Param("c1") Integer c1,@Param("c2") Integer c2);
+
+    List<Article> findAllHotArt(@Param("c1")Integer c1,@Param("c2") Integer c2);
+
+    List<Article> findAllNewsArt(@Param("c1")Integer c1,@Param("c2") Integer c2);
 }

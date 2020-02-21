@@ -40,4 +40,9 @@ public class CategorySecondService {
     public List<Categorysecond> findCategory(Integer cid) {
         return categorysecondMapper.findCategory(cid);
     }
+
+    public Categorysecond findCsByCsid(Integer csid) {
+
+        return  categorysecondMapper.findCsByCsid(csid);
+    }
 }
