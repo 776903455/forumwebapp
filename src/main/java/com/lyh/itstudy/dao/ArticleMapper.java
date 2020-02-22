@@ -3,6 +3,7 @@ package com.lyh.itstudy.dao;
 import java.util.List;
 import com.lyh.itstudy.model.Article;
 import com.lyh.itstudy.model.ArticleExample;
+import com.lyh.itstudy.model.Categorysecond;
 import org.apache.ibatis.annotations.Param;
 
 public interface ArticleMapper {
@@ -140,4 +141,6 @@ public interface ArticleMapper {
     List<Article> findAllHotArt(@Param("c1")Integer c1,@Param("c2") Integer c2);
 
     List<Article> findAllNewsArt(@Param("c1")Integer c1,@Param("c2") Integer c2);
+
+    Article selectCsByAid(Integer aid);
 }

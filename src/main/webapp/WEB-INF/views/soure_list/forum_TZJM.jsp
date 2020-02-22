@@ -126,17 +126,30 @@
 <!--center-->
 
 <div class="center_all">
+    <c:if test="${cAndCs.categorysecond.csid>=1&&cAndCs.categorysecond.csid<=8}">
     <!--路径导航-->
     <div class="path_navigation">
         <ol class="breadcrumb">
-            <li><a href="../index.html">首页</a></li>
-            <li><a href="../index.html">学习交流</a></li>
-            <li><a href="#">学习交流</a></li>
-            <li><a href="#">xxx</a></li>
+            <li><a href=${pageContext.request.contextPath}/toIndex.do">首页</a></li>
+            <li><a href="${pageContext.request.contextPath}/toSkillExchange.do?cid=3">${cAndCs.category.cname}</a></li>
+            <li><a href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${cAndCs.categorysecond.csid}">${cAndCs.categorysecond.csname}</a></li>
             <li><a href="#">正文</a></li>
         </ol>
     </div>
+    </c:if>
 
+
+    <c:if test="${cAndCs.categorysecond.csid>=9&&cAndCs.categorysecond.csid<=17}">
+        <!--路径导航-->
+        <div class="path_navigation">
+            <ol class="breadcrumb">
+                <li><a href=${pageContext.request.contextPath}/toIndex.do">首页</a></li>
+                <li><a href="${pageContext.request.contextPath}/toFreeSource.do?cid=1">${cAndCs.category.cname}</a></li>
+                <li><a href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${cAndCs.categorysecond.csid}">${cAndCs.categorysecond.csname}</a></li>
+                <li><a href="#">正文</a></li>
+            </ol>
+        </div>
+    </c:if>
 
     <div class="center_content">
         <!--左边内容-->

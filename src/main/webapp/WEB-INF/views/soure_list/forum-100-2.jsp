@@ -126,14 +126,28 @@
         <div class="center_head">
 
             <!--路径导航-->
-            <div class="path_navigation">
-                <ol class="breadcrumb">
-                    <li><a href="../index.html">首页</a></li>
-                    <li><a href="../index.html">学习交流</a></li>
-                    <li><a href="#">学习交流</a></li>
-                    <li><a href="#">javaEE学习交流</a></li>
-                </ol>
-            </div>
+
+            <c:if test="${cs.csid>=1&&cs.csid<=8}">
+                <!--路径导航-->
+                <div class="path_navigation">
+                    <ol class="breadcrumb">
+                        <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toSkillExchange.do?cid=3">技术交流</a></li>
+                        <li><a href="#">${cs.csname}</a></li>
+                    </ol>
+                </div>
+            </c:if>
+
+            <c:if test="${cs.csid>=9&&cs.csid<=17}">
+                <!--路径导航-->
+                <div class="path_navigation">
+                    <ol class="breadcrumb">
+                        <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toFreeSource.do?cid=1">免费资源</a></li>
+                        <li><a href="#">${cs.csname}</a></li>
+                    </ol>
+                </div>
+            </c:if>
 
             <div class="head_title">
             <span class="head_title_text">

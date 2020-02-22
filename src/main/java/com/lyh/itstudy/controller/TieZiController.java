@@ -47,16 +47,17 @@ public class TieZiController {
         text=text.replaceAll(" ","+");
         /*判断是免费资源模块还是技术交流模块*/
         String text1=text.substring(0,4);
-
+        String text2=text.substring(5);
         model.addAttribute("text1",text1);
+        model.addAttribute("text2",text2);
         model.addAttribute("text",text);
         model.addAttribute("uid",uid);
         return "soure_list/fatiejiemian";
     }
 /*保存帖子*/
     @RequestMapping("saveTieZi")
-    public String saveTieZi(Article article, HttpServletRequest request){
-        System.out.println("money="+article.getAmoney());
+    public String saveTieZi(Article article, Model model,HttpServletRequest request){
+
 
         /*文本内容*/
         String text=request.getParameter("atext");
@@ -75,11 +76,12 @@ public class TieZiController {
         /*根据二级目录类型从数据库中获取csid*/
 
         String typename=article.getTypename();
-
+        Categorysecond categorysecond=null;
         if(typename!=null) {
             typename = typename.substring(5);
-            Categorysecond categorysecond = categorySecondService.findByCsname(typename);
+            categorysecond= categorySecondService.findByCsname(typename);
             article.setCsid(categorysecond.getCsid());
+
         }else {
             System.out.println("没传过来");
         }
@@ -91,7 +93,10 @@ public class TieZiController {
             System.out.println("帖子保存失败");
         }
 
-        return null;
+        selectAllArtByCsid(categorysecond.getCsid(),1,model);
+
+
+        return "soure_list/forum-100-1";
     }
 
 
@@ -100,6 +105,7 @@ public class TieZiController {
     @RequestMapping("selectAllArtByCsid")
     public  String selectAllArtByCsid(@RequestParam("csid")Integer csid,
                                       @RequestParam(value = "pn",defaultValue="1")int pn,Model model){
+
 
 
         /*查询热门主题帖*/
@@ -133,6 +139,11 @@ public class TieZiController {
     /*根据aid查询帖子信息，并跳转至具体帖子信息界面*/
     @RequestMapping("selectArtByAid")
     public String selectArtByAid(@RequestParam("aid")Integer aid,Model model){
+        /*根据aid查询一级、二级目录信息*/
+        Article cAndCs=articleService.selectCsByAid(aid);
+
+        System.out.println("csid="+cAndCs.getCategorysecond().getCsid());
+
         /*根据aid查询帖子信息*/
         Article article=articleService.selectArtByAid(aid);
         /*通过uid查找发帖用户*/
@@ -153,6 +164,7 @@ public class TieZiController {
         model.addAttribute("article",article);
         model.addAttribute("artTime",artTime);
         model.addAttribute("artUser",artUser);
+        model.addAttribute("cAndCs",cAndCs);
 
 
         /*根据aid获取帖子的回复数据*/

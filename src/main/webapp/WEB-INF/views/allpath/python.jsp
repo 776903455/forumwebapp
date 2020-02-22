@@ -124,9 +124,8 @@
 <!--路径导航-->
 <div class="path_navigation">
     <ol class="breadcrumb">
-        <li><a href="../index.html">首页</a></li>
-        <li><a href="../index.html">学习交流</a></li>
-        <li><a href="../studypath.html">学习路线图</a></li>
+        <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
+        <li><a href="${pageContext.request.contextPath}/toStudyPath.do">学习路线图</a></li>
         <li><a href="#">python学习路线</a></li>
     </ol>
 </div>

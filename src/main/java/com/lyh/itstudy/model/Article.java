@@ -154,6 +154,25 @@ public class Article {
 
     private Integer looknum;
 
+    private Category category;
+    private Categorysecond categorysecond;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Categorysecond getCategorysecond() {
+        return categorysecond;
+    }
+
+    public void setCategorysecond(Categorysecond categorysecond) {
+        this.categorysecond = categorysecond;
+    }
+
     public Integer getLooknum() {
         return looknum;
     }

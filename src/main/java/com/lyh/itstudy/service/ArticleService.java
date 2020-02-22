@@ -2,6 +2,7 @@ package com.lyh.itstudy.service;
 
 import com.lyh.itstudy.dao.ArticleMapper;
 import com.lyh.itstudy.model.Article;
+import com.lyh.itstudy.model.Categorysecond;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,5 +84,9 @@ public class ArticleService {
 
     public List<Article> findAllNewsArt(Integer c1, Integer c2) {
         return articleMapper.findAllNewsArt(c1,c2);
+    }
+
+    public Article selectCsByAid(Integer aid) {
+        return articleMapper.selectCsByAid(aid);
     }
 }

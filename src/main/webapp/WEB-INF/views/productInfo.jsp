@@ -116,8 +116,8 @@
 <!--路径导航-->
 <div class="path_navigation">
     <ol class="breadcrumb">
-        <li><a href="index.html">首页</a></li>
-        <li><a href="index.html">礼品兑换</a></li>
+        <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
+        <li><a href="${pageContext.request.contextPath}/toProducts.do">礼品兑换</a></li>
         <li><a href="#">礼品商城</a></li>
     </ol>
 </div>

@@ -110,11 +110,10 @@
     <!--路径导航-->
     <div class="path_navigation">
         <ol class="breadcrumb">
-            <li><a href="../index.html">首页</a></li>
-            <li><a href="../index.html">学习交流</a></li>
-            <li><a href="#">学习交流</a></li>
-            <li><a href="#">javaEE学习交流</a></li>
-            <li><a href="#">发表帖子</a></li>
+            <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
+        <%--    <li><a href="../index.html">${text1}</a></li>
+            <li><a href="#">${text2}</a></li>--%>
+            <li><a href="#">正文</a></li>
         </ol>
     </div>
     <p class="center_fabiaotiezi_text"><span>发表帖子</span></p>

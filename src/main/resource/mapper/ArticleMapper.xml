@@ -83,6 +83,21 @@
 
   </resultMap>
 
+  <resultMap id="selectCsByAidMap" type="com.lyh.itstudy.model.Article">
+
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+
+    <association property="category" javaType="category">
+      <result column="cname" jdbcType="VARCHAR" property="cname" />
+    </association>
+
+    <association property="categorysecond" javaType="categorysecond">
+        <id column="csid" jdbcType="INTEGER" property="csid" />
+      <result column="csname" jdbcType="VARCHAR" property="csname" />
+    </association>
+
+  </resultMap>
 
 
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lyh.itstudy.model.Article">
@@ -220,7 +235,7 @@
 
   <select id="findArtByCsid" parameterType="Integer" resultMap="findArtByCsidMap">
     SELECT a.aid,a.aname,a.looknum,u.username,r.uid
-	from tbl_article a LEFT JOIN tbl_replay r on a.aid=r.aid  LEFT JOIN tbl_user u on a.uid=u.uid
+	from (select * from tbl_article order by adate desc) a LEFT JOIN tbl_replay r on a.aid=r.aid  LEFT JOIN tbl_user u on a.uid=u.uid
 	WHERE csid=#{csid}
   </select>
 
@@ -268,6 +283,16 @@
   and cs.csid in(#{c1},#{c2})
 
   </select>
+
+  <select id="selectCsByAid"  resultMap="selectCsByAidMap">
+    select c.cname,cs.csname,cs.csid from tbl_category c
+    LEFT JOIN tbl_categorysecond cs on c.cid=cs.cid
+    LEFT JOIN tbl_article a on cs.csid=a.csid
+    WHERE a.aid=#{aid}
+
+
+  </select>
+
 
 
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ArticleExample" resultMap="ResultMapWithBLOBs">

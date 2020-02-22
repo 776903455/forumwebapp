@@ -147,8 +147,9 @@ public class ToOtherJieMian {
     }
     @RequestMapping("toPython")
     public String toPython(){
-        return "allpath/pyhton";
-    }@RequestMapping("toYunjissian")
+        return "allpath/python";
+    }
+    @RequestMapping("toYunjissian")
     public String toYunjissian(){
         return "allpath/yunjisuan";
     }

@@ -67,8 +67,7 @@
 <!--路径导航-->
 <div class="path_navigation">
     <ol class="breadcrumb">
-        <li><a href="index.html">首页</a></li>
-        <li><a href="index.html">学习交流</a></li>
+        <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
         <li><a href="#">技术交流</a></li>
     </ol>
 </div>

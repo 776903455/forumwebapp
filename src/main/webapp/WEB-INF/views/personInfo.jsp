@@ -148,7 +148,7 @@
     <div class="path_navigation">
         <ol class="breadcrumb">
             <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
-            <li><a href="index.html">${userInfo.username}</a></li>
+            <li><a href="#">${userInfo.username}</a></li>
             <li><a href="#">个人信息</a></li>
         </ol>
     </div>
