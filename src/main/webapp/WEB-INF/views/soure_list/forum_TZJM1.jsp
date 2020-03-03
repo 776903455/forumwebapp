@@ -67,7 +67,6 @@
         }
 
 
-
     </style>
 </head>
 <body>
@@ -192,12 +191,16 @@
                     <div class="reply_link" style="position: relative">
 
                         <p id="reply_link_content" style="position: absolute;width: 680px;height: 40px;background:white ">
-                            ${sessionScope.user.username},如果您要查看本帖隐藏内容请
-                                <span   style="cursor: pointer ;color: #2aabd2" data-toggle="modal" data-target="#myModal">
-                                    回复
-                                </span>
-                        </p>
+                            <c:if test="${article.resourseurl.lastIndexOf('_')!=-1}">
+                           <span>${article.resourseurl.substring(0,article.resourseurl.lastIndexOf("_"))}</span><br/>
+                           <span> 提取码：${article.resourseurl.substring(article.resourseurl.lastIndexOf("_")+1)}</span>
+                            </c:if>
 
+                            <c:if test="${article.resourseurl.lastIndexOf('_')==-1}">
+                                <span>${article.resourseurl}</span><br/>
+                                <span> 提取码：无</span>
+                            </c:if>
+                        </p>
 
                     </div>
                 </c:if>
@@ -390,7 +393,7 @@
             if(${sessionScope.user==null}){
                 alert("登录之后才能回复")
             }else {
-                window.location.href="${pageContext.request.contextPath}/savaReplay.do?uid=${sessionScope.user.uid}&flag=0&aid=${article.aid}&textearetext="+textearetext.value;
+                window.location.href="${pageContext.request.contextPath}/savaReplay.do?uid=${sessionScope.user.uid}&aid=${article.aid}&flag=0&textearetext="+textearetext.value;
             }
         }
 

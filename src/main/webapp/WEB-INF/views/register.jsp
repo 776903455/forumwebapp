@@ -73,6 +73,50 @@
             font-weight: bold;
             color:red;
         }
+
+        .head1 .container .row .search_img{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 25px;
+            right: 20px;
+
+        }
+        .touxiang_event{
+            position: relative;
+
+        }
+
+        .folat_info{
+            width:100px;
+            height:auto;
+            background:rgba(255,236,139,0.8);
+            opacity:0;
+            position:absolute;
+            top:55px;
+            right:90px;
+            z-index:10;
+        }
+        .folat_info ul{
+            margin: 0;
+            padding: 0;
+            width: 100px;
+            height: auto;
+        }
+        .folat_info ul li{
+
+            width: 100px;
+            height: 30px;
+            list-style: none;
+            margin-top: 5px;
+            border-bottom: 1px solid gray;
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .folat_info ul li:hover{
+            color: white;
+
+        }
     </style>
 
 
@@ -179,68 +223,7 @@
         <img class="img3" src="${pageContext.request.contextPath}/static/img/login_img2.jpg">
     </div>
 </div>
-
-<div class="buttom_index">
-    <div class="buttom_index_top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="${pageContext.request.contextPath}/static/img/button_index_img3.png" />
-                    <span >足不出户学编程</span>
-                </div>
-                <div class="col-md-4">
-                    <img src="${pageContext.request.contextPath}/static/img/button_index_img1.png" />
-                    <span>学习经验共分享</span>
-                </div>
-                <div class="col-md-4">
-                    <img src="${pageContext.request.contextPath}/static/img/button_index_img2.png" />
-                    <span>前沿技术实时更新</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="buttom_index_buttom">
-        <p style="font-size: 18px; color: white;margin-top: 30px;margin-left: 150px;">友情链接:</p>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <ul>
-                        <li><a href="http://jquery.cuishifeng.cn/">前端</a></li>
-                        <li><a href="#">SpringCloud</a></li>
-                        <li><a href="#">SpringBoot</a></li>
-                        <li><a href="#">Redis</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-
-                    <ul>
-                        <li><a href="#">人工智能</a></li>
-                        <li><a href="#">区块链/go</a></li>
-                        <li><a href="#">消息队列</a></li>
-                        <li><a href="#">微服务框架</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-
-                    <ul>
-                        <li><a href="#">大数据</a></li>
-                        <li><a href="#">Linux</a></li>
-                        <li><a href="#">Spring</a></li>
-                        <li><a href="#">并发编程</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <img width="200px" height="100px" style="border-radius: 10px;opacity: 0.8;" src="${pageContext.request.contextPath}/static/img/run.jpg" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <p style="text-align: center;margin-top: 30px; font-size: 15px;">
-        <font color="cornflowerblue">©2020电科大嵌入B班lyh毕业设计&nbsp;</font>
-    </p>
-</div>
+<%@include file="buttom.jsp"%>
 
 </body>
 <script>
@@ -254,7 +237,6 @@
 
     /*用ajax校验用户存不存在*/
     var userExsit = document.querySelector(".error");
-
 
     var checkuserspan = document.querySelector(".checkuserspan");
    userExsit.onblur=function () {
@@ -272,67 +254,62 @@
    function changeImage() {
        $('#verifyCodeImage').attr('src', '${pageContext.request.contextPath }/cheackImg.do?'+new Date().getTime());
    }
-/*
-
-    $(function () {
-
-        $("#checkform").validate({
-            rules:{
-                username:{
-                    required:true,
-                    rangelength:[6,15],
-
-                },
-
-                password:{
-                    required:true,
-                    rangelength:[6,15]
-                },
-
-                repassword:{
-                    equalTo:"[name='password']"
-                },
-
-                email:{
-                    email:true,
-                    rangelength:[6,15]
-                },
-                phone:{
-                    required:true,
-                    isMobile:true,
-                }
 
 
+    /*表单校验*/
+    /*添加校验手机号码的方法*/
+    $.validator.addMethod("checkPhone",function (value,ele) {
+        /*编写校验规则*/
+        console.log(value);
+        var reg=new RegExp("^1[3568]{1}[0-9]{9}$");
+        console.log(reg.test(value));
+        if(reg.test(value)){
+            return true;
+        }else {
+            return false;
+        }
+    })
+    
+    
+    $("#checkform").validate({
+        rules:{
+            username:{
+                required:true,
+                rangelength:[6,15]
             },
-
-            messages:{
-                username:{
-                    required:"这是必填字段",
-                    rangelength:"长度在6到12之间",
-                },
-
-                password:{
-                    requerid:"密码是必填字段",
-                    rangelength:"长度在6到15之间"
-                },
-
-                repassword:"密码不一致",
-
-                email:{
-                    email: "邮箱格式不正确",
-                    rangelength:"长度在6到15之间"
-                }
-
-
+            password:{
+                required:true,
+                rangelength:[6,15]
+            },
+            repassword:{
+              equalTo:"[name='password']"
+            },
+            email:{
+                email:true
+            },
+            phone:{
+                required:true,
+                checkPhone:[]
             }
 
-        });
-    });
-*/
-
-
-
-
+        },
+        messages:{
+            username:{
+                required:"这是必填字段",
+                rangelength:"长度在6到12之间"
+            },
+            password:{
+                required:"这是必填字段",
+                rangelength:"长度在6到12之间"
+            },
+            repassword:"密码不一致",
+            email:"邮箱格式不正确",
+            phone:{
+                required:"这是必填字段",
+                checkPhone:"电话格式错误"
+            }
+        }
+    })
 
 
 </script>

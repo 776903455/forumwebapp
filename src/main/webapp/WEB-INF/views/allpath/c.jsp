@@ -165,7 +165,49 @@
            position: absolute;
            z-index: 2;
        }
+       .head1 .container .row .search_img{
+           width: 25px;
+           height: 25px;
+           position: absolute;
+           top: 25px;
+           right: 20px;
 
+       }
+       .touxiang_event{
+           position: relative;
+
+       }
+
+       .folat_info{
+           width:100px;
+           height:auto;
+           background:rgba(255,236,139,0.8);
+           opacity:0;
+           position:absolute;
+           top:55px;
+           right:90px;
+           z-index:10;
+       }
+       .folat_info ul{
+           margin: 0;
+           padding: 0;
+           width: 100px;
+           height: auto;
+       }
+       .folat_info ul li{
+
+           width: 100px;
+           height: 30px;
+           list-style: none;
+           margin-top: 5px;
+           border-bottom: 1px solid gray;
+           font-size: 15px;
+           line-height: 20px;
+       }
+       .folat_info ul li:hover{
+           color: white;
+
+       }
 
    </style>
 </head>
@@ -176,7 +218,7 @@
 <div class="path_navigation">
     <ol class="breadcrumb">
         <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
-        <li><a href=${pageContext.request.contextPath}/toStudyPath.do">学习路线图</a></li>
+        <li><a href="${pageContext.request.contextPath}/toStudyPath.do">学习路线图</a></li>
         <li><a href="#">C/C++学习路线</a></li>
     </ol>
 </div>

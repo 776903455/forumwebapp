@@ -4,6 +4,7 @@ import com.lyh.itstudy.model.Gift;
 import com.lyh.itstudy.model.User;
 import com.lyh.itstudy.service.GiftService;
 import com.lyh.itstudy.service.UserService;
+import com.lyh.itstudy.utils.SendqqUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 /**
  * @author lyh
@@ -43,8 +46,12 @@ public class ProductController {
     @RequestMapping("exchangeGift")
     public String exchangeGift(@RequestParam("uid")Integer uid, @RequestParam("gid")Integer gid,
                                @RequestParam("gmoney")Integer gmoney, @RequestParam("score")Integer score,
-                               @RequestParam("number")Integer number,
+                               @RequestParam("number")Integer number,HttpServletRequest request,
                                @RequestParam("exchangenumber")Integer exchangenumber,HttpSession session,Model model){
+
+
+
+        HashMap<String,String> map=new HashMap<>();
         /*更新用户信息*/
         score=score-gmoney;
         exchangenumber=exchangenumber+1;
@@ -57,6 +64,16 @@ public class ProductController {
         number=number-1;
         giftService.updateGift(gid,number);
         Gift giftInfo = giftService.selectGiftByGid(gid);
+
+        /*购买成功后发一封用户购买具体信息的邮件给管理员*/
+        SendqqUtil su=new SendqqUtil();
+        map.put("username:",user.getUsername());
+        map.put("addrr:",request.getParameter("addr"));
+        map.put("giftname:",giftInfo.getGname());
+        map.put("phone:",request.getParameter("phone"));
+        su.sendqq(request.getParameter("qq"),map);
+
+
         model.addAttribute("giftInfo",giftInfo);
         return "products";
     }

@@ -19,6 +19,7 @@
     <result column="looknum" jdbcType="VARCHAR" property="looknum" />
 
 
+
   </resultMap>
 
     <resultMap id="BaseResultMap1" type="com.lyh.itstudy.model.Article">
@@ -33,6 +34,7 @@
         <result column="amoney" jdbcType="INTEGER" property="amoney" />
        <result column="uid" jdbcType="INTEGER" property="uid" />
       <result column="looknum" jdbcType="INTEGER" property="looknum" />
+      <result column="resourseurl" jdbcType="VARCHAR" property="resourseurl" />
 
     <!--    <association property="user" javaType="user">
             <result column="username" jdbcType="VARCHAR" property="username" />
@@ -59,6 +61,7 @@
     <result column="amoney" jdbcType="INTEGER" property="amoney" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="looknum" jdbcType="INTEGER" property="looknum" />
+    <result column="resourseurl" jdbcType="VARCHAR" property="resourseurl" />
 
         <association property="user" javaType="user">
             <result column="username" jdbcType="VARCHAR" property="username" />
@@ -226,7 +229,7 @@
 
   <select id="selectArtByAid" parameterType="Integer" resultMap="BaseResultMap1">
     select a.aid,a.aname,a.atxte,a.adate,a.areplay,a.apraise,a.csid,a.amoney,a.uid,a.looknum,
-    r.repid,r.repdate
+    a.resourseurl,r.repid,r.repdate
     from tbl_article a  LEFT JOIN  tbl_replay r
     on  a.aid=r.aid
 	where  a.aid=#{aid}
@@ -376,11 +379,11 @@
     -->
     insert into tbl_article (aid, aname, adate, 
       areplay, apraise, csid, 
-      uid, amoney, atxte
+      uid, amoney, atxte,resourseurl
       )
     values (#{aid,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{adate,jdbcType=TIMESTAMP}, 
       #{areplay,jdbcType=INTEGER}, #{apraise,jdbcType=INTEGER}, #{csid,jdbcType=INTEGER}, 
-      #{uid,jdbcType=INTEGER}, #{amoney,jdbcType=INTEGER}, #{atxte,jdbcType=LONGVARCHAR}
+      #{uid,jdbcType=INTEGER}, #{amoney,jdbcType=INTEGER}, #{atxte,jdbcType=LONGVARCHAR},#{resourseurl,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.itstudy.model.Article">

@@ -9,14 +9,8 @@
     <title>Title</title>
 </head>
 <body>
-    <span>来了没</span>
-    <table width="300px" >
-        <d:forEach items="${replaylist.list}" var="replist">
-        <tr>
-            <td>${replist.repname}</td>
-            <td>${replist.reptxt}</td>
-        </tr>
-        </d:forEach>
-    </table>
+    <span>我要看你活多久${sessionScope.user.username}</span>
+
+    <a href="${pageContext.request.contextPath}/toIndex.do">兄台点我</a>
 </body>
 </html>

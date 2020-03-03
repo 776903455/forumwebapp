@@ -42,15 +42,10 @@ public class ToOtherJieMian {
     public String toIndex(Model model,HttpSession session){
         /*查询前五阅读最多主题*/
         List<Article> articles4= articleService.findLookest4();
-
         /*查询第5-10条阅读最多主题*/
         List<Article> articles5= articleService.findLookest5();
-
         session.setAttribute("articles4",articles4);
         session.setAttribute("articles5",articles5);
-
-       /* model.addAttribute("articles4",articles4);
-        model.addAttribute("articles5",articles5);*/
 
         return "index";
     }
@@ -79,7 +74,10 @@ public class ToOtherJieMian {
 
     /*跳转学习路径界面*/
     @RequestMapping("toStudyPath")
-    public String toStudyPath(){
+    public String toStudyPath(HttpSession session){
+        Object user = session.getAttribute("user");
+        System.out.println(user+"-"+session.getId());
+
         return "studypath";
     }
 
@@ -126,6 +124,12 @@ public class ToOtherJieMian {
         return "products";
     }
 
+    /*去个人详细界面*/
+    @RequestMapping("toperbackground")
+    public String toperbackground(){
+
+        return "personinfobackground";
+    }
 
 
     /*学习路线的跳转*/

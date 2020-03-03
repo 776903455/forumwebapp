@@ -69,4 +69,8 @@ public class UserService {
 
         return userMapper.selectByUid(uid);
     }
+
+    public void updateImg(Integer uid,String newname) {
+        userMapper.updateImg(uid,newname);
+    }
 }

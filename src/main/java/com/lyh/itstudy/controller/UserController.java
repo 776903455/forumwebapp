@@ -10,26 +10,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.*;
+import javax.validation.Valid;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author lyh
  * @date 2020/1/26 -11:46
  */
 @Controller
+@MultipartConfig
 public class UserController {
 
   @Autowired
@@ -47,18 +49,12 @@ public class UserController {
 
     /*用户注册*/
     @RequestMapping("register")
-    public String register(User user, Model model,HttpSession session) {
-        System.out.println(user);
-        /*邮箱状态*/
-        user.setState(0);
-        /*注册时间*/
+    public String register( User user, Model model, HttpSession session) {
+
+       /* 注册时间*/
         String time=GetTimeUtil.getDate();
         user.setRegtime(time);
-
-        /*交易次数*/
-        user.setExchangenumber(0);
-
-        /*默认头像*/
+       /* 默认头像*/
         user.setUimage("static/img/touxiang/defaultImg.jpg");
 
         /*比较前台拿到的验证码和后台生成的是否一致*/
@@ -67,8 +63,10 @@ public class UserController {
             model.addAttribute("codeEroor","验证码错误");
             return "register";
         }
-        userService.register(user);
-        return "registersuccess";
+
+             userService.register(user);
+             return "registersuccess";
+
     }
 
 
@@ -79,10 +77,9 @@ public class UserController {
 
         boolean flag=userService.cheakUser(username);
         PrintWriter writer = response.getWriter();
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf8");
+        response.setContentType("text/html;charset=utf-8");
         if(flag==true){
-            writer.print("username isexit");
+            writer.print("username exit");
         }else {
             writer.print("username can use");
         }
@@ -117,17 +114,17 @@ public class UserController {
     public String login(@RequestParam("username") String username , @RequestParam("password") String password , Model model,
                         HttpServletRequest request) {
         User user = userService.login(username, password);
-
         if(user!=null){
           HttpSession session= request.getSession();
             session.setAttribute("user",user);
+            return "redirect:/toIndex.do";
 
         }else{
 
             Model model1 = model.addAttribute("error", "账号或密码错误");
             return "login";
         }
-        return "index";
+
     }
 
 
@@ -172,6 +169,40 @@ public class UserController {
     }
 
 
+    /*更新头像*/
+    @RequestMapping("updateTouXiang")
+    public String test(@RequestParam("file")MultipartFile file, @RequestParam("uid")Integer uid, HttpSession session,HttpServletRequest request){
+        System.out.println("uid:"+uid);
+        /*获取文件名*/
+        String filename = file.getOriginalFilename();
+
+        /*获取一个随机字符串*/
+        String uuidname=UUID.randomUUID().toString().replace("-","");
+        /*截取后缀*/
+        String typename=filename.substring(filename.lastIndexOf("."));
+        /*拼接成一个新的文件名字*/
+        String newname=uuidname+typename;
+
+        //获取存储文件的真实路径
+        String realpath=request.getServletContext().getRealPath("/static/img/touxiang");
+        try {
+            /*将图片另存储为此地*/
+            file.transferTo(new File(realpath+"/"+newname));
+            /*更新数据库的图片路径*/
+            newname="static/img/touxiang/"+newname;
+            userService.updateImg(uid,newname);
+            System.out.println("newname="+newname);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /*重新查询用户，传到前端*/
+        User user = userService.selectByUid(uid);
+        session.setAttribute("user",user);
+        return "personInfo";
+    }
+
 
     /*用户退出*/
     @RequestMapping("exit")
@@ -180,4 +211,11 @@ public class UserController {
         session.removeAttribute("user");
         return "index";
     }
+
+
+
+
+
+
+
 }

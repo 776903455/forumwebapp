@@ -38,6 +38,7 @@
             left: 380px;
 
         }
+
     </style>
 </head>
 <body>

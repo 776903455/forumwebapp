@@ -62,12 +62,56 @@
 
         }
 
+        .head1 .container .row .search_img{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 25px;
+            right: 20px;
+
+        }
+        .touxiang_event{
+            position: relative;
+
+        }
+
+        .folat_info{
+            width:100px;
+            height:auto;
+            background:rgba(255,236,139,0.8);
+            opacity:0;
+            position:absolute;
+            top:55px;
+            right:90px;
+            z-index:10;
+        }
+        .folat_info ul{
+            margin: 0;
+            padding: 0;
+            width: 100px;
+            height: auto;
+        }
+        .folat_info ul li{
+
+            width: 100px;
+            height: 30px;
+            list-style: none;
+            margin-top: 5px;
+            border-bottom: 1px solid gray;
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .folat_info ul li:hover{
+            color: white;
+
+        }
 
     </style>
 </head>
 <body>
+<%@include file="../menu.jsp"%>
 
-<div class="head_index">
+<%--<div class="head_index">
 
     <div class="head1">
         <div class="container">
@@ -104,7 +148,7 @@
                                     <li><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
                                     <li><span class="faitie_span" style="cursor: pointer">发帖</span></li>
                                     <li><a href="#">帖子</a></li>
-                                        <%--    <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>--%>
+                                        &lt;%&ndash;    <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>&ndash;%&gt;
                                     <li><span class="click_hide_gold">积分：${sessionScope.user.score}</span></li>
                                     <li><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>
                                 </ul>
@@ -115,7 +159,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>--%>
 
 
 <!--center-->

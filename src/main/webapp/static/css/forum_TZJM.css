@@ -228,6 +228,10 @@
     left: 20px;
 }
 
+
+
+
+
 .reply_texteare form p   .reply_texteare_1{
     width: 25px;
     height: 25px;
@@ -236,8 +240,8 @@
 }
 
 .reply_texteare_text{
-    padding-top: 50px;
-    padding-left: 50px;
+    padding-top: 40px;
+    padding-left: 40px;
     line-height: 20px;
     text-indent: 2em;
 }

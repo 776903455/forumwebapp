@@ -85,8 +85,20 @@ public class TieZiController {
         }else {
             System.out.println("没传过来");
         }
-        Integer i=articleService.saveArticle(article);
+        /*获取url提取码*/
+        String tqm = request.getParameter("tqm");
+        Integer i=null;
+        if(tqm!=null){
+            /*拼接url地址*/
+            String url=article.getResourseurl().concat("_"+tqm);
 
+            String tqma = url.substring(url.lastIndexOf("_"));
+            String yrl1=url.substring(0,url.lastIndexOf("_"));
+            System.out.println(yrl1+"--"+tqma);
+
+            article.setResourseurl(url);
+        }
+        i=articleService.saveArticle(article);
         if(i>0){
             System.out.println("帖子保存成功");
         }else {
@@ -138,7 +150,8 @@ public class TieZiController {
 
     /*根据aid查询帖子信息，并跳转至具体帖子信息界面*/
     @RequestMapping("selectArtByAid")
-    public String selectArtByAid(@RequestParam("aid")Integer aid,Model model){
+    public String selectArtByAid(@RequestParam("aid")Integer aid, @RequestParam(value = "pn",defaultValue="1")int pn,Model model){
+
         /*根据aid查询一级、二级目录信息*/
         Article cAndCs=articleService.selectCsByAid(aid);
 
@@ -146,9 +159,12 @@ public class TieZiController {
 
         /*根据aid查询帖子信息*/
         Article article=articleService.selectArtByAid(aid);
+
+
         /*通过uid查找发帖用户*/
         Integer uid = article.getUid();
         User artUser = userService.selectByUid(uid);
+
         /*格式化时间*/
         List<Replay> replist = article.getReplist();
         /*查看人数增加*/
@@ -168,7 +184,7 @@ public class TieZiController {
 
 
         /*根据aid获取帖子的回复数据*/
-        PageHelper.startPage(1,5);
+        PageHelper.startPage(pn,5);
         List<Replay> replay =replayService.selectRepByAid(aid);
         PageInfo<Replay> reppage = new PageInfo(replay,5);
         int[] navigatepageNums =reppage.getNavigatepageNums();
@@ -224,5 +240,8 @@ public class TieZiController {
         model.addAttribute("c2",c2);
         return "soure_list/forum-100-2";
     }
+
+
+
 
 }

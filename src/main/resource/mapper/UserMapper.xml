@@ -20,6 +20,29 @@
     <result column="exchangenumber" jdbcType="VARCHAR" property="exchangenumber" />
     <result column="qdstatus" jdbcType="INTEGER" property="qdstatus" />
   </resultMap>
+
+
+  <resultMap id="BaseResultMap1" type="com.lyh.itstudy.model.User">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="uimage" jdbcType="VARCHAR" property="uimage" />
+    <result column="exchangenumber" jdbcType="VARCHAR" property="exchangenumber" />
+    <result column="qdstatus" jdbcType="INTEGER" property="qdstatus" />
+
+    <collection property="articles" ofType="com.lyh.itstudy.model.Article">
+      <id column="aid" jdbcType="INTEGER" property="aid" />
+    </collection>
+  </resultMap>
+
+
+
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
@@ -144,11 +167,11 @@
     </select>
 
 
-  <select id="selectByUid"  parameterType="java.lang.Integer"  resultMap="BaseResultMap">
+  <select id="selectByUid"  parameterType="java.lang.Integer"  resultMap="BaseResultMap1">
 
-    SELECT * FROM tbl_user
-    WHERE
-    uid=#{uid}
+   select u.*,a.aid from tbl_user u LEFT JOIN tbl_article a
+    on u.uid=a.uid
+  where u.uid=#{uid}
 
   </select>
 
@@ -179,14 +202,12 @@
       This element was generated on Sun Jan 26 12:38:17 GMT+08:00 2020.
     -->
     insert into tbl_user (uid, username, password, 
-      score, phone, addr, 
-      state, code, email, 
+      phone, addr,code, email,
       uimage,regtime,sex)
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{score,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
-      #{state,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{uimage,jdbcType=VARCHAR},#{regtime,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR}),
-      #{qdstatus,jdbcType=INTEGER})
+       #{phone,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR},
+       #{code,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{uimage,jdbcType=VARCHAR},#{regtime,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.itstudy.model.User">
     <!--
@@ -321,6 +342,13 @@
     qdstatus=#{qdstatus}
     WHERE
     username=#{username}
+  </update>
+
+  <update id="updateImg"  >
+    update tbl_user
+    set  uimage = #{uimage}
+    WHERE
+    uid=#{uid}
   </update>
 
   <update id="updateUserbyUid"  >

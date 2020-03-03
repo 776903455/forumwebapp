@@ -156,6 +156,15 @@ public class Article {
 
     private Category category;
     private Categorysecond categorysecond;
+    private String  resourseurl;
+
+    public String getResourseurl() {
+        return resourseurl;
+    }
+
+    public void setResourseurl(String resourseurl) {
+        this.resourseurl = resourseurl;
+    }
 
     public Category getCategory() {
         return category;

@@ -7,16 +7,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="../js/bootstrap.min.js"></script>
-    <link href="../css/index.css" rel="stylesheet" />
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <title></title>
     <style>
         *{margin: 0;padding: 0;}
@@ -107,7 +106,49 @@
             background: darkcyan;
         }
 
+        .head1 .container .row .search_img{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 25px;
+            right: 20px;
 
+        }
+        .touxiang_event{
+            position: relative;
+
+        }
+
+        .folat_info{
+            width:100px;
+            height:auto;
+            background:rgba(255,236,139,0.8);
+            opacity:0;
+            position:absolute;
+            top:55px;
+            right:90px;
+            z-index:10;
+        }
+        .folat_info ul{
+            margin: 0;
+            padding: 0;
+            width: 100px;
+            height: auto;
+        }
+        .folat_info ul li{
+
+            width: 100px;
+            height: 30px;
+            list-style: none;
+            margin-top: 5px;
+            border-bottom: 1px solid gray;
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .folat_info ul li:hover{
+            color: white;
+
+        }
     </style>
 </head>
 <body>
@@ -215,83 +256,66 @@
 
 </div>
 
-<div class="buttom_index">
-    <div class="buttom_index_top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="../img/button_index_img3.png" />
-                    <span >足不出户学编程</span>
+    <%--模态框--%>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">兑换信息：</h4>
                 </div>
-                <div class="col-md-4">
-                    <img src="../img/button_index_img1.png" />
-                    <span>学习经验共分享</span>
+                <form action="${pageContext.request.contextPath}/exchangeGift.do?gid=${giftInfo.gid}&gmoney=${giftInfo.gmoney}&score=${sessionScope.user.score}&exchangenumber=${sessionScope.user.exchangenumber}&number=${giftInfo.number}&uid=${sessionScope.user.uid}" method="post">
+                <div class="modal-body">
+
+                        <table border="1px">
+                            <tr >
+                                <td>邮箱</td>
+                                <td><input type="text" name="qq"></td>
+                            </tr>
+                            <tr >
+                                <td>收货地址</td>
+                                <td><input type="text" name="addr"></td>
+                            </tr>
+                            <tr >
+                                <td>联系电话</td>
+                                <td><input type="text" name="phone"></td>
+                            </tr>
+                        </table>
+                  </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">退出</button>
+                    <%--<button type="button" class="btn btn-primary" id="duihuan_dh">兑换</button>--%>
+                    <input type="submit" class="btn btn-primary" value="兑换">
                 </div>
-                <div class="col-md-4">
-                    <img src="../img/button_index_img2.png" />
-                    <span>前沿技术实时更新</span>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <div class="buttom_index_buttom">
-        <p style="font-size: 18px; color: white;margin-top: 30px;margin-left: 150px;">友情链接:</p>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <ul>
-                        <li><a href="http://jquery.cuishifeng.cn/">前端</a></li>
-                        <li><a href="#">SpringCloud</a></li>
-                        <li><a href="#">SpringBoot</a></li>
-                        <li><a href="#">Redis</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-
-                    <ul>
-                        <li><a href="#">人工智能</a></li>
-                        <li><a href="#">区块链/go</a></li>
-                        <li><a href="#">消息队列</a></li>
-                        <li><a href="#">微服务框架</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-
-                    <ul>
-                        <li><a href="#">大数据</a></li>
-                        <li><a href="#">Linux</a></li>
-                        <li><a href="#">Spring</a></li>
-                        <li><a href="#">并发编程</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <img width="200px" height="100px" style="border-radius: 10px;opacity: 0.8;" src="../img/run.jpg" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <p style="text-align: center;margin-top: 30px; font-size: 15px;">
-        <font color="cornflowerblue">©2020电科大嵌入B班lyh毕业设计&nbsp;</font>
-    </p>
-</div>
+    <%@include file="buttom.jsp"%>
 </body>
 
         <script>
             var exchangegift = document.getElementById("exchange_gift");
+            var duihuandh = document.querySelector("#duihuan_dh");
             exchangegift.onclick=function () {
                 if(${sessionScope.user!=null}){
                     if(${giftInfo.gmoney>sessionScope.user.score}){
                         alert("兑换礼品失败，你的金币不足!");
                     }else {
-                        window.location.href="${pageContext.request.contextPath}/exchangeGift.do?uid=${sessionScope.user.uid}&gid=${giftInfo.gid}&gmoney=${giftInfo.gmoney}&score=${sessionScope.user.score}&exchangenumber=${sessionScope.user.exchangenumber}&number=${giftInfo.number}";
+                        $('#myModal').modal('show');
+                       /* window.location.href="";*/
                     }
                 }else {
                     alert("请先登录!");
                 }
 
             }
+
+           /* duihuandh.onclick=function () {
+                window.location.href="";
+            }*/
         </script>
 </html>
 

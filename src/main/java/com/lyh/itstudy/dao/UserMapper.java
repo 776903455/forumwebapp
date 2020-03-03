@@ -97,4 +97,6 @@ public interface UserMapper {
     void updateUserbyUid(@Param("uid") Integer uid, @Param("score") Integer score,@Param("exchangenumber")Integer exchangenumber);
 
     User selectByUid(Integer uid);
+
+    void updateImg(@Param("uid") Integer uid,@Param("uimage") String uimage);
 }
