@@ -193,7 +193,7 @@
     <div class="path_navigation">
         <ol class="breadcrumb">
             <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
-            <li><a href="#">${userInfo.username}</a></li>
+            <li><a href="#">${user.username}</a></li>
             <li><a href="#">个人信息</a></li>
         </ol>
     </div>
@@ -201,8 +201,8 @@
 
     <div class="center">
         <div class="center_top">
-            <a href="${pageContext.request.contextPath}/toperbackground.do"><img src="${pageContext.request.contextPath}/${userInfo.uimage}"/></a>
-            <span>${userInfo.username}</span>
+            <a href="${pageContext.request.contextPath}/toperbackground.do"><img src="${pageContext.request.contextPath}/${user.uimage}"/></a>
+            <span>${user.username}</span>
         </div>
 
         <div class="center_buttom">
@@ -213,11 +213,11 @@
             <table >
                 <tr height="50px">
                     <th colspan="3">
-                        <p>${userInfo.username}(Uid=${userInfo.uid})</p>
+                        <p>${user.username}(Uid=${user.uid})</p>
                         <p>邮箱状态 &nbsp;&nbsp;
                             <c:choose>
-                                <c:when test="${userInfo.state==0}">未验证</c:when>
-                                <c:when test="${userInfo.state==1}">已验证</c:when>
+                                <c:when test="${user.state==0}">未验证</c:when>
+                                <c:when test="${user.state==1}">已验证</c:when>
                             </c:choose>
                         </p>
                     </th>
@@ -232,7 +232,7 @@
 
                 </tr>
                 <tr height="30px">
-                    <th><span>性别 &nbsp;${userInfo.sex}</span></th>
+                    <th><span>性别 &nbsp;${user.sex}</span></th>
                     <th colspan="2">
                         <span>生日：xxxx</span>
                     </th>
@@ -242,12 +242,12 @@
                     <th>
                         <p>活跃概况</p>
                         <p>用户组&nbsp;中级会员 </p>
-                        <p>注册时间&nbsp;${userInfo.regtime}</p>
+                        <p>注册时间&nbsp;${user.regtime}</p>
                         <p>上次访问IP&nbsp;59.33.171.191:41190 - - 中国广东惠州</p>
                     </th>
                     <th>
-                        <p>最后访问时间&nbsp;${userInfo.activetime}</p>
-                        <p>上次活动时间 ${userInfo.activetime}</p>
+                        <p>最后访问时间&nbsp;${user.activetime}</p>
+                        <p>上次活动时间 ${user.activetime}</p>
                     </th>
                     <th>
                         <p>注册IP&nbsp;14.211.16.200 - - 中国广东中山</p>
@@ -260,7 +260,7 @@
                         <p>已用空间&nbsp;0B</p>
                     </th>
                     <th colspan="2">
-                        <p>金币&nbsp;${userInfo.score}</p>
+                        <p>金币&nbsp;${user.score}</p>
                     </th>
 
                 </tr>

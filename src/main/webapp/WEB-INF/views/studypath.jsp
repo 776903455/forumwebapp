@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap -->
@@ -20,9 +20,7 @@
         *{
             padding: 0;
             margin: 0;
-
         }
-
         .head_title{
             width: 1266px;
             height: 150px;
@@ -30,9 +28,7 @@
             margin-top: 0;
             margin-left: 100px;
         }
-
         .head_title_text {
-
             line-height: 20px;
             width: 450px;
             height: 150px;
@@ -48,27 +44,22 @@
             top: 80px;
             left: 120px;
             font-size: 20px;
-
         }
         .head_title_img{
             position: absolute;
             border: 1px black solid;
             right: 0;
         }
-
         .head1 .container .row .search_img{
             width: 25px;
             height: 25px;
             position: absolute;
             top: 25px;
             right: 20px;
-
         }
         .touxiang_event{
             position: relative;
-
         }
-
         .folat_info{
             width:100px;
             height:auto;
@@ -86,7 +77,6 @@
             height: auto;
         }
         .folat_info ul li{
-
             width: 100px;
             height: 30px;
             list-style: none;
@@ -97,15 +87,13 @@
         }
         .folat_info ul li:hover{
             color: white;
-
         }
-
     </style>
 </head>
 <body>
 
 
-    <%@include file="menu.jsp"%>
+<%@include file="menu.jsp"%>
 <!--路径导航-->
 <div class="path_navigation">
     <ol class="breadcrumb">
@@ -119,7 +107,7 @@
 
 <div class="head_title0" style="width: 1366px;height: 150px;background: rgba(0,0,0,0.05)" >
     <div class="head_title">
-		
+
 		            <span class="head_title_text">
 		                <img class="xuexiluxian" src="${pageContext.request.contextPath}/static/img/xuexiluxian.jpg">
 		               <em style="line-height: 60px"> 学习路线图</em>

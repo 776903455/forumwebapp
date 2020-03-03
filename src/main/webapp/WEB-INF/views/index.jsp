@@ -19,7 +19,6 @@
     <style>
         *{margin: 0;
             padding: 0;}
-
         .scoreInfo{
             display: inline-block;
             width: 300px;
@@ -33,10 +32,9 @@
             color: white;
             font-size: 20px;
             opacity: 0;
-
         }
         .scoreInfo span{
-           margin-top: 20px;
+            margin-top: 20px;
         }
         .u1_title{
             padding-top: 50px;
@@ -47,18 +45,15 @@
         .u1_title li{
             cursor: pointer;
             padding-top: 5px;
-
         }
         .u1_title li:hover{
             background: rgba(0,0,0,0.05);
         }
         .modal-body	.row{
-
             height: 250px;
             border: 1px gray solid ;
             position: relative;
         }
-
         .skill{
             width: 200px;
             position: absolute;
@@ -74,32 +69,25 @@
             opacity: 0;
             list-style: none;
             border-right:1px gray solid ;
-
         }
         .skill li{
             cursor: pointer;
             padding-top: 5px;
         }
-
         .free li{
             cursor: pointer;
             padding-top: 5px;
-
         }
-
         .head1 .container .row .search_img{
             width: 25px;
             height: 25px;
             position: absolute;
             top: 25px;
             right: 20px;
-
         }
         .touxiang_event{
             position: relative;
-
         }
-
         .folat_info{
             width:100px;
             height:auto;
@@ -117,7 +105,6 @@
             height: auto;
         }
         .folat_info ul li{
-
             width: 100px;
             height: 30px;
             list-style: none;
@@ -128,13 +115,11 @@
         }
         .folat_info ul li:hover{
             color: white;
-
         }
-
     </style>
 </head>
 <body>
-    <%@include file="menu.jsp"%>
+<%@include file="menu.jsp"%>
 
 <div class="center_index">
     <!--轮播图-->
@@ -318,102 +303,102 @@
 </div>
 
 <%--弹出获得的金币--%>
-    <span class="scoreInfo"><span>本次签到获得<em id="em_score"></em>枚金币</span></span>
+<span class="scoreInfo"><span>本次签到获得<em id="em_score"></em>枚金币</span></span>
 
-    <%--当游客点击发帖按钮时，提示他先登录--%>
-    <p class="login_tips" style="opacity: 0;position: absolute;width: 500px;
+<%--当游客点击发帖按钮时，提示他先登录--%>
+<p class="login_tips" style="opacity: 0;position: absolute;width: 500px;
     height: 50px;text-align: center;top: 200px;left: 350px;background: orange;
     font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
-      游客请先登录之后才能发帖！
-    </p>
-    <%--当游客点击发签到按钮时，提示他先登录--%>
-    <p class="qiandao_tips" style="opacity: 0;position: absolute;width: 500px;
+    游客请先登录之后才能发帖！
+</p>
+<%--当游客点击发签到按钮时，提示他先登录--%>
+<p class="qiandao_tips" style="opacity: 0;position: absolute;width: 500px;
     height: 50px;text-align: center;top: 200px;left: 350px;background: orange;
     font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
-        游客登录之后才能签到！
-    </p>
-    <%--显示游客签到获取积分--%>
-    <p class="qiandao_getscore" style="opacity: 0;position: absolute;width: 500px;
+    游客登录之后才能签到！
+</p>
+<%--显示游客签到获取积分--%>
+<p class="qiandao_getscore" style="opacity: 0;position: absolute;width: 500px;
     height: 50px;text-align: center;top: 200px;left: 350px;background: orange;
     font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
-       恭喜你，获得<span id="qd_getscore"></span>枚金币！
-    </p>
-    <!-- 模态框（Modal） -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        主题选择
-                    </h4>
+    恭喜你，获得<span id="qd_getscore"></span>枚金币！
+</p>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    主题选择
+                </h4>
 
-                    <!--<span class="span1"></span> / <span class="span2"></span>-->
-                    <span class="span3">
+                <!--<span class="span1"></span> / <span class="span2"></span>-->
+                <span class="span3">
 					<em class="span1"></em>/<em class="span2"></em>
 				</span>
-                </div>
+            </div>
 
 
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <ul class="u1_title">
-                                <li class="study_free">免费资源</li>
-                                <li class="study_path">学习路线</li>
-                                <li class="study_skill">技术交流</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-5 ">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="u1_title">
+                            <li class="study_free">免费资源</li>
+                            <li class="study_path">学习路线</li>
+                            <li class="study_skill">技术交流</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-5 ">
 
-                            <!--<span></span>-->
-                            <ul class="skill">
-                                <li>java技术交流</li>
-                                <li>Python+人工智能技术交流</li>
-                                <li>c/c++技术交流</li>
-                                <li>PHP+H5技术交流</li>
-                                <li>UI/UE设计技术交流</li>
-                                <li>大数据技术交流</li>
-                                <li>新媒体+Android技术交流</li>
-                                <li>Linux云计算技术交流</li>
-                            </ul>
+                        <!--<span></span>-->
+                        <ul class="skill">
+                            <li>java技术交流</li>
+                            <li>Python+人工智能技术交流</li>
+                            <li>c/c++技术交流</li>
+                            <li>PHP+H5技术交流</li>
+                            <li>UI/UE设计技术交流</li>
+                            <li>大数据技术交流</li>
+                            <li>新媒体+Android技术交流</li>
+                            <li>Linux云计算技术交流</li>
+                        </ul>
 
-                            <ul class="free">
-                                <li>javaEE资源</li>
-                                <li>Python资源</li>
-                                <li>C/C++资源</li>
-                                <li>前端资源</li>
-                                <li>Ul/UE资源</li>
-                                <li>大数据资源</li>
-                                <li>Android资源</li>
-                                <li>学习路径资源</li>
-                                <li>学习经历资源</li>
-                            </ul>
-                        </div>
-
-
-                        <div class="col-md-4">
-
-                        </div>
+                        <ul class="free">
+                            <li>javaEE资源</li>
+                            <li>Python资源</li>
+                            <li>C/C++资源</li>
+                            <li>前端资源</li>
+                            <li>Ul/UE资源</li>
+                            <li>大数据资源</li>
+                            <li>Android资源</li>
+                            <li>学习路径资源</li>
+                            <li>学习经历资源</li>
+                        </ul>
                     </div>
 
+
+                    <div class="col-md-4">
+
+                    </div>
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="guanbi_btn">关闭
-                    </button>
-                    <button type="button" class="btn btn-primary" id="faitie_btn">
-                        发帖
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="guanbi_btn">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="faitie_btn">
+                    发帖
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
 
-    <%@include file="buttom.jsp"%>
+<%@include file="buttom.jsp"%>
 
 
 
@@ -438,22 +423,18 @@
     var logintips = document.querySelector(".login_tips");
     var qiandaotips = document.querySelector(".qiandao_tips");
     var qiandaogetscore = document.querySelector(".qiandao_getscore");
-
-
     b2.onclick=function () {
         if(${sessionScope.user==null}){
             logintips.style.opacity="1";
-           setInterval(function () {
+            setInterval(function () {
                 window.location.href="${pageContext.request.contextPath}/toLogin.do";
                 logintips.style.opacity="0";
             },2000);
-
         }else {
             /*显示模态框*/
             $('#myModal').modal("show");
         }
     }
-
     if(${sessionScope.user==null}){
         qiandao.innerHTML="签到";
     }else {
@@ -463,20 +444,16 @@
             qiandao.innerHTML="已签到";
         }
     }
-
-
-
-
     /*d点击签到按钮执行的事件*/
     qiandao.onclick=function () {
         if(${sessionScope.user!=null}){
             if(qiandao.innerHTML=="签到"){
-            window.location.href="${pageContext.request.contextPath}/getScore.do?username=${sessionScope.user.username}&score=${sessionScope.user.score}&qdstatus=${sessionScope.user.qdstatus}";
+                window.location.href="${pageContext.request.contextPath}/getScore.do?username=${sessionScope.user.username}&score=${sessionScope.user.score}&qdstatus=${sessionScope.user.qdstatus}";
             }else {
                 qiandao.style.cursor="not-allowed";
                 alert("今天已经签到，请明天继续！")
             }
-         }else {
+        }else {
             qiandaotips.style.opacity="1";
             setInterval(function () {
                 window.location.href="${pageContext.request.contextPath}/toLogin.do";
@@ -484,20 +461,14 @@
             },2000);
         }
     };
-
-
     /*弹出用户获取金币功能*/
-        if(${scoreInfo!=null}){
-            qdgetscore.innerHTML=${scoreInfo}
+    if(${scoreInfo!=null}){
+        qdgetscore.innerHTML=${scoreInfo}
             qiandaogetscore.style.opacity="1";
-            setInterval(function () {
-                qiandaogetscore.style.opacity="0";
-            },2000);
-        }
-
-
-
-
+        setInterval(function () {
+            qiandaogetscore.style.opacity="0";
+        },2000);
+    }
     touxiangimg.onmouseover=function () {
         folatinfo.style.opacity="1";
         folatinfo.style.width="100px";
@@ -517,19 +488,13 @@
         folatinfo.style.height="0";
         folatinfo.style.overflow="hidden";
     }
-
-
-
-
     for(var j=0;j<ul_title.length;j++) {
         ul_title[j].onclick=function(){
             span1.innerHTML=this.innerHTML;
             span2.innerHTML="";
         }
     }
-
     /*点击对应的li使其背景颜色改变*/
-
     for(var j=0;j<free.length;j++) {
         free[j].onclick=function(){
             for(var i=0;i<free.length;i++){
@@ -538,64 +503,47 @@
             }
             this.style.background="rgba(0,0,0,0.05)";
         }
-
     }
-
     for(var j=0;j<skill.length;j++) {
         skill[j].onclick=function(){
             for(var i=0;i<skill.length;i++){
                 skill[i].style.background="rgba(0,0,0,0)";
                 span2.innerHTML=this.innerHTML;
-
             }
             this.style.background="rgba(0,0,0,0.05)";
         }
     }
-
     /*点击发帖按钮将选择的主题文本传到发帖界面*/
     faitiebtn.onclick=function(){
-
         var text=(span3.innerText);
-
         if(text.length<9){
             alert("请选择正确的主题");
         }else{
             window.location.href="${pageContext.request.contextPath}/tofatiejiemian.do?uid=${sessionScope.user.uid}&text="+text;
         }
-
     }
     /*点击模态框关闭按钮，清空所选的主题*/
     guanbibtn.onclick=function(){
         span1.innerText="";
         span2.innerText="";
     }
-
     /*切换主题*/
-
     $(document).ready(function(){
         $(".study_skill").click(function(){
             $(".skill").css("opacity","1");
             $(".free").css("opacity","0");
-
             $(".skill").css("z-index","2");
             $(".free").css("z-index","1");
         });
-
-
         $(".study_free").click(function(){
-
             $(".free").css("opacity","1");
             $(".skill").css("opacity","0");
-
             $(".free").css("z-index","2");
             $(".skill").css("z-index","1");
         });
-
         $(".faitie_span").click(function () {
             $('#myModal').modal("show");
         });
-
     });
-
 </script>
 </html>

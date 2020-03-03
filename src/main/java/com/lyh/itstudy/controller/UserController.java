@@ -34,7 +34,7 @@ import java.util.*;
 @MultipartConfig
 public class UserController {
 
-  @Autowired
+    @Autowired
     private UserService userService;
 
 
@@ -51,10 +51,10 @@ public class UserController {
     @RequestMapping("register")
     public String register( User user, Model model, HttpSession session) {
 
-       /* 注册时间*/
+        /* 注册时间*/
         String time=GetTimeUtil.getDate();
         user.setRegtime(time);
-       /* 默认头像*/
+        /* 默认头像*/
         user.setUimage("static/img/touxiang/defaultImg.jpg");
 
         /*比较前台拿到的验证码和后台生成的是否一致*/
@@ -64,8 +64,8 @@ public class UserController {
             return "register";
         }
 
-             userService.register(user);
-             return "registersuccess";
+        userService.register(user);
+        return "registersuccess";
 
     }
 
@@ -90,8 +90,8 @@ public class UserController {
     @RequestMapping("cheackImg")
     public  String cheackImg(HttpServletResponse response, HttpSession session) throws Exception {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-       String verifyCodeValue= CheckImgUtil.CodeUtil(output);
-       session.setAttribute("verifyCodeValue",verifyCodeValue);
+        String verifyCodeValue= CheckImgUtil.CodeUtil(output);
+        session.setAttribute("verifyCodeValue",verifyCodeValue);
         ServletOutputStream out = response.getOutputStream();
         output.writeTo(out);
 
@@ -115,7 +115,7 @@ public class UserController {
                         HttpServletRequest request) {
         User user = userService.login(username, password);
         if(user!=null){
-          HttpSession session= request.getSession();
+            HttpSession session= request.getSession();
             session.setAttribute("user",user);
             return "redirect:/toIndex.do";
 
@@ -133,29 +133,29 @@ public class UserController {
 
     @RequestMapping("getScore")
     public  String  getMoney(@RequestParam("score")int score,@RequestParam("username")String username,
-                           @RequestParam("qdstatus")Integer qdstatus, Model model,HttpSession session) throws IOException {
+                             @RequestParam("qdstatus")Integer qdstatus, Model model,HttpSession session) throws IOException {
 
-            /*改变签到状态*/
-            qdstatus=1;
-            /*获取随机金币数*/
-            Random random=new Random();
-            int num=random.nextInt(5)+10;
-            score=score+num;
-            int i=userService.addScore(score,username,qdstatus);
-            model.addAttribute("scoreInfo",num);
+        /*改变签到状态*/
+        qdstatus=1;
+        /*获取随机金币数*/
+        Random random=new Random();
+        int num=random.nextInt(5)+10;
+        score=score+num;
+        int i=userService.addScore(score,username,qdstatus);
+        model.addAttribute("scoreInfo",num);
 
-            /*查询更新后用户数据*/
-             User user = userService.findUser(username);
-            if(user!=null){
-                session.setMaxInactiveInterval(60*60*30);
-                session.setAttribute("user",user);
+        /*查询更新后用户数据*/
+        User user = userService.findUser(username);
+        if(user!=null){
+            session.setMaxInactiveInterval(60*60*30);
+            session.setAttribute("user",user);
 
-            }else {
-                System.out.println("没有此用户！");
-            }
+        }else {
+            System.out.println("没有此用户！");
+        }
 
 
-            return "index";
+        return "index";
 
     }
 
@@ -164,7 +164,7 @@ public class UserController {
     public  String toPersonInfo(@RequestParam("username")String username,Model model){
         User user= userService.findUser(username);
         user.setActivetime(GetTimeUtil.getDate());
-        model.addAttribute("userInfo",user);
+        model.addAttribute("user",user);
         return "personInfo";
     }
 
@@ -188,6 +188,7 @@ public class UserController {
         try {
             /*将图片另存储为此地*/
             file.transferTo(new File(realpath+"/"+newname));
+            System.out.println("path:"+realpath+"/"+newname);
             /*更新数据库的图片路径*/
             newname="static/img/touxiang/"+newname;
             userService.updateImg(uid,newname);

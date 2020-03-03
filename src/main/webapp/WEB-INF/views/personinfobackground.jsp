@@ -1,10 +1,10 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html>
 <head>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap -->
@@ -14,7 +14,7 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
-    <title>Title</title>
+    <title>IT在线学习平台</title>
     <style>
         *{
             margin: 0;
@@ -131,6 +131,8 @@
             /*  background: #2aabd2;*/
             margin-top: 20px;
         }
+
+
         .head1 .container .row .search_img{
             width: 25px;
             height: 25px;
@@ -139,7 +141,6 @@
             right: 20px;
 
         }
-
         .touxiang_event{
             position: relative;
 
@@ -175,11 +176,13 @@
             color: white;
 
         }
+
     </style>
 </head>
 <body>
-
         <%@include file="menu.jsp"%>
+
+
 
 <!--过度图-->
 <div style="width: 1349px;height: 200px;background:rgba(25,191,255,0.8)" >
@@ -201,7 +204,7 @@
         <div class="right_top">我的信息：</div>
         <div class="form-group" class="right_buttom;" >
             <form action="#"  style="margin-left: 200px;margin-top: 10px">
-                用户名：2364###
+                用户名：${user.username}
                 <br>  <br>
                 <label>昵称:</label>
                 <input type="text" name="youname"  class="form-control" style="width: 30%">
@@ -226,10 +229,9 @@
         <div class="right_buttom;" >
             <form action="${pageContext.request.contextPath}/updateTouXiang.do?uid=${user.uid}" method="post" enctype="multipart/form-data">
                 <div class="buttom_left"  >
-                    <img id="imgs" src="${pageContext.request.contextPath}/static/img/载入图片.jpg">
+                    <img id="imgs" src="${pageContext.request.contextPath}/static/img/载入图片.jpg" >
                 </div>
                 <input id="hiddenfile" type="file" name="file" onchange="changeImg()">
-
                 <div class="buttom_centern" >
                     <img style="width: 80px;height: 80px; margin-top: 30px;margin-left: 30px"
                          src="${pageContext.request.contextPath}/static/img/jiantou.jpg">
@@ -254,7 +256,6 @@
                 更新
             </button>
         </div>
-
     </div>
 
     <div class="info_right2">
@@ -262,10 +263,10 @@
             <table width="900px" >
                 <tr style="height: 70px;text-align: right;" >
                     <td style="width: 20%;" rowspan="2">
-                        <img src="${user.image}" style="width: 100px;height: 100px;border-radius: 100%">
+                        <img src="${user.uimage}" style="width: 100px;height: 100px;border-radius: 100%">
                     </td>
                     <td style="width: 30%">
-                        <p style="width: 100px;height: 40px;margin-top: 30px;margin-left: 20px">2369210822xx</p>
+                        <p style="width: 100px;height: 40px;margin-top: 30px;margin-left: 20px">${user.username}</p>
                     </td>
                     <td style="text-align: left">
                         <span style="border: 1px grey solid;display: inline-block;width:
@@ -323,7 +324,6 @@
 </div>
 </body>
 <script>
-
     $(function () {
 
         $("#myshouye").click(function () {
@@ -360,8 +360,9 @@
             $("#hiddenfile").click();
         })
 
-        /*触发sumbit事件提交表单*/
+
         $("#hiddensumbit").hide();
+
         $("#btn_gx").click(function () {
             $("#hiddensumbit").click();
         })
