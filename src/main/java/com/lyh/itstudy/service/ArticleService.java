@@ -89,4 +89,9 @@ public class ArticleService {
     public Article selectCsByAid(Integer aid) {
         return articleMapper.selectCsByAid(aid);
     }
+
+    public List<Article> findPersonArt(Integer uid) {
+       return articleMapper.findPersonArt(uid);
+
+    }
 }

@@ -203,11 +203,12 @@
     -->
     insert into tbl_user (uid, username, password, 
       phone, addr,code, email,
-      uimage,regtime,sex)
+      uimage,regtime,sex,uname)
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
        #{phone,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR},
        #{code,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
-      #{uimage,jdbcType=VARCHAR},#{regtime,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR})
+      #{uimage,jdbcType=VARCHAR},#{regtime,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},
+       #{uname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.itstudy.model.User">
     <!--
@@ -356,6 +357,15 @@
     set  score = #{score},exchangenumber=#{exchangenumber}
     WHERE
     uid=#{uid}
+  </update>
+
+
+  <update id="updatePersonInfo" parameterType="com.lyh.itstudy.model.User" >
+    update tbl_user
+    set  uname = #{uname},addr=#{addr},phone=#{phone},sex=#{sex}
+    WHERE
+    uid=#{uid}
+
   </update>
 
   <update id="updateByExample" parameterType="map">

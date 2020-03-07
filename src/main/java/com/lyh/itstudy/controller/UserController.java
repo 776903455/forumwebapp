@@ -56,6 +56,8 @@ public class UserController {
         user.setRegtime(time);
         /* 默认头像*/
         user.setUimage("static/img/touxiang/defaultImg.jpg");
+        /*默认昵称为账号*/
+        user.setUname(user.getUsername());
 
         /*比较前台拿到的验证码和后台生成的是否一致*/
         String codeValue = (String) session.getAttribute("verifyCodeValue");
@@ -168,6 +170,21 @@ public class UserController {
         return "personInfo";
     }
 
+
+    /*更新个人信息*/
+    @RequestMapping("updatePersonInfo")
+    public String  updatePersonInfo(User user, HttpSession session){
+        System.out.println("uid:"+user.getUid());
+        if(user!=null){
+            userService.updatePersonInfo(user);
+        }else {
+            return "personinfobackground";
+        }
+
+        User user1 = userService.selectByUid(user.getUid());
+        session.setAttribute("user",user1);
+        return "index";
+    }
 
     /*更新头像*/
     @RequestMapping("updateTouXiang")

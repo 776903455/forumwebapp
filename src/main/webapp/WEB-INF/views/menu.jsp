@@ -27,10 +27,31 @@
                     <c:if test="${sessionScope.user==null}">
                         <a href="${pageContext.request.contextPath}/toLogin.do" style="font-size: 15px; margin-top: 70px;margin-left: 120px;">登录 </a>
                         <a href="${pageContext.request.contextPath}/toRegister.do" style="font-size: 15px; margin-top: 70px;margin-left: 10px;">注册</a>
+
+
                     </c:if>
 
                     <c:if test="${sessionScope.user!=null}">
-                        <div class="touxiang_event">
+                        <span style="position: absolute;font-size: 15px;left: 100px;top: 5px">${user.uname}</span>
+                        <div class="user_info">
+                            <div class="user_image">
+                              <a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}">
+                                  <img style="width: 50px;height: 50px;border-radius: 100%;" src="${sessionScope.user.uimage}"/>
+                              </a>
+                            </div>
+
+                            <div class="user_caozao">
+                                <ul>
+                                    <li style="cursor: pointer"><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
+                                    <li><span class="faitie_span" style="cursor: pointer">发帖</span></li>
+                                    <li style="cursor: pointer"><a href="#">帖子</a></li>
+                                    <li><span>积分：${sessionScope.user.score}</span></li>
+                                    <li style="cursor: pointer"><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                      <%--  <div class="touxiang_event">
                             <p  style="width: 50px;height: 50px;display: inline">
                                 <a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}"><img  class="touxiang_img"  style="width: 50px;height: 50px;border-radius: 50%" src="${sessionScope.user.uimage}" ></a>
                             </p>
@@ -41,12 +62,14 @@
                                     <li><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
                                     <li><span class="faitie_span" style="cursor: pointer">发帖</span></li>
                                     <li><a href="#">帖子</a></li>
-                                        <%--    <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>--%>
+                                        &lt;%&ndash;    <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>&ndash;%&gt;
                                     <li><span class="click_hide_gold">积分：${sessionScope.user.score}</span></li>
                                     <li><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>--%>
+
+
                     </c:if>
                 </div>
             </div>

@@ -103,6 +103,24 @@
   </resultMap>
 
 
+
+  <resultMap id="findPersonArtMap" type="com.lyh.itstudy.model.Article">
+
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+    <result column="looknum" jdbcType="INTEGER" property="looknum" />
+
+    <association property="categorysecond" javaType="categorysecond">
+      <result column="csname" jdbcType="VARCHAR" property="csname" />
+    </association>
+
+    <collection property="replist" ofType="replay">
+      <id column="repid" jdbcType="INTEGER" property="repid" />
+    </collection>
+
+  </resultMap>
+
+
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lyh.itstudy.model.Article">
     <!--
       WARNING - @mbg.generated
@@ -297,6 +315,20 @@
   </select>
 
 
+
+  <select id="findPersonArt" parameterType="int"  resultMap="findPersonArtMap">
+   select cs.csname,a.aid,a.aname,a.adate,a.looknum,r.repid from (select * from tbl_article  ORDER BY adate DESC) a
+  LEFT JOIN tbl_categorysecond cs
+  on
+  a.csid=cs.csid
+  LEFT JOIN tbl_replay r
+  ON
+  a.aid=r.aid
+  where
+  a.uid=#{uid}
+
+
+  </select>
 
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ArticleExample" resultMap="ResultMapWithBLOBs">
     <!--

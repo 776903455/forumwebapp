@@ -1,9 +1,8 @@
 package com.lyh.itstudy.controller;
 
-import com.lyh.itstudy.model.Article;
-import com.lyh.itstudy.model.Category;
-import com.lyh.itstudy.model.Categorysecond;
-import com.lyh.itstudy.model.Gift;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.lyh.itstudy.model.*;
 import com.lyh.itstudy.service.ArticleService;
 import com.lyh.itstudy.service.CategorySecondService;
 import com.lyh.itstudy.service.CategoryService;
@@ -40,6 +39,7 @@ public class ToOtherJieMian {
     /*去首页*/
     @RequestMapping("toIndex")
     public String toIndex(Model model,HttpSession session){
+
         /*查询前五阅读最多主题*/
         List<Article> articles4= articleService.findLookest4();
         /*查询第5-10条阅读最多主题*/
@@ -126,7 +126,26 @@ public class ToOtherJieMian {
 
     /*去个人详细界面*/
     @RequestMapping("toperbackground")
-    public String toperbackground(){
+    public String toperbackground(@RequestParam("uid")Integer uid,@RequestParam(value = "pn",defaultValue = "1")int pn,Model model,HttpSession session){
+        PageHelper.startPage(pn,5);
+            List<Article> personArt=articleService.findPersonArt(uid);
+        PageInfo<Article> personInfoPage=new PageInfo<>(personArt,5);
+
+        /*int[] navigatepageNums = personInfoPage.getNavigatepageNums();
+        for (int i:navigatepageNums){
+            System.out.println("i:"+i);
+        }*/
+
+        session.setAttribute("personArt",personArt);
+        model.addAttribute("personInfoPage",personInfoPage);
+       /* for (Article article:personArt){
+            Categorysecond categorysecond = article.getCategorysecond();
+            List<Replay> replist = article.getReplist();
+            System.out.println("cs:"+categorysecond.getCsname()+"art"+article);
+            for(Replay r:replist){
+                System.out.println("rep:"+r);
+            }
+        }*/
 
         return "personinfobackground";
     }

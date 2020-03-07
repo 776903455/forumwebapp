@@ -73,4 +73,8 @@ public class UserService {
     public void updateImg(Integer uid,String newname) {
         userMapper.updateImg(uid,newname);
     }
+
+    public void updatePersonInfo(User user) {
+        userMapper.updatePersonInfo(user);
+    }
 }

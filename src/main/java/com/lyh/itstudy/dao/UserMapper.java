@@ -99,4 +99,6 @@ public interface UserMapper {
     User selectByUid(Integer uid);
 
     void updateImg(@Param("uid") Integer uid,@Param("uimage") String uimage);
+
+    void updatePersonInfo(User users);
 }

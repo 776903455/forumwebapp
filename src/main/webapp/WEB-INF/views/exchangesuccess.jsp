@@ -13,6 +13,7 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <title>Title</title>
 
 
@@ -116,6 +117,7 @@
 </div>
 
 </body>
+
             <script>
                 var num=5;
                 var miao1 = document.querySelector(".miao1");

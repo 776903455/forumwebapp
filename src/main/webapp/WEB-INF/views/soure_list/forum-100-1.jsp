@@ -14,6 +14,7 @@
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/forum-100-1.css">
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <html>
 <head>
     <style>
@@ -70,96 +71,14 @@
             right: 20px;
 
         }
-        .touxiang_event{
-            position: relative;
 
-        }
-
-        .folat_info{
-            width:100px;
-            height:auto;
-            background:rgba(255,236,139,0.8);
-            opacity:0;
-            position:absolute;
-            top:55px;
-            right:90px;
-            z-index:10;
-        }
-        .folat_info ul{
-            margin: 0;
-            padding: 0;
-            width: 100px;
-            height: auto;
-        }
-        .folat_info ul li{
-
-            width: 100px;
-            height: 30px;
-            list-style: none;
-            margin-top: 5px;
-            border-bottom: 1px solid gray;
-            font-size: 15px;
-            line-height: 20px;
-        }
-        .folat_info ul li:hover{
-            color: white;
-
-        }
 
     </style>
 </head>
 <body>
 <%@include file="../menu.jsp"%>
 
-<%--<div class="head_index">
 
-    <div class="head1">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2"> <img src="${pageContext.request.contextPath}/static/img/title_left1.jpg" class="head1_left_img"></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toFreeSource.do?cid=1">免费资源</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toStudyPath.do" >学习路线</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toSkillExchange.do?cid=3">技术交流</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toProducts.do">礼品兑换</a></div>
-                <div class="col-md-1"><a href="#">最新活动</a></div>
-                <div class="col-md-2">
-                    <input  id="search_info" value=""/>
-                    <a href="#">
-                        <img src="${pageContext.request.contextPath}/static/img/search_img.jpg" class="search_img" />
-                    </a>
-                </div>
-
-                <div class="col-md-2" >
-                    <c:if test="${sessionScope.user==null}">
-                        <a href="${pageContext.request.contextPath}/toLogin.do" style="font-size: 15px; margin-top: 70px;margin-left: 120px;">登录 </a>
-                        <a href="${pageContext.request.contextPath}/toRegister.do" style="font-size: 15px; margin-top: 70px;margin-left: 10px;">注册</a>
-                    </c:if>
-
-                    <c:if test="${sessionScope.user!=null}">
-                        <div class="touxiang_event">
-                            <p  style="width: 50px;height: 50px;display: inline">
-                                <a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}"><img  class="touxiang_img"  style="width: 50px;height: 50px;border-radius: 50%" src="${sessionScope.user.uimage}" ></a>
-                            </p>
-                            <span class="username_hide">${sessionScope.user.username}</span>
-
-                            <div class="folat_info">
-                                <ul>
-                                    <li><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
-                                    <li><span class="faitie_span" style="cursor: pointer">发帖</span></li>
-                                    <li><a href="#">帖子</a></li>
-                                        &lt;%&ndash;    <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>&ndash;%&gt;
-                                    <li><span class="click_hide_gold">积分：${sessionScope.user.score}</span></li>
-                                    <li><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </c:if>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>--%>
 
 
 <!--center-->
@@ -411,4 +330,5 @@
         <%@include file="../buttom.jsp"%>
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
 </html>

@@ -16,6 +16,7 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <title></title>
     <style>
         *{margin: 0;padding: 0;}
@@ -295,7 +296,7 @@
 
     <%@include file="buttom.jsp"%>
 </body>
-
+<script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
         <script>
             var exchangegift = document.getElementById("exchange_gift");
             var duihuandh = document.querySelector("#duihuan_dh");

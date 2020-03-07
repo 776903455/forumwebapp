@@ -22,6 +22,7 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <title>Title</title>
     <style>
         *{
@@ -201,7 +202,7 @@
 
     <div class="center">
         <div class="center_top">
-            <a href="${pageContext.request.contextPath}/toperbackground.do"><img src="${pageContext.request.contextPath}/${user.uimage}"/></a>
+            <a href="${pageContext.request.contextPath}/toperbackground.do?uid=${user.uid}"><img src="${pageContext.request.contextPath}/${user.uimage}"/></a>
             <span>${user.username}</span>
         </div>
 
@@ -277,4 +278,5 @@
     <span>©2020电科大嵌入B班lyh毕业设计&nbsp</span>
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
 </html>

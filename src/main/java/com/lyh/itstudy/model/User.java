@@ -7,18 +7,18 @@ import java.util.List;
 public class User {
 
   /*  @Pattern(regexp="[0-9]{6,12}",message = "用户名长度6-12之间")*/
-  @NotNull(message="名字不能为空")
+  /*@NotNull(message="名字不能为空")*/
     private String username;
 
 
    /* @Pattern(regexp = "([a-zA-Z0-9]{6,15})",message ="密码长度6-15之间" )*/
-   @NotNull(message="名字不能为空")
+  /* @NotNull(message="名字不能为空")*/
     private String password;
 
 
 
    /* @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,5}",message = "邮箱格式错误")*/
-   @Email(message="必须是合法的邮箱地址")
+/*   @Email(message="必须是合法的邮箱地址")*/
     private String email;
 
 
@@ -45,10 +45,19 @@ public class User {
 
     private String uimage;
 
+    private String uname;
+
     public String getSex() {
         return sex;
     }
 
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
 
     public List<Article> getArticles() {
         return articles;

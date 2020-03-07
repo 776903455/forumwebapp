@@ -143,4 +143,7 @@ public interface ArticleMapper {
     List<Article> findAllNewsArt(@Param("c1")Integer c1,@Param("c2") Integer c2);
 
     Article selectCsByAid(Integer aid);
+
+
+    List<Article> findPersonArt(Integer uid);
 }

@@ -1,0 +1,46 @@
+.user_info{
+
+    width: 100px;
+    height: 300px;
+    /*  background: rgba(0,0,0,0.5);*/
+    margin: auto;
+    margin-left: 0px;
+    position: absolute;
+
+}
+.user_image{
+
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    /*   background: pink;*/
+    margin-left: 20px;
+    margin-top: 5px;
+
+}
+.user_caozao{
+    width: 100px;
+    height: auto;
+    /*  background: greenyellow;*/
+    display: none;
+}
+. user_caozao ul{
+    width: 100px;
+    height:208px;
+    background: red;
+}
+.user_caozao ul>li {
+
+    width: 100px;
+    height: 50px;
+    background: darkkhaki;
+    list-style: none;
+    margin-top: 2px;
+    font-size: 18px;
+
+}
+.user_caozao ul>li:hover {
+
+    color: white;
+
+}

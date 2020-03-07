@@ -14,6 +14,7 @@
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/forum-100-1.css">
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <html>
 <head>
     <style>
@@ -401,4 +402,5 @@
         <%@include file="../buttom.jsp"%>
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
 </html>

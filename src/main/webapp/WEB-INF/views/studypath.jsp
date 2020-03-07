@@ -15,6 +15,7 @@
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/static/css/studypath.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <title>IT在线学习平台</title>
     <style>
         *{
@@ -246,4 +247,5 @@
 <%@include file="buttom.jsp"%>
 
 </body>
+<script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
 </html>

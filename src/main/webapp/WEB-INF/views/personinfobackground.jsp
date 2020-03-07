@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,6 +15,7 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <title>IT在线学习平台</title>
     <style>
         *{
@@ -141,41 +143,6 @@
             right: 20px;
 
         }
-        .touxiang_event{
-            position: relative;
-
-        }
-
-        .folat_info{
-            width:100px;
-            height:auto;
-            background:rgba(255,236,139,0.8);
-            opacity:0;
-            position:absolute;
-            top:55px;
-            right:90px;
-            z-index:10;
-        }
-        .folat_info ul{
-            margin: 0;
-            padding: 0;
-            width: 100px;
-            height: auto;
-        }
-        .folat_info ul li{
-
-            width: 100px;
-            height: 30px;
-            list-style: none;
-            margin-top: 5px;
-            border-bottom: 1px solid gray;
-            font-size: 15px;
-            line-height: 20px;
-        }
-        .folat_info ul li:hover{
-            color: white;
-
-        }
 
     </style>
 </head>
@@ -203,22 +170,23 @@
     <div class="info_right">
         <div class="right_top">我的信息：</div>
         <div class="form-group" class="right_buttom;" >
-            <form action="#"  style="margin-left: 200px;margin-top: 10px">
+            <form action="${pageContext.request.contextPath}/updatePersonInfo.do"  style="margin-left: 200px;margin-top: 10px">
                 用户名：${user.username}
                 <br>  <br>
                 <label>昵称:</label>
-                <input type="text" name="youname"  class="form-control" style="width: 30%">
+                <input type="text" name="uname"  class="form-control" style="width: 30%">
                 <span style="position: relative;left: 300px;top: -25px;color: grey">注：修改一次昵称需要消耗5个金币</span>
                 <br>  <br>
                 <label>地址:</label>
                 <input type="text" name="addr"  class="form-control" style="width: 30%">
                 <br>  <br>
                 <label> 手机:</label>
-                <input type="text" name="addr"  class="form-control" style="width: 30%">
+                <input type="text" name="phone"  class="form-control" style="width: 30%">
                 <br>  <br>
                 性别：<input type="radio" name="sex" value="男" checked="checked">男
                 <input type="radio" name="sex"value="女">女
                 <br>  <br>
+                <input type="hidden" name="uid" value="${user.uid}">
                 <input  style="width: 100px;margin-left: 300px" class="btn btn-info" id="dl_button1" type="submit"  value="修改"  >
             </form>
         </div>
@@ -283,7 +251,7 @@
                          margin-left: 40px;float: left">
                             金
                         </p>
-                        <p style="float: left;width: 40px;height: 40px;margin-top: 10px;">450</p>
+                        <p style="float: left;width: 40px;height: 40px;margin-top: 10px;">${user.score}</p>
                     </td>
                     <td>
                          <span style="border: 1px grey solid;display: inline-block;width:
@@ -303,26 +271,78 @@
                     <tr style="height: 40px;background: rgba(0,0,0,0.1)">
                         <td style="width: 60%;padding-left: 20px">主题</td>
                         <td>板块</td>
-                        <td>回复</td>
+                        <td>回复/查看</td>
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="personInfoPage" items="${personArt}">
                     <tr >
                         <td style="width: 60%;padding-left: 20px;height: 50px">
-                            <a href="#">asdas萨达四大四大</a>
+                            <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${personInfoPage.aid}">${personInfoPage.aname}</a>
                         </td>
-                        <td>阿诗丹顿</td>
-                        <td>50</td>
+                        <td>${personInfoPage.categorysecond.csname}</td>
+                        <td>${personInfoPage.replist.size()}/${personInfoPage.looknum}</td>
                     </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
+
+            <!--分页-->
+            <div class="fenye">
+                <!--分页-->
+                <div class="page_fenye">
+                    <nav style="width: 650px; padding-left: 20px;">
+                        <ul class="pagination">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/toperbackground.do?uid=${sessionScope.user.uid}&pn=1" aria-label="Next">
+                                    <span aria-hidden="true">首页</span>
+                                </a>
+                            </li>
+                            <c:if test="${personInfoPage.hasPreviousPage}">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/toperbackground.do?uid=${sessionScope.user.uid}&pn=${personInfoPage.pageNum-1}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            </c:if>
+
+
+                            <c:forEach items="${personInfoPage.navigatepageNums}" var="navNums">
+                                <c:if test="${navNums==personInfoPage.pageNum}">
+                                    <li class="active"><a href="#">${navNums}</a></li>
+                                </c:if>
+                                <c:if test="${navNums!=personInfoPage.pageNum}">
+                                    <li ><a href="${pageContext.request.contextPath}/toperbackground.do?uid=${sessionScope.user.uid}&pn=${navNums}">${navNums}</a></li>
+                                </c:if>
+                            </c:forEach>
+
+                            <c:if test="${personInfoPage.hasNextPage}">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/toperbackground.do?uid=${sessionScope.user.uid}&pn=${personInfoPage.pageNum+1}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </c:if>
+
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/toperbackground.do?uid=${sessionScope.user.uid}&pn=${personInfoPage.pages}" aria-label="Next">
+                                    <span aria-hidden="true">尾页</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
         </div>
 
     </div>
 
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
 <script>
     $(function () {
 

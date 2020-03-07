@@ -14,6 +14,7 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet" />
     <title>IT在线学习平台</title>
 
     <style>
@@ -85,6 +86,7 @@
             top: 25px;
             right: 20px;
         }
+/*
         .touxiang_event{
             position: relative;
         }
@@ -116,6 +118,12 @@
         .folat_info ul li:hover{
             color: white;
         }
+*/
+
+
+        /*---------------------*/
+
+
     </style>
 </head>
 <body>
@@ -403,15 +411,13 @@
 
 
 </body>
-<
+
+<script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
 <script>
-    var folatinfo = document.querySelector(".folat_info");
-    var touxiangimg = document.querySelector(".touxiang_img");
     var scoreInfo = document.querySelector(".scoreInfo");
     var b2 = document.querySelector("#b2");
     var qiandao = document.querySelector("#qiandao");
     var qdgetscore = document.querySelector("#qd_getscore");
-    var emscore = document.querySelector("#em_score");
     var free=document.querySelectorAll(".free li");
     var skill=document.querySelectorAll(".skill li");
     var ul_title=document.querySelectorAll(".u1_title li");
@@ -469,7 +475,7 @@
             qiandaogetscore.style.opacity="0";
         },2000);
     }
-    touxiangimg.onmouseover=function () {
+    /*touxiangimg.onmouseover=function () {
         folatinfo.style.opacity="1";
         folatinfo.style.width="100px";
         folatinfo.style.height="auto";
@@ -487,7 +493,7 @@
         folatinfo.style.width="0";
         folatinfo.style.height="0";
         folatinfo.style.overflow="hidden";
-    }
+    }*/
     for(var j=0;j<ul_title.length;j++) {
         ul_title[j].onclick=function(){
             span1.innerHTML=this.innerHTML;
@@ -545,5 +551,8 @@
             $('#myModal').modal("show");
         });
     });
+
+
+
 </script>
 </html>
