@@ -112,6 +112,7 @@ public class ReplayController {
         }
 
        if(flag==1) {
+
            return "soure_list/forum_TZJM1";
        }else {
            return "soure_list/forum_TZJM";

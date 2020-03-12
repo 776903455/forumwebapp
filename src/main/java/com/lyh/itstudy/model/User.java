@@ -6,23 +6,23 @@ import java.util.List;
 
 public class User {
 
-  /*  @Pattern(regexp="[0-9]{6,12}",message = "用户名长度6-12之间")*/
-  /*@NotNull(message="名字不能为空")*/
+    @Pattern(regexp="[0-9]{6,12}",message = "用户名长度6-12之间")
+  @NotNull(message="名字不能为空")
     private String username;
 
 
-   /* @Pattern(regexp = "([a-zA-Z0-9]{6,15})",message ="密码长度6-15之间" )*/
-  /* @NotNull(message="名字不能为空")*/
+    @Pattern(regexp = "([a-zA-Z0-9]{6,15})",message ="密码长度6-15之间" )
+   @NotNull(message="名字不能为空")
     private String password;
 
 
 
-   /* @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,5}",message = "邮箱格式错误")*/
-/*   @Email(message="必须是合法的邮箱地址")*/
+    @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,5}",message = "邮箱格式错误")
+   @Email(message="必须是合法的邮箱地址")
     private String email;
 
 
-   /* @Pattern(regexp="[1][3,8][3,6,9][0-9]{8}",message="无效的电话号码")*/
+    @Pattern(regexp="[1][3,8][3,6,9][0-9]{8}",message="无效的电话号码")
     private String phone;
 
     private Integer uid;

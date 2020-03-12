@@ -15,6 +15,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
@@ -135,8 +136,13 @@ public class UserController {
 
     @RequestMapping("getScore")
     public  String  getMoney(@RequestParam("score")int score,@RequestParam("username")String username,
-                             @RequestParam("qdstatus")Integer qdstatus, Model model,HttpSession session) throws IOException {
+                             @RequestParam("qdstatus")Integer qdstatus, Model model,HttpSession session,HttpServletResponse response, HttpServletRequest request) throws IOException {
 
+        Cookie cookie=new Cookie("qiandao","1");
+        cookie.setMaxAge(60);
+        response.addCookie(cookie);
+        ServletContext servletContext = request.getServletContext();
+        servletContext.setAttribute("username",username);
         /*改变签到状态*/
         qdstatus=1;
         /*获取随机金币数*/
@@ -149,7 +155,7 @@ public class UserController {
         /*查询更新后用户数据*/
         User user = userService.findUser(username);
         if(user!=null){
-            session.setMaxInactiveInterval(60*60*30);
+            session.setMaxInactiveInterval(60*60*24);
             session.setAttribute("user",user);
 
         }else {
@@ -205,11 +211,10 @@ public class UserController {
         try {
             /*将图片另存储为此地*/
             file.transferTo(new File(realpath+"/"+newname));
-            System.out.println("path:"+realpath+"/"+newname);
             /*更新数据库的图片路径*/
             newname="static/img/touxiang/"+newname;
             userService.updateImg(uid,newname);
-            System.out.println("newname="+newname);
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -220,6 +225,31 @@ public class UserController {
         session.setAttribute("user",user);
         return "personInfo";
     }
+
+
+
+    /*
+     *功能描述 在用户购买帖子后更新用户信息
+     * @author lyh
+     * @date 2020/3/10
+     * @param
+     * @return
+    */
+    @RequestMapping("updateUserScoreByUid")
+    @ResponseBody
+    public void updateUserScoreByUid(@RequestParam("uid")Integer uid,@RequestParam("amoney")Integer amoney){
+
+        User user = userService.selectByUid(uid);
+        user.setScore(user.getScore()-amoney);
+        boolean flag=userService.updateUserScoreByUid(user);
+        if(flag){
+            System.out.println("更新成功");
+        }else {
+            System.out.println("更新失败");
+        }
+
+    }
+
 
 
     /*用户退出*/

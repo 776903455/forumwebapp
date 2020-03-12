@@ -1,0 +1,11 @@
+<typeAliases>
+    <!-- <typeAlias type="com.lyh.User" alias="user"/> -->
+    <package name="com.lyh.web.backoffice.mapper"/>
+    <package name="com.lyh.web.backoffice.model"/>
+</typeAliases>
+
+        <!--加载映射文件  -->
+<mappers>
+<!-- <mapper resource="com/lyh/web/backoffice/mapper/IteamsMapper.xml" /> -->
+<package name="com/lyh/web/backoffice/mapper"/>
+</mappers>

@@ -16,7 +16,7 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
 <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/forum_TZJM.css">
+<link  href="${pageContext.request.contextPath}/static/css/forum_TZJM.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
 <head>
     <title>Title</title>
@@ -73,55 +73,6 @@
 <body>
 
 
-<%--<div class="head_index">
-
-    <div class="head1">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2"> <img src="${pageContext.request.contextPath}/static/img/title_left1.jpg" class="head1_left_img"></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toFreeSource.do?cid=1">免费资源</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toStudyPath.do" >学习路线</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toSkillExchange.do?cid=3">技术交流</a></div>
-                <div class="col-md-1"><a href="${pageContext.request.contextPath}/toProducts.do">礼品兑换</a></div>
-                <div class="col-md-1"><a href="#">最新活动</a></div>
-                <div class="col-md-2">
-                    <input  id="search_info" value=""/>
-                    <a href="#">
-                        <img src="${pageContext.request.contextPath}/static/img/search_img.jpg" class="search_img" />
-                    </a>
-                </div>
-
-                <div class="col-md-2" >
-                    <c:if test="${sessionScope.user==null}">
-                        <a href="${pageContext.request.contextPath}/toLogin.do" style="font-size: 15px; margin-top: 70px;margin-left: 120px;">登录 </a>
-                        <a href="${pageContext.request.contextPath}/toRegister.do" style="font-size: 15px; margin-top: 70px;margin-left: 10px;">注册</a>
-                    </c:if>
-
-                    <c:if test="${sessionScope.user!=null}">
-                        <div class="touxiang_event">
-                            <p  style="width: 50px;height: 50px;display: inline">
-                                <a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}"><img  class="touxiang_img"  style="width: 50px;height: 50px;border-radius: 50%" src="${sessionScope.user.uimage}" ></a>
-                            </p>
-                            <span class="username_hide">${sessionScope.user.username}</span>
-
-                            <div class="folat_info">
-                                <ul>
-                                    <li><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
-                                    <li><span class="faitie_span" style="cursor: pointer">发帖</span></li>
-                                    <li><a href="#">帖子</a></li>
-                                        &lt;%&ndash;    <li><a class="click_hide_gold" href="${pageContext.request.contextPath}/getScore.do?score=${sessionScope.user.score}&username=${sessionScope.user.username}">签到</a></li>&ndash;%&gt;
-                                    <li><span class="click_hide_gold">积分：${sessionScope.user.score}</span></li>
-                                    <li><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </c:if>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>--%>
     <%@include file="../menu.jsp"%>
 
 <!--center-->
@@ -185,30 +136,35 @@
                     <img src="${pageContext.request.contextPath}/static/img/lunbotu1.jpg">
                 </div>
 
-                <c:if test="${sessionScope.user==null}">
-                    <div class="reply_link">您需要登录才可以下载或查看，没有帐号？<a href="${pageContext.request.contextPath}/toRegister.do">立即注册</a></div>
-                </c:if>
-                <c:if test="${sessionScope.user!=null}">
-                    <div class="reply_link" style="position: relative">
 
-                        <p id="reply_link_content" style="position: absolute;width: 680px;height: 40px;background:white ">
-                            <c:if test="${article.resourseurl.lastIndexOf('_')!=-1}">
-                           <span>${article.resourseurl.substring(0,article.resourseurl.lastIndexOf("_"))}</span><br/>
-                           <span> 提取码：${article.resourseurl.substring(article.resourseurl.lastIndexOf("_")+1)}</span>
-                            </c:if>
+                    <c:if test="${article.resourseurl.lastIndexOf('_')==-1}">
+                    <div class="free_content" style="width: 700px;height: 150px; border: 1px pink dashed;margin-top: 30px;text-align:center;padding-top: 30px">
+                        <span>${article.resourseurl}</span><br/>
+                        <span> 提取码：无</span>
+                    </div>
+                    </c:if>
 
-                            <c:if test="${article.resourseurl.lastIndexOf('_')==-1}">
-                                <span>${article.resourseurl}</span><br/>
-                                <span> 提取码：无</span>
-                            </c:if>
-                        </p>
+                    <c:if test="${article.resourseurl.lastIndexOf('_')!=-1}">
+
+                    <div class="hide_content" style="width: 700px;height: 150px; border: 1px pink dashed;margin-top: 30px">
+
+                        <p style="color: red;;font-size: 20px;height: 20px;width: 700px;border-top: grey 1px dashed">书币下载：</p>
+                        <div class="hide_url" style="width: 700px;height: 100px;margin-top: 20px;border: #00FFFF 1px dashed;text-align: center;">
+                            <span style="font-size: 20px;">本内容需要<font color="red">${article.amoney}书币</font>才能下载</span>
+                            <span class="hide_tonohide" style="color: deepskyblue;cursor: pointer;display: inline-block;width: 100px;height: 30px;margin-left: 50px;font-size: 20px;" data-toggle="modal" data-target="#myModal_zf">支付</span>
+                        </div>
 
                     </div>
-                </c:if>
 
 
-                <div style="width: 800px;height: 100px;border: 1px solid red;text-align: center">看情况添加。。。。</div>
-            </div>
+                    <div class="nohide_content" style="width: 700px;height: 150px; border: 1px pink dashed;margin-top: 30px;text-align: center;padding-top: 30px;">
+                        <span style="font-size: 20px;">${article.resourseurl.substring(0,article.resourseurl.lastIndexOf("_"))}</span><br/>
+                        <span style="font-size: 20px;"> 提取码：${article.resourseurl.substring(article.resourseurl.lastIndexOf("_")+1)}</span>
+                    </div>
+
+                    </c:if>
+
+
 
 
             <%--回复模态框--%>
@@ -243,7 +199,39 @@
 
 
 
-            <!--用户回复列表-->
+                <%--支付模态框--%>
+                <div class="modal fade" id="myModal_zf" tabindex="-1" role="dialog">
+                    <form>
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">支付界面</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                        <span style="font-size: 20px">是否花费<font color="red">${article.amoney}书币</font>购买此资源</span>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="btn btn-primary" id="user_buyer">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <%--弹出购买成功信息--%>
+                <p class="success_buyer" style="display:none;position: absolute;width: 500px;
+    height: 50px;text-align: center;top: 600px;left: 100px;background: orange;
+    font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
+                    购买成功，你的书币减少<font>${article.amoney}</font>枚！
+                </p>
+
+
+                <!--用户回复列表-->
 
             <div class="buttom_reply_list">
                 <ul>
@@ -368,6 +356,7 @@
     </div>
 </div>
 
+
 </body>
 <script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
 <script>
@@ -398,5 +387,41 @@
             }
         }
 
+
+
+        $(function () {
+
+
+            $(".nohide_content").css("display","none");
+
+            /*确定支付*/
+            $("#user_buyer").click(function () {
+                <c:if test="${user.score<article.amoney}">
+                    alert("你的书币不足，无法购买？");
+                    $('#myModal_zf').modal('hide');
+                </c:if>
+
+                <c:if test="${user.score>=article.amoney}">
+                $(".nohide_content").css("display","block");
+                $(".hide_content").css("display","none");
+                $(".free_content").css("display","none");
+
+                $.ajax({
+                        type:"get",
+                        url:"${pageContext.request.contextPath}/updateUserScoreByUid.do?uid=${user.uid}",
+                        data:"amoney="+${article.amoney},
+                        success:function () {
+                            
+                        }
+                })
+                $('#myModal_zf').modal('hide');
+                </c:if>
+
+                $(".success_buyer").css("display","block");
+                setTimeout(function () {
+                    $(".success_buyer").css("display","none");
+                },2000);
+            });
+        })
 </script>
 </html>

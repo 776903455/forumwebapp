@@ -101,4 +101,8 @@ public interface UserMapper {
     void updateImg(@Param("uid") Integer uid,@Param("uimage") String uimage);
 
     void updatePersonInfo(User users);
+
+    int updateUserScoreByUid(User user);
+
+    void updateqdStatus(@Param("username") String username, @Param("qdstatus") int qdstatus);
 }

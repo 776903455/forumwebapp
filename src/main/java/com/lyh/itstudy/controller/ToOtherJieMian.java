@@ -3,16 +3,15 @@ package com.lyh.itstudy.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lyh.itstudy.model.*;
-import com.lyh.itstudy.service.ArticleService;
-import com.lyh.itstudy.service.CategorySecondService;
-import com.lyh.itstudy.service.CategoryService;
-import com.lyh.itstudy.service.GiftService;
+import com.lyh.itstudy.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -34,12 +33,42 @@ public class ToOtherJieMian {
     private GiftService giftService;
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private UserService userService;
 
+
+
+
+    /*去管理员界面*/
+    @RequestMapping("toadminlogin")
+    public String toadminindex(){
+
+        return "admin/adminlogin";
+    }
 
     /*去首页*/
     @RequestMapping("toIndex")
-    public String toIndex(Model model,HttpSession session){
+    public String toIndex(Model model, HttpSession session, HttpServletRequest request){
 
+        Cookie[] cookies = request.getCookies();
+        if(cookies!=null){
+            for(Cookie cookie:cookies){
+                if(cookie.getName().equals("qiandao")){
+                    System.out.println("name:"+cookie.getName()+"-value:"+cookie.getValue());
+                    if(cookie.getValue()!="1"){
+                        System.out.println("设置为0");
+                      /*24小时候用户签到更新状态*/
+                        String  username =(String) request.getServletContext().getAttribute("username");
+                        System.out.println("username:"+username);
+                        int qdstatus=0;
+                        userService.updateqdStatus(username,qdstatus);
+                    }
+                }
+            }
+        }
+
+        /*/webapp/WEB-INF/views/index.jsp*/
+        /* /WEB-INF/views/index1.jsp*/
         /*查询前五阅读最多主题*/
         List<Article> articles4= articleService.findLookest4();
         /*查询第5-10条阅读最多主题*/
@@ -47,7 +76,7 @@ public class ToOtherJieMian {
         session.setAttribute("articles4",articles4);
         session.setAttribute("articles5",articles5);
 
-        return "index";
+        return "WEB-INF/views/index";
     }
 
     /*跳转技术交流界面*/

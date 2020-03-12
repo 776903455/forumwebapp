@@ -368,6 +368,24 @@
 
   </update>
 
+
+
+  <update id="updateUserScoreByUid"  parameterType="com.lyh.itstudy.model.User"  >
+    update tbl_user
+    set  score = #{score}
+    WHERE
+    uid=#{uid}
+  </update>
+
+
+
+  <update id="updateqdStatus"  >
+    update tbl_user
+    set  qdstatus = #{qdstatus}
+    WHERE
+    username=#{username}
+  </update>
+
   <update id="updateByExample" parameterType="map">
     <!--
       WARNING - @mbg.generated

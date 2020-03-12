@@ -168,13 +168,10 @@
             主题分类：<input  readonly="readonly" type="text"  name="typename" size="30" value="${text.replaceAll(" ","+")}"/><br /><br /><br />
             帖子名称：<input type="text" name="aname" size="30"/>
             <div class="center_tiezi_title">
-
-
             </div>
             <!--文本框-->
             <td>
                 <textarea name="atext" style="margin-top: 5px" id="summernote">
-
                  </textarea>
             </td>
 
@@ -229,6 +226,7 @@
             width:800,
             height:500
         });
+
     })
 </script>
 </html>

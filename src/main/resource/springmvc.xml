@@ -37,11 +37,12 @@
 	<!-- 4:配置资源视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 视图资源url的前缀 -->
-		<property name="prefix" value="/WEB-INF/views/"></property>
+		<!--<property name="prefix" value="/WEB-INF/views/"></property>-->
+		<property name="prefix" value="/"></property>
 		<!-- 视图资源url的后缀 -->
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
+
 	<!--文件上传，并现在其大小  -->
 	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsFileUploadSupport">
 		<property name="maxUpLoadSize" value="204800"></property>

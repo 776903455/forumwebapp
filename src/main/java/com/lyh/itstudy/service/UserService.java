@@ -77,4 +77,18 @@ public class UserService {
     public void updatePersonInfo(User user) {
         userMapper.updatePersonInfo(user);
     }
+
+    public boolean updateUserScoreByUid(User user) {
+        boolean flag=false;
+
+        int i=userMapper.updateUserScoreByUid(user);
+        if(i>0){
+            flag=true;
+        }
+        return false;
+    }
+
+    public void updateqdStatus(String username, int qdstatus) {
+        userMapper.updateqdStatus(username,qdstatus);
+    }
 }
