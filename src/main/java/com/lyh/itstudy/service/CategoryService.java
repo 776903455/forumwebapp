@@ -21,4 +21,26 @@ public class CategoryService {
         List<Category> list=categoryMapper.findCategory(cid);
         return list;
     }
+
+    public List<Category> adminFindAllCategory() {
+
+        return  categoryMapper.adminFindAllCategory();
+    }
+
+    public void addCategory(Category category) {
+        categoryMapper.addCategory(category);
+    }
+
+    public void deleteCategory(Integer cid) {
+        categoryMapper.deleteByPrimaryKey(cid);
+    }
+
+    public Category AdminfindCategory(Integer cid) {
+
+        return categoryMapper.selectByPrimaryKey(cid);
+    }
+
+    public void updateCategory(Category category) {
+        categoryMapper.updateCategory(category);
+    }
 }

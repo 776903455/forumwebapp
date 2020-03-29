@@ -167,6 +167,25 @@
   </select>
 
 
+  <select id="adminFindAllCategorySecond" resultMap="BaseResultMap">
+    SELECT  * from tbl_categorysecond
+  </select>
+
+  <select id="getCategorySecondByCid" parameterType="Integer" resultMap="BaseResultMap">
+      SELECT cs.* from tbl_categorysecond cs LEFT JOIN tbl_category c ON cs.cid=c.cid WHERE c.cid=#{cid}
+  </select>
+
+
+
+  <insert id="addCategorySecond" parameterType="categorysecond">
+    INSERT  INTO  tbl_categorysecond(csid,csname,cid,csimage) VALUES (#{csid},#{csname},#{cid},#{csimage})
+  </insert>
+
+  <update id="updateCategorySecond" parameterType="categorysecond">
+
+    UPDATE tbl_categorysecond set csname=#{csname},cid=#{cid},csimage=#{csimage} where csid=#{csid}
+  </update>
+
   <select id="selectByExample" parameterType="com.lyh.itstudy.model.CategorysecondExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

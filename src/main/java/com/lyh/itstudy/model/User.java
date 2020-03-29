@@ -47,6 +47,43 @@ public class User {
 
     private String uname;
 
+    private String wx_opendid;
+    private String QQ_opendid;
+    private Integer is_thirdpart;
+    private String logintime;
+
+    public String getLogintime() {
+        return logintime;
+    }
+
+    public void setLogintime(String logintime) {
+        this.logintime = logintime;
+    }
+
+    public Integer getIs_thirdpart() {
+        return is_thirdpart;
+    }
+
+    public void setIs_thirdpart(Integer is_thirdpart) {
+        this.is_thirdpart = is_thirdpart;
+    }
+
+    public String getWx_opendid() {
+        return wx_opendid;
+    }
+
+    public void setWx_opendid(String wx_opendid) {
+        this.wx_opendid = wx_opendid;
+    }
+
+    public String getQQ_opendid() {
+        return QQ_opendid;
+    }
+
+    public void setQQ_opendid(String QQ_opendid) {
+        this.QQ_opendid = QQ_opendid;
+    }
+
     public String getSex() {
         return sex;
     }

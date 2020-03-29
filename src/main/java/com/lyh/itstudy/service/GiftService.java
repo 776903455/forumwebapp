@@ -38,4 +38,27 @@ public class GiftService {
         giftMapper.updateGift(gid,number);
 
     }
+
+    public List<Gift> adminFindAllGift() {
+
+       return giftMapper.adminFindAllGift();
+
+    }
+
+    public void deleteGift(Integer gid) {
+        giftMapper.deleteByPrimaryKey(gid);
+    }
+
+    public void addGift(Gift gift) {
+        giftMapper.insert(gift);
+    }
+
+    public Gift toUpdateGift(Integer gid) {
+        return  giftMapper.selectGiftByGid(gid);
+    }
+
+    public void adminupdateGift(Gift gift) {
+
+        giftMapper.adminupdateGift(gift);
+    }
 }

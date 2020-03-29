@@ -105,4 +105,13 @@ public interface CategorysecondMapper {
     List<Categorysecond> findCategory(Integer cid);
 
     Categorysecond findCsByCsid(Integer csid);
+
+    List<Categorysecond> adminFindAllCategorySecond();
+
+    void addCategorySecond(Categorysecond categorysecond);
+
+
+    void updateCategorySecond(Categorysecond categorysecond);
+
+    List<Categorysecond> getCategorySecondByCid(Integer cid);
 }

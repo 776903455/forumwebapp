@@ -13,7 +13,7 @@
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <title>IT在线学习平台</title>
@@ -171,7 +171,7 @@
         <div class="right_top">我的信息：</div>
         <div class="form-group" class="right_buttom;" >
             <form action="${pageContext.request.contextPath}/updatePersonInfo.do"  style="margin-left: 200px;margin-top: 10px">
-                用户名：${user.username}
+                用户名：${user.uname}
                 <br>  <br>
                 <label>昵称:</label>
                 <input type="text" name="uname"  class="form-control" style="width: 30%">

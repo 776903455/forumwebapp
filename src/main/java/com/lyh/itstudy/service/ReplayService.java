@@ -26,4 +26,15 @@ public class ReplayService {
     public List<Replay> selectRepByAid(Integer aid) {
         return replayMapper.selectRepByAid(aid);
     }
+
+    public List<Replay> findRepByUid(Integer uid,Integer aid) {
+        List<Replay> repByUid = replayMapper.findRepByUid(uid,aid);
+        if(repByUid!=null){
+            return repByUid;
+        }else {
+            return null;
+        }
+
+
+    }
 }

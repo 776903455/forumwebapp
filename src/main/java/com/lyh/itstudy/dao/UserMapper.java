@@ -3,6 +3,7 @@ package com.lyh.itstudy.dao;
 import java.util.List;
 import com.lyh.itstudy.model.User;
 import com.lyh.itstudy.model.UserExample;
+import com.lyh.itstudy.model.Userarticle;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
@@ -105,4 +106,19 @@ public interface UserMapper {
     int updateUserScoreByUid(User user);
 
     void updateqdStatus(@Param("username") String username, @Param("qdstatus") int qdstatus);
+
+    List<User> adminFindAllUser();
+
+    User findByWxOpenid(String openid);
+
+    void insertThridUser(User user);
+
+    void updateLoginTime(@Param("uid")Integer uid,@Param("logintime") String logintime);
+
+    User findUserByQQOpendid(String openid);
+
+    void updateQdStatus(@Param("uid")Integer uid, @Param("qdstatus")Integer qdstatus);
+
+    Userarticle selectCollection(Integer uid);
+
 }

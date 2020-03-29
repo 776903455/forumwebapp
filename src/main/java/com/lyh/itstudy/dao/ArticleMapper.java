@@ -4,6 +4,7 @@ import java.util.List;
 import com.lyh.itstudy.model.Article;
 import com.lyh.itstudy.model.ArticleExample;
 import com.lyh.itstudy.model.Categorysecond;
+import com.lyh.itstudy.model.Userarticle;
 import org.apache.ibatis.annotations.Param;
 
 public interface ArticleMapper {
@@ -146,4 +147,21 @@ public interface ArticleMapper {
 
 
     List<Article> findPersonArt(Integer uid);
+
+    List<Article> adminFindAllArticle();
+
+    Article toupdateArticle(Integer aid);
+
+    void updateArticle(Article article);
+
+    Userarticle findArtByUid(Integer uid);
+
+    void addCollections(Userarticle userarticle);
+
+    void updateCollections(Userarticle userarticle);
+
+    void deleteCollections(Userarticle userarticle);
+
+    List<Article> findArtByAid(String artid);
+
 }

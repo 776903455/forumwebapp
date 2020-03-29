@@ -45,4 +45,29 @@ public class CategorySecondService {
 
         return  categorysecondMapper.findCsByCsid(csid);
     }
+
+    public List<Categorysecond> adminFindAllCategorySecond() {
+
+        return  categorysecondMapper.adminFindAllCategorySecond();
+}
+
+    public void deleteCategorySecond(Integer csid) {
+        categorysecondMapper.deleteByPrimaryKey(csid);
+    }
+
+    public void addCategorySecond(Categorysecond categorysecond) {
+        categorysecondMapper.addCategorySecond(categorysecond);
+    }
+
+    public Categorysecond toUpdateCategorySecondJM(Integer csid) {
+        return categorysecondMapper.findCsByCsid(csid);
+    }
+
+    public void updateCategorySecond(Categorysecond categorysecond) {
+        categorysecondMapper.updateCategorySecond(categorysecond);
+    }
+
+    public List<Categorysecond> getCategorySecondByCid(Integer cid) {
+            return categorysecondMapper.getCategorySecondByCid(cid);
+    }
 }

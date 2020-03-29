@@ -117,6 +117,17 @@
     gid=#{gid}
   </select>
 
+
+  <select id="adminFindAllGift" resultMap="BaseResultMap">
+    select * from tbl_gift
+  </select>
+
+  <update id="adminupdateGift" parameterType="gift">
+
+    UPDATE tbl_gift set gname=#{gname},gmoney=#{gmoney},market_price=#{marketPrice},gimage=#{gimage},
+    is_hot=#{isHot},gdesc=#{gdesc} where gid=#{gid}
+  </update>
+
   <select id="selectByExample" parameterType="com.lyh.itstudy.model.GiftExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
@@ -174,11 +185,11 @@
       This element was generated on Sun Jan 26 12:38:17 GMT+08:00 2020.
     -->
     insert into tbl_gift (gid, gname, market_price, 
-      show_price, gimage, gdesc, 
+      gimage, gdesc,
       gdate, is_hot, gmoney
       )
     values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DOUBLE}, 
-      #{showPrice,jdbcType=DOUBLE}, #{gimage,jdbcType=VARCHAR}, #{gdesc,jdbcType=VARCHAR}, 
+      #{gimage,jdbcType=VARCHAR}, #{gdesc,jdbcType=VARCHAR},
       #{gdate,jdbcType=TIMESTAMP}, #{isHot,jdbcType=INTEGER}, #{gmoney,jdbcType=INTEGER}
       )
   </insert>

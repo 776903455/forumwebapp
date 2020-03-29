@@ -45,7 +45,7 @@ public class ReplayController {
     @RequestMapping("savaReplay")
 
     public String  savaReplay(@RequestParam("uid")Integer uid, @RequestParam("aid")Integer aid,@RequestParam("flag")int flag,
-                           @RequestParam(value = "pn",defaultValue = "1")int pn,@RequestParam("textearetext")String textearetext, Model model)  {
+                           @RequestParam(value = "pn",defaultValue = "1")int pn,@RequestParam("textearetext")String textearetext, Model model,HttpSession session)  {
 
         System.out.println("text="+textearetext);
         Replay replays=new Replay();
@@ -62,7 +62,6 @@ public class ReplayController {
 
         /*根据aid查询一级、二级目录信息*/
         Article cAndCs=articleService.selectCsByAid(aid);
-
         System.out.println("csid="+cAndCs.getCategorysecond().getCsid());
 
         /*根据aid查询帖子信息*/
@@ -111,12 +110,8 @@ public class ReplayController {
             System.out.println("还没有回复哦，亲！");
         }
 
-       if(flag==1) {
 
-           return "soure_list/forum_TZJM1";
-       }else {
-           return "soure_list/forum_TZJM";
-       }
+        return "redirect:/selectArtByAid.do?pn=1&&aid="+aid;
     }
 
 }

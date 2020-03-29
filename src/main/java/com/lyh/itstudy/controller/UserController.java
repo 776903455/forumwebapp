@@ -1,7 +1,13 @@
 package com.lyh.itstudy.controller;
 
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.lyh.itstudy.model.Article;
+import com.lyh.itstudy.model.Replay;
 import com.lyh.itstudy.model.User;
+import com.lyh.itstudy.model.Userarticle;
+import com.lyh.itstudy.service.ArticleService;
 import com.lyh.itstudy.service.UserService;
 import com.lyh.itstudy.utils.CheckImgUtil;
 import com.lyh.itstudy.utils.GetTimeUtil;
@@ -37,7 +43,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private ArticleService articleService;
 
 
 
@@ -45,7 +52,7 @@ public class UserController {
     /*去用户注册界面*/
     @RequestMapping("toRegister")
     public String toRegister() {
-        return "register";
+        return "WEB-INF/views/register";
     }
 
     /*用户注册*/
@@ -64,11 +71,11 @@ public class UserController {
         String codeValue = (String) session.getAttribute("verifyCodeValue");
         if(!codeValue.equalsIgnoreCase(user.getYzm())){
             model.addAttribute("codeEroor","验证码错误");
-            return "register";
+            return "WEB-INF/views/register";
         }
 
         userService.register(user);
-        return "registersuccess";
+        return "WEB-INF/views/registersuccess";
 
     }
 
@@ -103,13 +110,13 @@ public class UserController {
 
     @RequestMapping("reglog")
     public String reglog(){
-        return "login";
+        return "WEB-INF/views/login";
     }
 
     /*去用户登录界面*/
     @RequestMapping("toLogin")
     public String toLogin() {
-        return "login";
+        return "WEB-INF/views/login";
     }
 
     /*用户登录*/
@@ -120,12 +127,12 @@ public class UserController {
         if(user!=null){
             HttpSession session= request.getSession();
             session.setAttribute("user",user);
-            return "redirect:/toIndex.do";
+            return "redirect:toIndex.do";
 
         }else{
 
             Model model1 = model.addAttribute("error", "账号或密码错误");
-            return "login";
+            return "WEB-INF/views/login";
         }
 
     }
@@ -163,7 +170,7 @@ public class UserController {
         }
 
 
-        return "index";
+        return "WEB-INF/views/index";
 
     }
 
@@ -173,7 +180,7 @@ public class UserController {
         User user= userService.findUser(username);
         user.setActivetime(GetTimeUtil.getDate());
         model.addAttribute("user",user);
-        return "personInfo";
+        return "WEB-INF/views/personInfo";
     }
 
 
@@ -184,18 +191,18 @@ public class UserController {
         if(user!=null){
             userService.updatePersonInfo(user);
         }else {
-            return "personinfobackground";
+            return "WEB-INF/views/personinfobackground";
         }
 
         User user1 = userService.selectByUid(user.getUid());
         session.setAttribute("user",user1);
-        return "index";
+        return "WEB-INF/views/index";
     }
 
     /*更新头像*/
     @RequestMapping("updateTouXiang")
     public String test(@RequestParam("file")MultipartFile file, @RequestParam("uid")Integer uid, HttpSession session,HttpServletRequest request){
-        System.out.println("uid:"+uid);
+
         /*获取文件名*/
         String filename = file.getOriginalFilename();
 
@@ -223,7 +230,7 @@ public class UserController {
         /*重新查询用户，传到前端*/
         User user = userService.selectByUid(uid);
         session.setAttribute("user",user);
-        return "personInfo";
+        return "WEB-INF/views/personInfo";
     }
 
 
@@ -237,10 +244,15 @@ public class UserController {
     */
     @RequestMapping("updateUserScoreByUid")
     @ResponseBody
-    public void updateUserScoreByUid(@RequestParam("uid")Integer uid,@RequestParam("amoney")Integer amoney){
+    public void updateUserScoreByUid(@RequestParam("uid")Integer uid,@RequestParam("amoney")Integer amoney,HttpSession session){
 
         User user = userService.selectByUid(uid);
         user.setScore(user.getScore()-amoney);
+        /*更新session*/
+        User user1 = (User)session.getAttribute("user");
+        user1.setScore(user.getScore()-amoney);
+        session.setAttribute("user",user1);
+
         boolean flag=userService.updateUserScoreByUid(user);
         if(flag){
             System.out.println("更新成功");
@@ -250,6 +262,26 @@ public class UserController {
 
     }
 
+    /*
+     *功能描述 我的收藏
+     * @author lyh
+     * @date 2020/3/29
+     * @param []
+     * @return java.lang.String
+    */
+    @RequestMapping("myCollections")
+    public String myCollections(Model model,@RequestParam("uid")Integer uid,@RequestParam(value = "pn",defaultValue="1")int pn){
+
+       Userarticle collections=userService.selectCollection(uid);
+       if(collections!=null){
+           PageHelper.startPage(pn,5);
+           List<Article> collArt=articleService.findArtByAid(collections.getArtid());
+           PageInfo<Article> collpage = new PageInfo(collArt,5);
+           model.addAttribute("collpage",collpage);
+       }
+
+        return "WEB-INF/views/collection";
+    }
 
 
     /*用户退出*/
@@ -257,7 +289,7 @@ public class UserController {
     public String exit(HttpServletRequest request){
         HttpSession session = request.getSession();
         session.removeAttribute("user");
-        return "index";
+        return "WEB-INF/views/index";
     }
 
 

@@ -32,7 +32,6 @@
 			<property name="configLocation" value="classpath:mybatis.xml"></property>
 			<!--配置mybatis，mapper文件的位置  -->
 			<property name="mapperLocations" value="classpath:mapper/*xml"></property>
-			
 		</bean> 
 		
 		
@@ -43,7 +42,36 @@
      <!--扫描dao接口的实训，加入到ioc容器中  -->
       <property name="basePackage" value="com.lyh.itstudy.dao"></property>
      <!--  <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property> -->
-     </bean>  
+     </bean>
+
+
+	<!--配置quratz定时器-->
+	<bean id="myJob" class="com.lyh.itstudy.quartzjob.UserQuartz"></bean>
+
+	<!-- jobDetail -->
+	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="myJob"></property>
+		<property name="targetMethod" value="execute"></property>
+		<property name="concurrent" value="false" /><!-- 作业不并发调度 -->
+	</bean>
+
+
+	<!-- 定义trigger 触发器 -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail"></property>
+		<property name="cronExpression" value="59 59 23 * * ?"></property>
+	</bean>
+
+
+
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger"/>
+
+			</list>
+		</property>
+	</bean>
      
          
     <!--5：自动扫描指定包下的注解  -->

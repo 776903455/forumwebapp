@@ -11,10 +11,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap -->
 <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
 <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/forum_TZJM.css">
 <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
@@ -119,7 +120,7 @@
                         <li>${artTime}/</li>
                         <li>${article.looknum}人查看/</li>
                         <li>${article.replist.size()}回复/</li>
-                        <li> 0 人收藏/</li>
+                        <li> ${collNum}人收藏/</li>
                     </ul>
                 </div>
             </div>
@@ -136,25 +137,106 @@
                     <img src="${pageContext.request.contextPath}/static/img/lunbotu1.jpg">
                 </div>
 
+                <div class="left_content_button" style="width:800px;height: 100px;border-top:1px silver dashed;border-bottom:1px silver dashed; ">
+                    <i id="apraise" class="fa fa-star" style="font-size:36px;<c:if test="${collectionStatus==true}">color: gold;</c:if>
+                    <c:if test="${collectionStatus==false}">color: grey;</c:if>"> </i> <span>帖子收藏</span>
+                    <i id="ding" class="fa fa-hand-o-up" style="font-size:36px;color:grey"></i> <span>顶</span>
+                    <i id="cai" class="fa fa-hand-o-down" style="font-size:36px;color:grey"></i> <span>踩</span>
+                </div>
+
                 <c:if test="${sessionScope.user==null}">
                     <div class="reply_link">您需要登录才可以下载或查看，没有帐号？<a href="${pageContext.request.contextPath}/toRegister.do">立即注册</a></div>
                 </c:if>
                 <c:if test="${sessionScope.user!=null}">
-                    <div class="reply_link" style="position: relative">
+                    <c:if test="${replayStatus==true}">
+                        <c:if test="${article.amoney==0}">
+                            <div class="free_content" style="width: 700px;height: 150px; border: 1px pink dashed;margin-top: 30px;text-align:center;padding-top: 30px">
 
-                        <p id="reply_link_content" style="position: absolute;width: 680px;height: 80px;background:white ">
-                            ${sessionScope.user.username},如果您要查看本帖隐藏内容请
+                                <c:if test="${article.resourseurl.lastIndexOf('_')!=-1}">
+                                    <span style="font-size: 20px;">${article.resourseurl.substring(0,article.resourseurl.lastIndexOf("_"))}</span><br/>
+                                    <span style="font-size: 20px;"> 提取码：${article.resourseurl.substring(article.resourseurl.lastIndexOf("_")+1)}</span>
+                                </c:if>
+                                <c:if test="${article.resourseurl.lastIndexOf('_')==-1}">
+                                        <span>${article.resourseurl}</span><br/>
+                                        <span> 提取码：无</span>
+                                </c:if>
+                            </div>
+                        </c:if>
+
+                        <c:if test="${article.amoney!=0}">
+
+                            <div class="hide_content" style="width: 700px;height: 150px; border: 1px pink dashed;margin-top: 30px">
+
+                                <p style="color: red;;font-size: 20px;height: 20px;width: 700px;border-top: grey 1px dashed">书币下载：</p>
+                                <div class="hide_url" style="width: 700px;height: 100px;margin-top: 20px;border: #00FFFF 1px dashed;text-align: center;">
+                                    <span style="font-size: 20px;">本内容需要<font color="red">${article.amoney}书币</font>才能下载</span>
+                                    <span class="hide_tonohide" style="color: deepskyblue;cursor: pointer;display: inline-block;width: 100px;height: 30px;margin-left: 50px;font-size: 20px;" data-toggle="modal" data-target="#myModal_zf">支付</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="nohide_content" style="width: 700px;height: 150px; border: 1px pink dashed;margin-top: 30px;text-align: center;padding-top: 30px;">
+                            <c:if test="${article.resourseurl.lastIndexOf('_')!=-1}">
+                                <span style="font-size: 20px;">${article.resourseurl.substring(0,article.resourseurl.lastIndexOf("_"))}</span><br/>
+                                <span style="font-size: 20px;"> 提取码：${article.resourseurl.substring(article.resourseurl.lastIndexOf("_")+1)}</span>
+                            </c:if>
+                            <c:if test="${article.resourseurl.lastIndexOf('_')==-1}">
+                                <span style="font-size: 20px;">${article.resourseurl}</span><br/>
+                                <span style="font-size: 20px;"> 提取码：无</span>
+                            </c:if>
+
+                            </div>
+                        </c:if>
+                    </c:if>
+
+                    <c:if test="${replayStatus==false}">
+                        <div class="reply_link" style="position: relative">
+                            <p id="reply_link_content" style="position: absolute;width: 680px;height: 80px;background:white ">
+                                    ${sessionScope.user.username},如果您要查看本帖隐藏内容请
                                 <span   style="cursor: pointer ;color: #2aabd2" data-toggle="modal" data-target="#myModal">
                                     回复
                                 </span>
-                        </p>
+                            </p>
+                        </div>
+                    </c:if>
 
-
-                    </div>
                 </c:if>
 
 
-               <%-- <div style="width: 800px;height: 100px;border: 1px solid red;text-align: center">看情况添加。。。。</div>--%>
+                <%--支付模态框--%>
+                <div class="modal fade" id="myModal_zf" tabindex="-1" role="dialog">
+                    <form>
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">支付界面</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <span style="font-size: 20px">是否花费<font color="red">${article.amoney}书币</font>购买此资源</span>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="btn btn-primary" id="user_buyer">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <%--弹出购买成功信息--%>
+                <p class="success_buyer" style="display:none;position: absolute;width: 500px;
+    height: 50px;text-align: center;top: 600px;left: 100px;background: orange;
+    font-size: 18px;color: white;padding-top: 15px;border-radius: 5px">
+                    购买成功，你的书币减少<font>${article.amoney}</font>枚！
+                </p>
+
+
+            <%-- <div style="width: 800px;height: 100px;border: 1px solid red;text-align: center">看情况添加。。。。</div>--%>
             </div>
 
 
@@ -333,7 +415,7 @@
             textearetext.innerText=textearetext1.value;
 
             window.location.href="${pageContext.request.contextPath}/savaReplay.do?uid=${sessionScope.user.uid}&aid=${article.aid}&flag=1&textearetext="+textearetext.value;
-        }
+        };
 
         /*判断用户是否登录来设置点击回帖实践*/
         replybtn.onclick=function () {
@@ -343,7 +425,72 @@
             }else {
                 window.location.href="${pageContext.request.contextPath}/savaReplay.do?uid=${sessionScope.user.uid}&flag=0&aid=${article.aid}&textearetext="+textearetext.value;
             }
+        };
+
+    $(function () {
+        /*点赞功能*/
+
+        if(${sessionScope.user==null}){
+            $("#apraise").click(function (){
+                alert("游客登录才能收藏哦！")
+            });
+        }else{
+            $("#apraise").click(function () {
+                $.ajax({
+                    type:"post",
+                    url:"${pageContext.request.contextPath}/userCollections.do?uid=${sessionScope.user.uid}",
+                    data:{"aid":${article.aid}},
+                    success:function (msg) {
+                        console.log(msg);
+                        if(msg==="200"){
+                            $("#apraise").css("color","gold");
+                        }
+                        if(msg==="500"){
+                            $("#apraise").css("color","grey");
+                        }
+                    }
+                });
+
+
+            });
         }
 
+    })
+
+
+        $(function () {
+
+
+            $(".nohide_content").css("display","none");
+
+            /*确定支付*/
+            $("#user_buyer").click(function () {
+                <c:if test="${user.score<article.amoney}">
+                alert("你的书币不足，无法购买？");
+                $('#myModal_zf').modal('hide');
+                </c:if>
+
+                <c:if test="${user.score>=article.amoney}">
+                $(".nohide_content").css("display","block");
+                $(".hide_content").css("display","none");
+                $(".free_content").css("display","none");
+
+                $.ajax({
+                    type:"get",
+                    url:"${pageContext.request.contextPath}/updateUserScoreByUid.do?uid=${user.uid}",
+                    data:"amoney="+${article.amoney},
+                    success:function () {
+
+                    }
+                })
+                $('#myModal_zf').modal('hide');
+                </c:if>
+
+                $(".success_buyer").css("display","block");
+                setTimeout(function () {
+                    $(".success_buyer").css("display","none");
+                },2000);
+            });
+        })
 </script>
 </html>

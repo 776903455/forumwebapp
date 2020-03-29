@@ -108,6 +108,19 @@
 
   </select>
 
+  <select id="adminFindAllCategory" resultMap="BaseResultMap">
+    select * from tbl_category
+  </select>
+
+
+  <update id="updateCategory" parameterType="category">
+    UPDATE     tbl_category set cname=#{cname} where cid=#{cid}
+  </update>
+
+  <insert id="addCategory" parameterType="category">
+    INSERT INTO  tbl_category(cname) VALUES (#{cname})
+  </insert>
+
 
   <select id="selectByExample" parameterType="com.lyh.itstudy.model.CategoryExample" resultMap="BaseResultMap">
     <!--
@@ -203,6 +216,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+
+
+
   <update id="updateByExampleSelective" parameterType="map">
     <!--
       WARNING - @mbg.generated

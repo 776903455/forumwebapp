@@ -17,7 +17,7 @@
     <result column="amoney" jdbcType="INTEGER" property="amoney" />
     <result column="atxte" jdbcType="VARCHAR" property="atxte" />
     <result column="looknum" jdbcType="VARCHAR" property="looknum" />
-
+    <result column="admin_id" jdbcType="INTEGER" property="admin_id" />
 
 
   </resultMap>
@@ -214,7 +214,9 @@
     atxte
   </sql>
 
-
+  <select id="adminFindAllArticle" resultMap="BaseResultMap">
+    SELECT  * FROM  tbl_article ORDER  BY adate desc
+  </select>
 
   <select id="findHotArt" parameterType="Integer" resultMap="BaseResultMap">
   SELECT  * from tbl_article
@@ -330,6 +332,12 @@
 
   </select>
 
+
+
+  <select id="findArtByUid" parameterType="Integer" resultType="userarticle">
+    SELECT * from userarticle where uid=#{uid}
+  </select>
+
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ArticleExample" resultMap="ResultMapWithBLOBs">
     <!--
       WARNING - @mbg.generated
@@ -411,11 +419,12 @@
     -->
     insert into tbl_article (aid, aname, adate, 
       areplay, apraise, csid, 
-      uid, amoney, atxte,resourseurl
+      uid, amoney, atxte,resourseurl,admin_id
       )
     values (#{aid,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{adate,jdbcType=TIMESTAMP}, 
       #{areplay,jdbcType=INTEGER}, #{apraise,jdbcType=INTEGER}, #{csid,jdbcType=INTEGER}, 
-      #{uid,jdbcType=INTEGER}, #{amoney,jdbcType=INTEGER}, #{atxte,jdbcType=LONGVARCHAR},#{resourseurl,jdbcType=LONGVARCHAR}
+      #{uid,jdbcType=INTEGER}, #{amoney,jdbcType=INTEGER}, #{atxte,jdbcType=LONGVARCHAR},#{resourseurl,jdbcType=LONGVARCHAR},
+    #{admin_id,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.itstudy.model.Article">
@@ -484,6 +493,19 @@
       </if>
     </trim>
   </insert>
+
+  <insert id="addCollections" parameterType="com.lyh.itstudy.model.Userarticle">
+      INSERT  INTO  userarticle(uid,artid) values(#{uid},#{artid})
+  </insert>
+
+    <delete id="deleteCollections" parameterType="userarticle">
+        DELETE FROM userarticle where uid=#{uid}
+    </delete>
+
+    <select id="findArtByAid" parameterType="String" resultMap="BaseResultMap">
+        select * from tbl_article where aid in(${_parameter})
+    </select>
+
   <select id="countByExample" parameterType="com.lyh.itstudy.model.ArticleExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
@@ -579,6 +601,20 @@
     UPDATE tbl_article
     SET  looknum=#{looknum}
     WHERE  aid=#{aid}
+  </update>
+
+  <update id="updateCollections" parameterType="userarticle">
+    UPDATE userarticle set artid=#{artid} where uid=#{uid};
+  </update>
+
+    <select id="toupdateArticle" parameterType="Integer" resultMap="BaseResultMap">
+      SELECT * from tbl_article where aid=#{aid}
+    </select>
+
+
+  <update id="updateArticle" parameterType="article">
+    UPDATE  tbl_article set aname=#{aname},looknum=#{looknum},amoney=#{amoney}
+    where aid=#{aid}
   </update>
 
 

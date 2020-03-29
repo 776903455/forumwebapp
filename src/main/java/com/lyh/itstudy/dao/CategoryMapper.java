@@ -97,4 +97,11 @@ public interface CategoryMapper {
     int updateByPrimaryKey(Category record);
 
     List<Category> findCategory(Integer cid);
+
+    List<Category> adminFindAllCategory();
+
+
+    void updateCategory(Category category);
+
+    void addCategory(Category category);
 }

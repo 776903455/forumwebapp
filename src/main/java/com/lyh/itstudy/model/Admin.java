@@ -7,12 +7,12 @@ package com.lyh.itstudy.model;
 
 public class Admin {
 
-    private Integer id;
+    private Integer admin_id;
     private String adminname;
     private String adminpassword;
 
-    public Admin(Integer id, String adminname, String adminpassword) {
-        this.id = id;
+    public Admin(Integer admin_id, String adminname, String adminpassword) {
+        this.admin_id = admin_id;
         this.adminname = adminname;
         this.adminpassword = adminpassword;
     }
@@ -20,12 +20,12 @@ public class Admin {
     public Admin() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getAdmin_id() {
+        return admin_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAdmin_id(Integer admin_id) {
+        this.admin_id = admin_id;
     }
 
     public String getAdminname() {
@@ -47,7 +47,7 @@ public class Admin {
     @Override
     public String toString() {
         return "Admin{" +
-                "id=" + id +
+                "admin_id=" + admin_id +
                 ", adminname='" + adminname + '\'' +
                 ", adminpassword='" + adminpassword + '\'' +
                 '}';

@@ -18,7 +18,7 @@
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <title>Title</title>
     <style>
@@ -119,9 +119,10 @@
         <img class="img1" src="${pageContext.request.contextPath}/static/img/login_img.jpg">
 
     </div>
+    <div class="container">
     <div class="login_table">
         <form action="${pageContext.request.contextPath}/login.do" method="get">
-            <table border="1px"   width="400px" height="200px"  align="center">
+            <table   class="table table-bordered" style="width: 500px"  align="center">
                 <tr height="40px">
                     <td colspan="2">
                         <font size="4px" color="red">会员登录 &nbsp;&nbsp;USER LOGIN</font><br>
@@ -148,75 +149,46 @@
                     </td>
 
                 </tr>
+
+                <tr height="40px">
+                    <td  colspan="2">
+                        <p style="color: grey;text-align: center">第三方登录</p>
+                        <img id="qq_img" style="width: 70px;height: 50px;margin-left: 200px;cursor:pointer;float: left;border-radius: 100%"
+                             src="${pageContext.request.contextPath}/static/img/qq.jpg" alt="图片加载">
+                        <img id="weichat_img" style="width: 50px;height: 50px;cursor:pointer;float: left;border-radius: 100%"
+                             src="${pageContext.request.contextPath}/static/img/weichat.jpg" alt="图片加载">
+                    </td>
+
+                </tr>
             </table>
         </form>
     </div>
+    </div>
+
     <div class="login_imgs1">
         <img class="img3" src="${pageContext.request.contextPath}/static/img/login_img2.jpg">
     </div>
+
 </div>
 
-<div class="buttom_index">
-    <div class="buttom_index_top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="${pageContext.request.contextPath}/static/img/button_index_img3.png" />
-                    <span >足不出户学编程</span>
-                </div>
-                <div class="col-md-4">
-                    <img src="${pageContext.request.contextPath}/static/img/button_index_img1.png" />
-                    <span>学习经验共分享</span>
-                </div>
-                <div class="col-md-4">
-                    <img src="${pageContext.request.contextPath}/static/img/button_index_img2.png" />
-                    <span>前沿技术实时更新</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="buttom_index_buttom">
-        <p style="font-size: 18px; color: white;margin-top: 30px;margin-left: 150px;">友情链接:</p>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <ul>
-                        <li><a href="http://jquery.cuishifeng.cn/">前端</a></li>
-                        <li><a href="#">SpringCloud</a></li>
-                        <li><a href="#">SpringBoot</a></li>
-                        <li><a href="#">Redis</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-
-                    <ul>
-                        <li><a href="#">人工智能</a></li>
-                        <li><a href="#">区块链/go</a></li>
-                        <li><a href="#">消息队列</a></li>
-                        <li><a href="#">微服务框架</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-
-                    <ul>
-                        <li><a href="#">大数据</a></li>
-                        <li><a href="#">Linux</a></li>
-                        <li><a href="#">Spring</a></li>
-                        <li><a href="#">并发编程</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <img width="200px" height="100px" style="border-radius: 10px;opacity: 0.8;" src="${pageContext.request.contextPath}/static/img/run.jpg" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <p style="text-align: center;margin-top: 30px; font-size: 15px;">
-        <font color="cornflowerblue">©2020电科大嵌入B班lyh毕业设计&nbsp;</font>
-    </p>
-</div>
+        <%@include file="buttom.jsp"%>
 
 </body>
+
+
+        <script>
+            $(function () {
+                /*给微信一个点击事件，去请求微信平台授权*/
+                $("#weichat_img").click(function () {
+                    window.location.href="${pageContext.request.contextPath}/wecharLogin.do"
+                });
+
+                /*给qq一个点击事件，去请求qq授权界面*/
+                $("#qq_img").click(function () {
+                    window.location.href="${pageContext.request.contextPath}/qq_ToLogin.do"
+                })
+
+            })
+
+        </script>
 </html>

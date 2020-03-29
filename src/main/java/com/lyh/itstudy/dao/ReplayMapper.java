@@ -121,4 +121,6 @@ public interface ReplayMapper {
 
 
     List<Replay> selectRepByAid(Integer aid);
+
+    List<Replay> findRepByUid(@Param("uid") Integer uid ,@Param("aid") Integer aid);
 }

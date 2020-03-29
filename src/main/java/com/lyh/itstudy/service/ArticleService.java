@@ -3,6 +3,7 @@ package com.lyh.itstudy.service;
 import com.lyh.itstudy.dao.ArticleMapper;
 import com.lyh.itstudy.model.Article;
 import com.lyh.itstudy.model.Categorysecond;
+import com.lyh.itstudy.model.Userarticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -93,5 +94,44 @@ public class ArticleService {
     public List<Article> findPersonArt(Integer uid) {
        return articleMapper.findPersonArt(uid);
 
+    }
+
+    public List<Article> adminFindAllArticle() {
+
+        return articleMapper.adminFindAllArticle();
+    }
+
+    public void deletearticle(Integer aid) {
+        articleMapper.deleteByPrimaryKey(aid);
+    }
+
+    public Article toupdateArticle(Integer aid) {
+        return articleMapper.toupdateArticle(aid);
+    }
+
+    public void updateArticle(Article article) {
+        articleMapper.updateArticle(article);
+    }
+
+    public Userarticle findArtByUid(Integer uid) {
+        return articleMapper.findArtByUid(uid);
+    }
+
+    public void addCollections(Userarticle userarticle) {
+        articleMapper.addCollections(userarticle);
+    }
+
+    public void updateCollections(Userarticle userarticle) {
+        articleMapper.updateCollections(userarticle);
+    }
+
+    public void deleteCollections(Userarticle userarticle) {
+
+        articleMapper.deleteCollections(userarticle);
+    }
+
+
+    public List<Article> findArtByAid(String artid) {
+        return  articleMapper.findArtByAid(artid);
     }
 }

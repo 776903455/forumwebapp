@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -180,8 +181,10 @@
                         <span><a style="text-decoration: none" href="${pageContext.request.contextPath}/selectAllArtByCsid.do?csid=${freecsList.csid}">${freecsList.csname}</a></span>
                         <em>主题：2w 贴数：${freecsList.artList.size()}</em>
                         <p><a href="">${freecsList.artList.get(0).aname}</a></p>
-                        <span class="plate_time" style="top: 100px; left: 100px;position: absolute;color: rgb(30 144 255);">
-                            ${freecsList.artList.get(0).adate}</span>
+                        <span class="plate_time" style="top: 100px; left: 150px;position: absolute;color: rgb(30 144 255);">
+
+                            <fmt:formatDate value="${freecsList.artList.get(0).adate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+                        </span>
                     </li>
 
                     </cs:forEach>

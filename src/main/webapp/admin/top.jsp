@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>我是头部标题</h1>
-<h3>超级管理员:${sessionScope.admin1.adminname}</h3>
+<img style="width: 1324px;height: 138px;position: absolute;z-index: 0" src="${pageContext.request.contextPath}/admin/img/dream.jpg">
+<p >超级管理员:${sessionScope.admin1.adminname}</p>
 </body>
 </html>

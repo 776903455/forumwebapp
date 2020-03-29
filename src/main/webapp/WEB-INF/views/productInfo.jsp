@@ -14,7 +14,7 @@
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <title></title>
@@ -24,7 +24,7 @@
         .productInfosInfo_center{
             width: 1366px;
             height: 900px;
-            background: rgba(0,0,0,0.2);
+           /* background: rgba(0,0,0,0.2);*/
             position: relative;
         }
 
@@ -51,7 +51,7 @@
         .right_info{
             width: 300px;
             height: 300px;
-            background: sandybrown;
+            background: rgba(255,255,255,0.5);
             list-style: none;
             text-align: center;
         }
@@ -59,7 +59,7 @@
         .left_top{
             width: 700px;
             height: 50px;
-            background: slateblue;
+            background: orange;
             margin-top: 70px;">
         }
 
@@ -72,13 +72,14 @@
         .button_left{
             width: 300px;
             height: 400px;
-            background: darkolivegreen;
+          /*  background: pink;*/
             float: left;
         }
         .button_rigth{
+            font-family: -webkit-body;
             width: 400px;
             height: 400px;
-            background: goldenrod;
+        /*    background: goldenrod;*/
             float: left;
         }
         .button_rigth table tr{
@@ -98,13 +99,13 @@
             width: 700px;
             height: auto;
             margin-top: 30px;
-            background: darkcyan;
+            background: moccasin;
         }
         .send_user{
             width: 700px;
             height: auto;
             margin-top: 30px;
-            background: darkcyan;
+            background: moccasin;
         }
 
         .head1 .container .row .search_img{
@@ -115,21 +116,7 @@
             right: 20px;
 
         }
-        .touxiang_event{
-            position: relative;
 
-        }
-
-        .folat_info{
-            width:100px;
-            height:auto;
-            background:rgba(255,236,139,0.8);
-            opacity:0;
-            position:absolute;
-            top:55px;
-            right:90px;
-            z-index:10;
-        }
         .folat_info ul{
             margin: 0;
             padding: 0;
@@ -163,7 +150,7 @@
         <li><a href="#">礼品商城</a></li>
     </ol>
 </div>
-
+    <img style="position:absolute;z-index: 0; height: 800px;opacity: 0.5" src="${pageContext.request.contextPath}/static/img/shopbac.jpg">
 <div class="productInfosInfo_center">
 
     <div class="productInfo_right">
@@ -179,7 +166,7 @@
                     </tr>
                     <tr>
                         <td>交易成功:${sessionScope.user.exchangenumber}</td>
-                        <td>可用金币:${sessionScope.user.score}</td>
+                        <td>可用书币:${sessionScope.user.score}</td>
                     </tr>
                     <tr>
                         <td colspan="2">积分获取</td>
@@ -202,7 +189,7 @@
                 <img style="width: 300px;height: 300px;" src="${pageContext.request.contextPath}/${giftInfo.gimage}" />
             </div>
             <div class="button_rigth">
-                <table width="400px" height="300px">
+                <table width="400px" height="300px" class="table table-bordered">
                     <tr>
                         <td>物品ID</td>
                         <td>${giftInfo.gid}</td>
@@ -269,10 +256,10 @@
                 <div class="modal-body">
 
                         <table border="1px">
-                            <tr >
+                         <%--   <tr >
                                 <td>邮箱</td>
                                 <td><input type="text" name="qq"></td>
-                            </tr>
+                            </tr>--%>
                             <tr >
                                 <td>收货地址</td>
                                 <td><input type="text" name="addr"></td>

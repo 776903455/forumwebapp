@@ -132,6 +132,9 @@
 
   </select>
 
+  <select id="findRepByUid" parameterType="Integer" resultMap="BaseResultMap">
+    select * from tbl_replay where uid=#{uid} and aid=#{aid}
+  </select>
 
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ReplayExample" resultMap="ResultMapWithBLOBs">
     <!--

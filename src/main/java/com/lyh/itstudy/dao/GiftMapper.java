@@ -102,4 +102,8 @@ public interface GiftMapper {
     Gift selectGiftByGid(Integer gid);
 
     void updateGift(@Param("gid") Integer gid, @Param("number") Integer number);
+
+    List<Gift> adminFindAllGift();
+
+    void adminupdateGift(Gift gift);
 }

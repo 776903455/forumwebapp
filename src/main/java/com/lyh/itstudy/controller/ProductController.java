@@ -34,7 +34,7 @@ public class ProductController {
 
        Gift giftInfo= giftService.selectGiftByGid(gid);
        model.addAttribute("giftInfo",giftInfo);
-        return "productInfo";
+        return "WEB-INF/views/productInfo";
     }
 
  /*   @RequestMapping("exchangesuccess")
@@ -75,7 +75,7 @@ public class ProductController {
 
 
         model.addAttribute("giftInfo",giftInfo);
-        return "products";
+        return "WEB-INF/views/products";
     }
 
 }

@@ -21,22 +21,21 @@ import java.util.*;
  */
 
 public class SendqqUtil {
+
+    public static final String SENDEMAILE="2369210822@qq.com";
+    public static final String ACCEPTEMAILE="776903455@qq.com";
     public void sendqq(String qq, HashMap<String, String> map) {
         saveBuyerInfo(map);
         try {
 
             /*设置发件人*/
-           final String from = qq;
+           final String from = SENDEMAILE;
             /*设置收件人*/
-            String to = "776903455@qq.com";
-
+            String to = ACCEPTEMAILE;
             /*设置邮箱发送的服务器，这里为qq邮件服务器*/
             String host = "smtp.qq.com";
-
-            /*设置系统属性*/
             //获取系统属性
             Properties properties = System.getProperties();
-
             //SSL加密
             MailSSLSocketFactory sf = new MailSSLSocketFactory();
             sf.setTrustAllHosts(true);
@@ -65,7 +64,7 @@ public class SendqqUtil {
             message.setSubject("用户购买信息");
             BodyPart bodyPart = new MimeBodyPart();
             //消息体（正文）
-            bodyPart.setText("滚去查看附件");
+            bodyPart.setText("快去查看附件");
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(bodyPart);
             //附件
@@ -77,7 +76,6 @@ public class SendqqUtil {
             bodyPart.setFileName("user.txt");
             multipart.addBodyPart(bodyPart);
             message.setContent(multipart);
-
             //发送邮件
             Transport.send(message);
             System.out.println("发送成功！");
@@ -92,21 +90,12 @@ public class SendqqUtil {
 
 
     public static void saveBuyerInfo(HashMap<String, String> map) {
-
-
         try {
             JSONObject json = new JSONObject();
             String str = json.toJSONString(map);
             System.out.println("str=" + str);
             File file = new File("f:\\demo\\user.txt");
-
             FileWriter fw = new FileWriter(file);
-               /*  StringBuffer sb=new StringBuffer();
-                Set<String> key=map.keySet();
-                Iterator<String> iterator = key.iterator();
-                while (iterator.hasNext()){
-                    sb.append(key+"-"+map.get(key));
-                }*/
             fw.write(str);
             fw.close();
 

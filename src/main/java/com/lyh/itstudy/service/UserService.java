@@ -3,6 +3,8 @@ package com.lyh.itstudy.service;
 import com.lyh.itstudy.dao.UserMapper;
 import com.lyh.itstudy.model.User;
 import com.lyh.itstudy.model.UserExample;
+import com.lyh.itstudy.model.Userarticle;
+import com.lyh.itstudy.utils.GetTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -90,5 +92,62 @@ public class UserService {
 
     public void updateqdStatus(String username, int qdstatus) {
         userMapper.updateqdStatus(username,qdstatus);
+    }
+
+    public List<User> adminFindAllUser() {
+
+        return userMapper.adminFindAllUser();
+    }
+
+    public void deleteuser(Integer uid) {
+
+        userMapper.deleteByPrimaryKey(uid);
+    }
+
+    /*查询微信是否是第一次登录
+     *功能描述
+     * @author lyh
+     * @date 2020/3/22
+     * @param [openid]
+     * @return com.lyh.itstudy.model.User
+    */
+    public User findByWxOpenid(String openid) {
+        return  userMapper.findByWxOpenid(openid);
+    }
+
+    /*添加用户*/
+    public void addUser(User user) {
+        String date = GetTimeUtil.getDate();
+        String logintime = GetTimeUtil.getDate();
+        user.setRegtime(date);
+        user.setLogintime(logintime);
+        userMapper.insertThridUser(user);
+    }
+
+    /*更新上次登录时间*/
+    public void updateLoginTime(Integer uid) {
+        String logintime = GetTimeUtil.getDate();
+        userMapper.updateLoginTime(uid,logintime);
+
+    }
+
+    public User findUserByQQOpendid(String openid) {
+        return userMapper.findUserByQQOpendid(openid);
+    }
+
+    /*
+     *功能描述 更改用户签到状态
+     * @author lyh
+     * @date 2020/3/28
+     * @param [uid, i]
+     * @return void
+    */
+    public void updateQdStatus(Integer uid, Integer qdstatus) {
+        userMapper.updateQdStatus(uid,qdstatus);
+    }
+
+    public Userarticle selectCollection(Integer uid) {
+        return  userMapper.selectCollection(uid);
+
     }
 }

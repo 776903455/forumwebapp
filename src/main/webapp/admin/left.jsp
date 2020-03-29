@@ -19,15 +19,15 @@
         d=new dTree("d");
         d.add("01","-1","在线学习平台后台管理");
         d.add("0101","01","一级目录分类");
-        d.add("010101","0101","一级目录管理","${pageContext.request.contextPath}/admin/right_category.jsp","","right");
+        d.add("010101","0101","一级目录管理","${pageContext.request.contextPath}/adminFindAllCategory.do","","right");
         d.add("0102","01","二级目录分类");
-        d.add("010201","0102","二级目录管理","","","right");
+        d.add("010201","0102","二级目录管理","${pageContext.request.contextPath}/adminFindAllCategorySecond.do","","right");
         d.add("0103","01","用户管理");
-        d.add("010301","0103","用户管理","right_user.html","","right");
+        d.add("010301","0103","用户管理","${pageContext.request.contextPath}/adminFindAllUser.do","","right");
         d.add("0104","01","帖子管理");
-        d.add("010401","0104","帖子管理","right_article.html","","right");
+        d.add("010401","0104","帖子管理","${pageContext.request.contextPath}/adminFindAllArticle.do","","right");
         d.add("0105","01","礼品管理");
-        d.add("010501","0105","礼品管理","right_gift.html","","right");
+        d.add("010501","0105","礼品管理","${pageContext.request.contextPath}/adminFindAllGift.do","","right");
 
         document.write(d)
     </script>

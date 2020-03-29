@@ -157,6 +157,15 @@ public class Article {
     private Category category;
     private Categorysecond categorysecond;
     private String  resourseurl;
+    private Integer admin_id;
+
+    public Integer getAdmin_id() {
+        return admin_id;
+    }
+
+    public void setAdmin_id(Integer admin_id) {
+        this.admin_id = admin_id;
+    }
 
     public String getResourseurl() {
         return resourseurl;
@@ -367,6 +376,7 @@ public class Article {
         this.atxte = atxte == null ? null : atxte.trim();
     }
 
+
     @Override
     public String toString() {
         return "Article{" +
@@ -379,7 +389,14 @@ public class Article {
                 ", uid=" + uid +
                 ", amoney=" + amoney +
                 ", atxte='" + atxte + '\'' +
+                ", user=" + user +
+                ", replist=" + replist +
+                ", looknum=" + looknum +
+                ", category=" + category +
+                ", categorysecond=" + categorysecond +
+                ", resourseurl='" + resourseurl + '\'' +
+                ", admin_id=" + admin_id +
+                ", typename='" + typename + '\'' +
                 '}';
     }
-
 }

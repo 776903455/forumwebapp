@@ -98,7 +98,7 @@ public class ToOtherJieMian {
 
         model.addAttribute("articles3",articles3);
 
-        return "skillexchange";
+        return "WEB-INF/views/skillexchange";
     }
 
     /*跳转学习路径界面*/
@@ -107,7 +107,7 @@ public class ToOtherJieMian {
         Object user = session.getAttribute("user");
         System.out.println(user+"-"+session.getId());
 
-        return "studypath";
+        return "WEB-INF/views/studypath";
     }
 
 
@@ -129,7 +129,7 @@ public class ToOtherJieMian {
 
        model.addAttribute("articles",articles);
         model.addAttribute("articles1",articles1);
-        return "freeresourse";
+        return "WEB-INF/views/freeresourse";
     }
 
     /*去商品界面*/
@@ -150,7 +150,7 @@ public class ToOtherJieMian {
         List<Gift> newsList=giftService.selectGiftNews(news,ii);
        /* model.addAttribute("newsList",newsList);*/
         session.setAttribute("newsList",newsList);
-        return "products";
+        return "WEB-INF/views/products";
     }
 
     /*去个人详细界面*/
@@ -176,34 +176,34 @@ public class ToOtherJieMian {
             }
         }*/
 
-        return "personinfobackground";
+        return "WEB-INF/views/personinfobackground";
     }
 
 
     /*学习路线的跳转*/
     @RequestMapping("toC")
     public String toC(){
-        return "allpath/c";
+        return "WEB-INF/views/allpath/c";
     }
     @RequestMapping("toHtml")
     public String toHtml(){
-        return "allpath/html";
+        return "WEB-INF/views/allpath/html";
     }
     @RequestMapping("toJavaPath")
     public String toJavaPath(){
-        return "allpath/javapath";
+        return "WEB-INF/views/allpath/javapath";
     }
     @RequestMapping("toPhp")
     public String toPhp(){
-        return "allpath/php";
+        return "WEB-INF/views/allpath/php";
     }
     @RequestMapping("toPython")
     public String toPython(){
-        return "allpath/python";
+        return "WEB-INF/views/allpath/python";
     }
     @RequestMapping("toYunjissian")
     public String toYunjissian(){
-        return "allpath/yunjisuan";
+        return "WEB-INF/views/allpath/yunjisuan";
     }
 
 }

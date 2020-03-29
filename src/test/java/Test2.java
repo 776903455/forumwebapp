@@ -65,4 +65,12 @@ public class Test2 {
             }
         }
 
+
+        @Test
+         public void fun(){
+            String s=null;
+
+            System.out.println(s!=null);
+        }
+
 }

@@ -15,7 +15,7 @@
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
 
@@ -147,7 +147,7 @@
         .right_info{
             width: 300px;
             height: 300px;
-            background: sandybrown;
+            background: rgba(255,255,255,0.5);
             list-style: none;
             text-align: center;
         }
@@ -233,7 +233,7 @@
     <div class="product_right">
         <c:if test="${sessionScope.user!=null}">
             <div class="right_info">
-                <table border="1px" bordercolor="red" width="300px" height="300px">
+                <table border="1px"  width="300px" height="300px">
                     <tr>
                         <td >
                             <img style="width: 100px;height: 100px; border-radius: 50%;margin: auto;"

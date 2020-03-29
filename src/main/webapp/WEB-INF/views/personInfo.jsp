@@ -20,7 +20,7 @@
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
     <title>Title</title>
@@ -194,7 +194,7 @@
     <div class="path_navigation">
         <ol class="breadcrumb">
             <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
-            <li><a href="#">${user.username}</a></li>
+            <li><a href="#">${sessionScope.user.uname}</a></li>
             <li><a href="#">个人信息</a></li>
         </ol>
     </div>
@@ -202,8 +202,8 @@
 
     <div class="center">
         <div class="center_top">
-            <a href="${pageContext.request.contextPath}/toperbackground.do?uid=${user.uid}"><img src="${pageContext.request.contextPath}/${user.uimage}"/></a>
-            <span>${user.username}</span>
+            <a href="${pageContext.request.contextPath}/toperbackground.do?uid=${user.uid}"><img src="${pageContext.request.contextPath}/${sessionScope.user.uimage}"/></a>
+            <span>${sessionScope.user.uname}</span>
         </div>
 
         <div class="center_buttom">
@@ -244,14 +244,14 @@
                         <p>活跃概况</p>
                         <p>用户组&nbsp;中级会员 </p>
                         <p>注册时间&nbsp;${user.regtime}</p>
-                        <p>上次访问IP&nbsp;59.33.171.191:41190 - - 中国广东惠州</p>
+                        <p>上次访问IP&nbsp;59.33.171.191:41190 - - 广东惠州</p>
                     </th>
                     <th>
                         <p>最后访问时间&nbsp;${user.activetime}</p>
                         <p>上次活动时间 ${user.activetime}</p>
                     </th>
                     <th>
-                        <p>注册IP&nbsp;14.211.16.200 - - 中国广东中山</p>
+                        <p>注册IP&nbsp;14.211.16.200 - - ${sessionScope.user.addr}</p>
                         <p>上次发表时间&nbsp;" 2019-8-31 23:09</p>
                     </th>
                 </tr>
