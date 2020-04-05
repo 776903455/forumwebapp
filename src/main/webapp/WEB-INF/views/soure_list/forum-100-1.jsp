@@ -238,7 +238,7 @@
                         <span><a href="">热门</a></span>
                         <span><a href="">热帖</a></span>
                         <span><a href="">精华</a></span>
-                        <div class="dropdown" style="display: inline-block;">
+                       <%-- <div class="dropdown" style="display: inline-block;">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 全部时间
                                 <span class="caret"></span>
@@ -251,7 +251,15 @@
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">更久</a></li>
                             </ul>
-                        </div>
+                            </div>--%>
+                            <select class="dropdown" style="display: inline-block;" id="selectTime">
+                                <option value="0">全部时间</option>
+                                <option value="1">一天</option>
+                                <option value="3">三天</option>
+                                <option value="7">一周</option>
+                                <option value="30">一个月</option>
+                            </select>
+
                     </td>
 
                     <td width="133px"> 作者</td>
@@ -259,7 +267,6 @@
                     <td width="133px"> 最后发表</td>
 
                 </tr>
-
                 <c:forEach items="${pageInfo.list}" var="artpageinfo">
                 <tr class="button_tiezi_list2" >
 
@@ -270,8 +277,15 @@
                         </a>
                     </td>
                     <td class="button_tiezi_list2_td3">${artpageinfo.user.username}</td>
-                    <td class="button_tiezi_list2_td4">28/${artpageinfo.looknum}</td>
-                    <td class="button_tiezi_list2_td5">asdahjas</td>
+                    <td class="button_tiezi_list2_td4">${artpageinfo.replist.size()}/${artpageinfo.looknum}</td>
+                    <td class="button_tiezi_list2_td5">
+                        <c:if test="${artpageinfo.replist.size()>0}">
+                            ${artpageinfo.replist.get(0).user.uname}
+                            </c:if>
+                        <c:if test="${artpageinfo.replist.size()==0}">
+                            admin
+                        </c:if>
+                    </td>
                 </tr>
                 </c:forEach>
             </table>
@@ -331,4 +345,26 @@
 </div>
 </body>
 <script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
+
+
+        <script>
+
+
+            $(function () {
+                $("#selectTime").change(function () {
+                   var timevalue=$("#selectTime").val();
+                   $.ajax({
+                       type:"get",
+                       url:"${pageContext.request.contextPath}/selectArtByTime.do",
+                       data:{"timevalue":timevalue,"csid":${csid}},
+                       success:function (msg) {
+                           console.log(msg.endRow);
+                           $.each(msg,function (index, ele) {
+                               console.log(ele[index]);
+                           })
+                       }
+                   })
+                });
+            })
+        </script>
 </html>

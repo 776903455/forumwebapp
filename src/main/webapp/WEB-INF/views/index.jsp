@@ -125,19 +125,19 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <a href="#">   <img src="${pageContext.request.contextPath}/static/img/lunbotu1.jpg" ></a>
+                            <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=72">   <img src="${pageContext.request.contextPath}/static/img/lunbotu1.jpg" ></a>
                         </div>
                         <div class="item">
-                            <a href="#"> <img src="${pageContext.request.contextPath}/static/img/lunbotu2.jpg" ></a>
+                            <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=73"> <img src="${pageContext.request.contextPath}/static/img/lunbotu2.jpg" ></a>
                         </div>
                         <div class="item">
-                            <a href="#">   <img src="${pageContext.request.contextPath}/static/img/lunbotu3.jpg" ></a>
+                            <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=74">   <img src="${pageContext.request.contextPath}/static/img/lunbotu3.jpg" ></a>
                         </div>
                         <div class="item">
-                            <a href="#"> <img src="${pageContext.request.contextPath}/static/img/lunbotu4.jpg" ></a>
+                            <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=75"> <img src="${pageContext.request.contextPath}/static/img/lunbotu4.jpg" ></a>
                         </div>
                         <div class="item">
-                            <a href="#"> <img src="${pageContext.request.contextPath}/static/img/lunbotu5.jpg" ></a>
+                            <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=76"> <img src="${pageContext.request.contextPath}/static/img/lunbotu5.jpg" ></a>
                         </div>
                     </div>
 

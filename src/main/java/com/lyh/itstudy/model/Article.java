@@ -159,6 +159,7 @@ public class Article {
     private String  resourseurl;
     private Integer admin_id;
 
+
     public Integer getAdmin_id() {
         return admin_id;
     }

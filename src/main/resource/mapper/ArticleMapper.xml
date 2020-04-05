@@ -80,10 +80,6 @@
             <result column="username" jdbcType="VARCHAR" property="username" />
         </association>
 
-    <collection property="replist" ofType="replay">
-      <id column="repid" jdbcType="INTEGER" property="repid" />
-    </collection>
-
   </resultMap>
 
   <resultMap id="selectCsByAidMap" type="com.lyh.itstudy.model.Article">
@@ -257,9 +253,9 @@
 
 
   <select id="findArtByCsid" parameterType="Integer" resultMap="findArtByCsidMap">
-    SELECT a.aid,a.aname,a.looknum,u.username,r.uid
-	from (select * from tbl_article order by adate desc) a LEFT JOIN tbl_replay r on a.aid=r.aid  LEFT JOIN tbl_user u on a.uid=u.uid
-	WHERE csid=#{csid}
+    SELECT a.aid,a.aname,a.looknum,u.username
+    from (select * from tbl_article order by adate desc) a  LEFT JOIN tbl_user u on a.uid=u.uid
+    WHERE csid=#{csid}
   </select>
 
 
@@ -337,6 +333,18 @@
   <select id="findArtByUid" parameterType="Integer" resultType="userarticle">
     SELECT * from userarticle where uid=#{uid}
   </select>
+
+    <select id="selectArtByTime"  resultMap="findArtByCsidMap">
+        select a.aid,a.aname,a.looknum,u.username from tbl_article a LEFT JOIN tbl_user u ON a.uid=u.uid
+        <where>
+            <if test="timevalue==0">
+                and a.csid=#{csid} ORDER BY adate desc
+            </if>
+            <if test="timevalue!=0">
+              NOW()> a.adate  and a.adate>DATE_SUB(NOW(),INTERVAL #{timevalue} day) and a.csid=#{csid} ORDER BY a.adate desc
+            </if>
+        </where>
+    </select>
 
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ArticleExample" resultMap="ResultMapWithBLOBs">
     <!--

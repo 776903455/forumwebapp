@@ -164,4 +164,5 @@ public interface ArticleMapper {
 
     List<Article> findArtByAid(String artid);
 
+    List<Article> selectArtByTime( @Param("timevalue")Integer timevalue,@Param("csid")Integer csid);
 }

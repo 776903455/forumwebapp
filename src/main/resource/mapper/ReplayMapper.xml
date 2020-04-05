@@ -29,6 +29,7 @@
       <id column="uid" jdbcType="INTEGER" property="uid" />
       <result column="username" jdbcType="VARCHAR" property="username" />
       <result column="uimage" jdbcType="VARCHAR" property="uimage" />
+      <result column="uname" jdbcType="VARCHAR" property="uname" />
     </association>
   </resultMap>
   
@@ -124,7 +125,7 @@
 
   <select id="selectRepByAid" parameterType="Integer" resultMap="selectRepByAidMap">
 
-    select r.repid,r.reptxt,r.repdate ,r.uid ruid,a.aid,a.aname,a.uid auid,u.username ,u.uimage
+    select r.repid,r.reptxt,r.repdate ,r.uid ruid,a.aid,a.aname,a.uid auid,u.username ,u.uimage,uname
     FROM tbl_replay r,tbl_article a,tbl_user u
     where r.aid=a.aid and r.uid=u.uid
     and a.aid=#{aid}

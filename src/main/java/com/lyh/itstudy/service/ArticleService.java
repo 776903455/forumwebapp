@@ -134,4 +134,12 @@ public class ArticleService {
     public List<Article> findArtByAid(String artid) {
         return  articleMapper.findArtByAid(artid);
     }
+
+    public List<Article> selectArtByTime(String timevalue,String csid) {
+        List<Article> articles= articleMapper.selectArtByTime(Integer.parseInt(timevalue),Integer.parseInt(csid));
+        if(articles!=null){
+            return articles;
+        }
+        return null;
+    }
 }

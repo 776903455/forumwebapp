@@ -140,11 +140,12 @@
 
     <!--返回json字符串zhic  -->
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-   <!-- 使用jackson实现>
+    <!--使用jackson实现>-->
+    <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.8.8</version>
-    </dependency>-->
+        <version>2.9.8</version>
+    </dependency>
 
 <!--使用fastjson实现-->
     <dependency>
@@ -190,6 +191,11 @@
       <version>2.2.3</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.28</version>
+    </dependency>
   </dependencies>
 
   <build>

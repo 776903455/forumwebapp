@@ -1,5 +1,6 @@
 package com.lyh.itstudy.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lyh.itstudy.model.*;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lyh
@@ -57,7 +60,7 @@ public class TieZiController {
     }
 /*保存帖子*/
     @RequestMapping("saveTieZi")
-    public String saveTieZi(Article article, Model model,HttpServletRequest request){
+    public String saveTieZi(Article article, Model model,HttpServletRequest request,HttpServletResponse response){
 
 
         /*文本内容*/
@@ -106,7 +109,7 @@ public class TieZiController {
             System.out.println("帖子保存失败");
         }
 
-        selectAllArtByCsid(categorysecond.getCsid(),1,model);
+        selectAllArtByCsid(categorysecond.getCsid(),request,1,model);
 
 
         return "WEB-INF/views/soure_list/forum-100-1";
@@ -116,7 +119,7 @@ public class TieZiController {
 
     /*根据csid查询帖所有对应的帖子*/
     @RequestMapping("selectAllArtByCsid")
-    public  String selectAllArtByCsid(@RequestParam("csid")Integer csid,
+    public  String selectAllArtByCsid(@RequestParam("csid")Integer csid,HttpServletRequest request,
                                       @RequestParam(value = "pn",defaultValue="1")int pn,Model model){
 
 
@@ -135,13 +138,21 @@ public class TieZiController {
 
 
         //使用pagehelper分页插件进行分页
-            PageHelper.startPage(pn,5);
+
+          PageHelper.startPage(pn,5);
            List<Article> artLists= articleService.findArtByCsid(csid);
            PageInfo page = new PageInfo(artLists,5);
 
+               /*封装每个帖子的回复信息*/
+            List<Article> article = page.getList();
+
+        for (Article article1 : article) {
+            List<Replay> replays=replayService.selectRepByAid(article1.getAid());
+            article1.setReplist(replays);
+        }
 
 
-           model.addAttribute("pageInfo",page);
+          model.addAttribute("pageInfo",page);
            model.addAttribute("csid",csid);
 
 
@@ -336,6 +347,27 @@ public class TieZiController {
     }
 
 
+        /*根据时间查询帖子信息*/
+        @RequestMapping("selectArtByTime")
 
+       public void selectArtByTime(String timevalue, String csid,@RequestParam(value = "pn",defaultValue="1")int pn,HttpServletResponse response){
+            System.out.println("timevalue:"+timevalue);
+            PageHelper.startPage(pn,5);
+            List<Article> articles=articleService.selectArtByTime(timevalue,csid);
+            PageInfo page = new PageInfo(articles,5);
+            for (Article article : articles) {
+                System.out.println("art:"+article);
+            }
+            String json = JSON.toJSONString(page);
+            System.out.println(json);
+            try {
+                response.setCharacterEncoding("utf-8");
+                response.setContentType("text/html;charset=utf-8");
+                response.getWriter().write(json);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
 
 }

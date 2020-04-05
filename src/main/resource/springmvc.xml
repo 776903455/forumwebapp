@@ -58,12 +58,7 @@
 	<mvc:default-servlet-handler/>
 
 	<!--能支持springmvc高级的一些功能，jsr303校验，快速的ajax，映射动态请求  -->
-	<mvc:annotation-driven>
-	<!--	<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
-			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-		</mvc:message-converters>-->
-	</mvc:annotation-driven>
+	<mvc:annotation-driven></mvc:annotation-driven>
 
 
  </beans>

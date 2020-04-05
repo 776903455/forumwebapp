@@ -116,7 +116,7 @@
                 </div>
                 <div class="title_buttom">
                     <ul>
-                        <li>${artUser.username} 中级黑马 /</li>
+                        <li>${artUser.username} 中级工程师 /</li>
                         <li>${artTime}/</li>
                         <li>${article.looknum}人查看/</li>
                         <li>${article.replist.size()}回复/</li>
@@ -134,7 +134,7 @@
                     <p>${arrtxt}</p>
                     </c:forEach>
 
-                    <img src="${pageContext.request.contextPath}/static/img/lunbotu1.jpg">
+                   <%-- <img src="${pageContext.request.contextPath}/static/img/lunbotu1.jpg">--%>
                 </div>
 
                 <div class="left_content_button" style="width:800px;height: 100px;border-top:1px silver dashed;border-bottom:1px silver dashed; ">

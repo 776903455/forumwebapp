@@ -25,6 +25,8 @@ public class Replay {
 
     private User user;
 
+
+
     public Article getArticle() {
         return article;
     }
