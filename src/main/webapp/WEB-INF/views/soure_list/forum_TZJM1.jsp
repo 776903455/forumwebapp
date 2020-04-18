@@ -119,7 +119,7 @@
                         <li>${artTime}/</li>
                         <li>${article.looknum}人查看/</li>
                         <li>${article.replist.size()}回复/</li>
-                        <li> 0 人收藏/</li>
+                        <li> ${article.collnum} 人收藏/</li>
                     </ul>
                 </div>
             </div>

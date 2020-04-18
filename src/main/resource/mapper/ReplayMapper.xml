@@ -11,6 +11,8 @@
     <result column="repdate" jdbcType="TIMESTAMP" property="repdate" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="reppraise" jdbcType="INTEGER" property="reppraise" />
+    <result column="repnopraise" jdbcType="INTEGER" property="reppraise" />
   </resultMap>
 
   <resultMap id="selectRepByAidMap" type="com.lyh.itstudy.model.Replay">
@@ -18,6 +20,8 @@
     <result column="repdate" jdbcType="TIMESTAMP" property="repdate" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="reptxt" jdbcType="VARCHAR" property="reptxt" />
+    <result column="reppraise" jdbcType="INTEGER" property="reppraise" />
+    <result column="repnopraise" jdbcType="INTEGER" property="repnopraise" />
     
     <association property="article" javaType="article">
       <id column="aid" jdbcType="INTEGER" property="aid" />
@@ -125,7 +129,7 @@
 
   <select id="selectRepByAid" parameterType="Integer" resultMap="selectRepByAidMap">
 
-    select r.repid,r.reptxt,r.repdate ,r.uid ruid,a.aid,a.aname,a.uid auid,u.username ,u.uimage,uname
+    select r.repid,r.reptxt,r.repdate ,r.reppraise,r.repnopraise,r.uid ruid,a.aid,a.aname,a.uid auid,u.username ,u.uimage,uname
     FROM tbl_replay r,tbl_article a,tbl_user u
     where r.aid=a.aid and r.uid=u.uid
     and a.aid=#{aid}
@@ -136,6 +140,20 @@
   <select id="findRepByUid" parameterType="Integer" resultMap="BaseResultMap">
     select * from tbl_replay where uid=#{uid} and aid=#{aid}
   </select>
+
+
+  <select id="selectRepByRepid" resultType="replay" parameterType="Integer">
+    select * from tbl_replay where repid=#{repid}
+  </select>
+
+
+  <update id="updatePraise">
+    update tbl_replay set reppraise=#{reppraise} where repid=#{repid}
+  </update>
+
+    <update id="updateNoPraise">
+        update tbl_replay set repnopraise=#{repnopraise} where repid=#{repid}
+    </update>
 
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ReplayExample" resultMap="ResultMapWithBLOBs">
     <!--

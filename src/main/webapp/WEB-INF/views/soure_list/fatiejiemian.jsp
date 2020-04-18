@@ -191,6 +191,21 @@
                 </div>
             </div>
 
+            </c:if>
+
+            <c:if test="${text1.equals('学习路线')}">
+                <div style="width: 1000px; height: 70px; position: relative">
+                    <div class="sellGold" style="width: 150px; height: 70px;position: absolute;border-right: bisque 1px dashed ">
+                        <span style="color: blue;">主题售价:</span><br />
+                        售价：<input type="text"  name="sellGold" size="3" />金币
+                    </div>
+
+                    <div class="resurl" style="width: 400px; height: 70px; position: absolute; left: 150px;top: 5px;border-right: bisque 1px dashed">
+                        <span style="color: blue;">添加资源链接:</span> <br/>
+                        url：<input type="text"  name="resourseurl"  />
+                        提取码：<input type="text"  name="tqm"  size="3"/>
+                    </div>
+                </div>
 
             </c:if>
 

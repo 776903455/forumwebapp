@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/layer/layer.js" type="text/javascript"></script>
+
     <title>帖子分类</title>
 </head>
 <body>
@@ -37,7 +39,9 @@
                 <fmt:formatDate value="${articlepage.adate}"  pattern="yyyy年MM月dd日 HH时mm分ss秒"/>
 
             </td>
-            <td class="btn btn-danger"><a style="color: white" href="${pageContext.request.contextPath}/deletearticle.do?aid=${articlepage.aid}">删除</a></td>
+            <td class="btn btn-danger" onclick="deleteart(${articlepage.aid})">
+                <span style="color: white" >删除</span>
+            </td>
             <td class="btn btn-primary"><a style="color: white" href="${pageContext.request.contextPath}/toupdateArticle.do?aid=${articlepage.aid}">修改</a></td>
         </tr>
         </c:forEach>
@@ -91,5 +95,16 @@
 </div>
 
 </body>
+<script>
+    function deleteart(aid) {
 
+        layer.confirm('是否删除此数据？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            location.href="${pageContext.request.contextPath}/deletearticle.do?aid="+aid;
+        }, function(){
+
+        });
+    }
+</script>
 </html>

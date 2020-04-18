@@ -121,4 +121,5 @@ public interface UserMapper {
 
     Userarticle selectCollection(Integer uid);
 
+
 }

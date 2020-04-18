@@ -3,6 +3,7 @@
 <%@page isELIgnored="false"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,6 +20,10 @@
 <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/forum_TZJM.css">
 <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/static/ueditor/ueditor.config.js"></script>
+<script src="${pageContext.request.contextPath}/static/ueditor/ueditor.all.js"></script>
+<script src="${pageContext.request.contextPath}/static/layer/layer.js"></script>
+
 <head>
     <title>Title</title>
 
@@ -120,7 +125,7 @@
                         <li>${artTime}/</li>
                         <li>${article.looknum}人查看/</li>
                         <li>${article.replist.size()}回复/</li>
-                        <li> ${collNum}人收藏/</li>
+                        <li> ${article.collnum}人收藏/</li>
                     </ul>
                 </div>
             </div>
@@ -137,11 +142,11 @@
                    <%-- <img src="${pageContext.request.contextPath}/static/img/lunbotu1.jpg">--%>
                 </div>
 
-                <div class="left_content_button" style="width:800px;height: 100px;border-top:1px silver dashed;border-bottom:1px silver dashed; ">
+                <div class="left_content_button" style="width:865px;height: 100px;border-top:1px silver dashed;
+                border-bottom:1px silver dashed;text-align: center;margin-top: 65px;padding-top: 20px">
                     <i id="apraise" class="fa fa-star" style="font-size:36px;<c:if test="${collectionStatus==true}">color: gold;</c:if>
                     <c:if test="${collectionStatus==false}">color: grey;</c:if>"> </i> <span>帖子收藏</span>
-                    <i id="ding" class="fa fa-hand-o-up" style="font-size:36px;color:grey"></i> <span>顶</span>
-                    <i id="cai" class="fa fa-hand-o-down" style="font-size:36px;color:grey"></i> <span>踩</span>
+
                 </div>
 
                 <c:if test="${sessionScope.user==null}">
@@ -150,7 +155,7 @@
                 <c:if test="${sessionScope.user!=null}">
                     <c:if test="${replayStatus==true}">
                         <c:if test="${article.amoney==0}">
-                            <div class="free_content" style="width: 700px;height: 150px; border: 1px pink dashed;margin-top: 30px;text-align:center;padding-top: 30px">
+                            <div class="free_content" style="width: 700px;height: 150px; border: 1px pink dashed;margin-top: 100px;text-align:center;padding-top: 30px">
 
                                 <c:if test="${article.resourseurl.lastIndexOf('_')!=-1}">
                                     <span style="font-size: 20px;">${article.resourseurl.substring(0,article.resourseurl.lastIndexOf("_"))}</span><br/>
@@ -194,9 +199,12 @@
                         <div class="reply_link" style="position: relative">
                             <p id="reply_link_content" style="position: absolute;width: 680px;height: 80px;background:white ">
                                     ${sessionScope.user.username},如果您要查看本帖隐藏内容请
-                                <span   style="cursor: pointer ;color: #2aabd2" data-toggle="modal" data-target="#myModal">
+                               <%-- <span  id="replayspan"  style="cursor: pointer ;color: #2aabd2" data-toggle="modal" data-target="#myModal">
                                     回复
-                                </span>
+                                </span>--%>
+                                        <span onclick="startrpelay(${article.aid})"  id="replayspan"  style="cursor: pointer ;color: #2aabd2" data-toggle="modal" data-target="#myModal">
+                                            回复
+                                        </span>
                             </p>
                         </div>
                     </c:if>
@@ -240,7 +248,7 @@
             </div>
 
 
-            <%--回复模态框--%>
+<%--            &lt;%&ndash;回复模态框&ndash;%&gt;
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
                 <form>
                 <div class="modal-dialog" role="document">
@@ -256,7 +264,7 @@
                                         <img style="position: absolute;width: 30px ;height: 30px; left: 15px;top: 5px;" class="reply_texteare_00"
                                              src="${pageContext.request.contextPath}/static/img/hot/biaoqing/0.gif">
                                     </p>
-                                    <textarea class="reply_texteare_text" rows="8" cols="70" id="texteare_text1" name="texteare_text">
+                                    <textarea style="width: 550px;height: 200px" id="container1"  name="texteare_text">
                                     </textarea>
 
                         </div>
@@ -268,45 +276,46 @@
                     </div>
                 </div>
                 </form>
-            </div>
+            </div>--%>
 
 
 
             <!--用户回复列表-->
 
-            <div class="buttom_reply_list">
-                <ul>
+            <div style="height: auto;width:800px" class="buttom_reply_list">
+                <ul style="width: 800px;height: auto;">
                     <c:if test="${replaylist.list.size()>0}">
                     <c:forEach items="${replaylist.list}" var="replist">
-                    <li>
-                        <p class="list_p1">
+                    <li style="width: 800px;height: auto">
+                        <p style="width: 800px;height:50px" class="list_p1">
                             <img  src="${pageContext.request.contextPath}/${replist.user.uimage}">
                             <span>${replist.user.username}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>${replist.repdate}</span>
+                            <span>
+                                <fm:formatDate  value="${replist.repdate}" pattern="yyyy-MM-dd HH:mm:ss"></fm:formatDate>
+                            </span>
                         </p>
-                        <p class="list_p2">
-                            <span style="margin-left: 40px;margin-top: 5px">${replist.reptxt}</span>
-                        </p>
-                        <p class="list_p3">
+                        <span style="width:800px;height: 130px;display: inline-block;margin-left: 50px;margin-top: 5px" class="list_p2">
+                                ${replist.reptxt}
+                            <%--<span style="margin-left: 50px;margin-top: 5px">${replist.reptxt}</span>--%>
+                        </span>
+                        <div style="width:800px;height: 50px" class="list_p3">
                             <span style="position: absolute;left: 30px"><a href="#">回复</a></span>
-                            <span style="position: absolute;right: 70px"><a href="#">举报</a></span>
-                            <span  class="glyphicon glyphicon-thumbs-up" style="position: absolute;right: 40px"></span>
-                            <span  class="glyphicon glyphicon-thumbs-down" style="position: absolute;right: 20px;transform: rotateY(180deg)"></span>
-                        </p>
+                            <span onclick="changePraise(${replist.repid},${replist.reppraise},this)"><i class="fa fa-hand-o-up" style="font-size:36px;color:grey;padding-left: 600px"></i> <span>(${replist.reppraise})</span></span>
+                            <span onclick="changeNoPraise(${replist.repid},${replist.repnopraise},this)"><i  class="fa fa-hand-o-down" style="font-size:36px;color:grey"></i> <span>(${replist.repnopraise})</span></span>
+                        </div>
                     </li>
                     </c:forEach>
                     </c:if>
-
                     <c:if test="${replaylist.list.size()==null}">
                         <li>
                             <div style="width: 800px;height: 100px;border: 1px dashed gray;text-align: center;padding-top:  30px;font-size: 20px" >目前还没有评论哦，亲！</div>
                         </li>
 
                     </c:if>
+                </ul>
 
 
-                    <li>
-
+                    <ul>
                         <nav style="width: 650px; padding-left: 20px;" >
                             <ul class="pagination">
                                 <li>
@@ -340,7 +349,6 @@
                                     </li>
                                 </c:if>
 
-
                                 <li>
                                     <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=${article.aid}&pn=${replaylist.pages}" aria-label="Next">
                                         <span aria-hidden="true">尾页</span>
@@ -348,17 +356,13 @@
                                 </li>
                             </ul>
                         </nav>
-                    </li>
-                </ul>
+                    </ul>
+
 
                 <!--回复文本框-->
-                <div class="reply_texteare">
+                <div style="height: auto;width: 800px;margin-top: 100px" class="reply_texteare">
                     <form>
-                        <p class="reply_texteare_p">
-                            <img class="reply_texteare_0" src="${pageContext.request.contextPath}/static/img/hot/biaoqing/0.gif">
-                            <img class="reply_texteare_1" src="${pageContext.request.contextPath}/static/img/hot/link.gif">
-                        </p>
-                        <textarea class="reply_texteare_text" rows="8" cols="100" id="texteare_text" name="texteare_text">
+                        <textarea style="width: 800px;height: 200px"  id="container" name="texteare_text">
                             </textarea>
                         <input class="btn btn-info" id="reply_btn" type="button" value="回复">
                     </form>
@@ -399,27 +403,26 @@
 
 </body>
 <script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
+
+
 <script>
 
 
 
         var replybtn = document.querySelector("#reply_btn");
-        var textearetext = document.querySelector("#texteare_text");
+        var textearetext = document.querySelector("#container");
         var textearetext1 = document.querySelector("#texteare_text1");
         var userreplay = document.querySelector("#user_replay");
         var replylinkcontent = document.querySelector("#reply_link_content");
 
-        /*点击回复弹出模态框*/
-        userreplay.onclick=function () {
 
-            textearetext.innerText=textearetext1.value;
+        var ue = UE.getEditor("container");
 
-            window.location.href="${pageContext.request.contextPath}/savaReplay.do?uid=${sessionScope.user.uid}&aid=${article.aid}&flag=1&textearetext="+textearetext.value;
-        };
 
         /*判断用户是否登录来设置点击回帖实践*/
         replybtn.onclick=function () {
             /*如果用户没有登录，则弹出登录提示，否则将回帖内容保存到数据库并将内容显示到页面上*/
+            console.log(textearetext.value)
             if(${sessionScope.user==null}){
                 alert("登录之后才能回复")
             }else {
@@ -457,7 +460,6 @@
 
     })
 
-
         $(function () {
 
 
@@ -482,7 +484,7 @@
                     success:function () {
 
                     }
-                })
+                });
                 $('#myModal_zf').modal('hide');
                 </c:if>
 
@@ -491,6 +493,59 @@
                     $(".success_buyer").css("display","none");
                 },2000);
             });
+
+        });
+
+        function startrpelay(aid) {
+            console.log(aid);
+            layer.aid=aid;
+            layer.open({
+                type:2,
+                title:'回复界面',
+                area:["60%",'75%'],
+                content:'${pageContext.request.contextPath}/toReplay.do',
+                end:()=>{
+                    let textearetext=layer.text;
+                    window.location.href="${pageContext.request.contextPath}/savaReplay.do?uid=${sessionScope.user.uid}&flag=0&aid=${article.aid}&textearetext="+textearetext;
+                }
+            })
+        }
+    function changePraise(repid,praise,me) {
+        $.ajax({
+            url:'${pageContext.request.contextPath}/updatePraise.do',
+            data:{repid:repid,reppraise:praise},
+            success:function (msg) {
+                var json=JSON.parse(msg);
+                console.log(json.obj.reppraise);
+                console.log("ads"+json);
+
+                $(me).empty();
+                var i=$("<i class=\"fa fa-hand-o-up\" style=\"font-size:36px;color:grey;padding-left: 600px\"></i>");
+                var span=$("<span style='font-size:15px'>("+json.obj.reppraise+")</span>");
+                var ispan=i.append(span);
+                 $(me).append(ispan)
+
+
+            }
         })
+    };
+
+        function changeNoPraise(repid,nopraise,me) {
+            $.ajax({
+                url:'${pageContext.request.contextPath}/updateNoPraise.do',
+                data:{repid:repid,repnopraise:nopraise},
+                success:function (msg) {
+                    var json=JSON.parse(msg);
+                    console.log(json.obj.repnopraise);
+                    console.log("ads"+json);
+                    $(me).empty();
+                    var i=$("<i  class=\"fa fa-hand-o-down\" style=\"font-size:36px;color:grey\"></i>");
+                    var span=$("<span style='font-size:15px'>("+json.obj.repnopraise+")</span>");
+                    var ispan=i.append(span);
+                    $(me).append(ispan)
+
+                }
+            })
+        }
 </script>
 </html>

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/layer/layer.js" type="text/javascript"></script>
+
     <title>用户管理</title>
 </head>
 <body>
@@ -32,8 +34,10 @@
             <td>${userpage.username}</td>
             <td>${userpage.score}</td>
             <td>${userpage.regtime}</td>
-            <td class="btn btn-danger"><a style="color: white" href="${pageContext.request.contextPath}/deleteuser.do?uid=${userpage.uid}">删除</a></td>
-            <td class="btn btn-primary"><button disabled="disabled"  style="color: white">修改</button></td>
+            <td class="btn btn-danger" onclick="deleteuser(${userpage.uid})">
+                <span style="color: white" >删除</span>
+            </td>
+            <td class="btn btn-primary"><span disabled="disabled"  style="color: white">修改</span></td>
         </tr>
         </c:forEach>
     </table>
@@ -88,4 +92,16 @@
 
 </body>
 
+<script>
+    function deleteuser(uid) {
+
+        layer.confirm('是否删除此数据？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            location.href="${pageContext.request.contextPath}/deleteuser.do?uid="+uid;
+        }, function(){
+
+        });
+    }
+</script>
 </html>

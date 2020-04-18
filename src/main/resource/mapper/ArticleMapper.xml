@@ -18,8 +18,8 @@
     <result column="atxte" jdbcType="VARCHAR" property="atxte" />
     <result column="looknum" jdbcType="VARCHAR" property="looknum" />
     <result column="admin_id" jdbcType="INTEGER" property="admin_id" />
-
-
+    <result column="collnum" jdbcType="INTEGER" property="collnum" />
+    <result column="recommendlever" jdbcType="INTEGER" property="recommendlever" />
   </resultMap>
 
     <resultMap id="BaseResultMap1" type="com.lyh.itstudy.model.Article">
@@ -35,6 +35,7 @@
        <result column="uid" jdbcType="INTEGER" property="uid" />
       <result column="looknum" jdbcType="INTEGER" property="looknum" />
       <result column="resourseurl" jdbcType="VARCHAR" property="resourseurl" />
+      <result column="collnum" jdbcType="INTEGER" property="collnum" />
 
     <!--    <association property="user" javaType="user">
             <result column="username" jdbcType="VARCHAR" property="username" />
@@ -231,21 +232,21 @@
 
   <select id="findAllHotArt" parameterType="Integer" resultMap="BaseResultMap">
     SELECT  * from tbl_article
-    WHERE csid in(#{c1},#{c2})
+    WHERE csid in(#{c1},#{c2},#{c3})
     ORDER  BY apraise DESC
     LIMIT 7
   </select>
 
   <select id="findAllNewsArt" parameterType="Integer" resultMap="BaseResultMap">
     SELECT  * from tbl_article
-    WHERE csid in(#{c1},#{c2})
+    WHERE csid in(#{c1},#{c2},#{c3})
     ORDER  BY adate DESC
     LIMIT 7
   </select>
 
   <select id="selectArtByAid" parameterType="Integer" resultMap="BaseResultMap1">
     select a.aid,a.aname,a.atxte,a.adate,a.areplay,a.apraise,a.csid,a.amoney,a.uid,a.looknum,
-    a.resourseurl,r.repid,r.repdate
+    a.resourseurl,a.collnum,r.repid,r.repdate
     from tbl_article a  LEFT JOIN  tbl_replay r
     on  a.aid=r.aid
 	where  a.aid=#{aid}
@@ -256,6 +257,11 @@
     SELECT a.aid,a.aname,a.looknum,u.username
     from (select * from tbl_article order by adate desc) a  LEFT JOIN tbl_user u on a.uid=u.uid
     WHERE csid=#{csid}
+  </select>
+
+
+  <select id="findArtByAidForColl" parameterType="Integer" resultMap="BaseResultMap">
+    select * from tbl_article where aid=#{aid}
   </select>
 
 
@@ -294,13 +300,22 @@
     SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a) b  limit 5,5
   </select>
 
+  <select id="findLookest6"  resultMap="BaseResultMap">
+    SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a
+    where a.csid BETWEEN  20 AND 26) b  limit 5,5
+  </select>
+
+  <select id="findLookest7"  resultMap="BaseResultMap">
+    SELECT b.* from (select a.* from (select a.* from tbl_article a ORDER BY a.looknum desc) a
+    where a.csid BETWEEN  20 AND 26) b  limit 5,5
+  </select>
 
 
-  <select id="findHotArtByCsid"  resultMap="findHotArtByCsidMap">
-   select a.*,u.username from (select * from tbl_article order by adate desc) a ,tbl_categorysecond cs,tbl_user u
-  where a.csid=cs.csid and a.uid=u.uid
-  and cs.csid in(#{c1},#{c2})
 
+  <select id="findHotArtByCsid"  resultMap="findArtByCsidMap">
+    SELECT a.aid,a.aname,a.looknum,u.username
+    from (select * from tbl_article order by adate desc) a  LEFT JOIN tbl_user u on a.uid=u.uid
+   where a.csid in(#{c1},#{c2},#{c3})
   </select>
 
   <select id="selectCsByAid"  resultMap="selectCsByAidMap">
@@ -334,6 +349,14 @@
     SELECT * from userarticle where uid=#{uid}
   </select>
 
+
+
+  <select id="myAllArt" parameterType="int" resultMap="findHotArtByCsidMap">
+    select a.*,u.* from tbl_article a LEFT JOIN tbl_user u ON a.uid=u.uid where u.uid=#{uid}
+  </select>
+
+
+
     <select id="selectArtByTime"  resultMap="findArtByCsidMap">
         select a.aid,a.aname,a.looknum,u.username from tbl_article a LEFT JOIN tbl_user u ON a.uid=u.uid
         <where>
@@ -345,6 +368,11 @@
             </if>
         </where>
     </select>
+
+
+  <update id="updateArtColls" parameterType="article">
+    UPDATE  tbl_article set collnum=#{collnum} where aid=#{aid}
+  </update>
 
   <select id="selectByExampleWithBLOBs" parameterType="com.lyh.itstudy.model.ArticleExample" resultMap="ResultMapWithBLOBs">
     <!--

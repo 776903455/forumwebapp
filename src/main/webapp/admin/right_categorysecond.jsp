@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/layer/layer.js" type="text/javascript"></script>
+
     <title>二级目录管理</title>
 </head>
 <body>
@@ -30,7 +32,9 @@
         <tr>
             <td>${acspage.csid}</td>
             <td>${acspage.csname}</td>
-            <td class="btn btn-danger"><a style="color: white" href="${pageContext.request.contextPath}/deleteCategorySecond.do?csid=${acspage.csid}">删除</a></td>
+            <td class="btn btn-danger" id="deletecs" onclick="deletecs(${acspage.csid})">
+                <span style="color: white">删除</span>
+            </td>
             <td class="btn btn-primary"><a style="color: white" href="${pageContext.request.contextPath}/toUpdateCategorySecondJM.do?csid=${acspage.csid}">修改</a></td>
         </tr>
         </c:forEach>
@@ -84,5 +88,16 @@
 
 
 </body>
+    <script>
+        function deletecs(csid) {
 
+            layer.confirm('是否删除此数据？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                location.href="${pageContext.request.contextPath}/deleteCategorySecond.do?csid="+csid;
+            }, function(){
+
+            });
+        }
+    </script>
 </html>

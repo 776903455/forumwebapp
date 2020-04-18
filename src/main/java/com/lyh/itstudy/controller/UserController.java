@@ -278,10 +278,12 @@ public class UserController {
            List<Article> collArt=articleService.findArtByAid(collections.getArtid());
            PageInfo<Article> collpage = new PageInfo(collArt,5);
            model.addAttribute("collpage",collpage);
+           model.addAttribute("flag",0);
        }
-
         return "WEB-INF/views/collection";
     }
+
+
 
 
     /*用户退出*/

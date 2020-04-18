@@ -158,7 +158,24 @@ public class Article {
     private Categorysecond categorysecond;
     private String  resourseurl;
     private Integer admin_id;
+    private Integer collnum;
+    private Integer recommendlever;
 
+    public Integer getRecommendlever() {
+        return recommendlever;
+    }
+
+    public void setRecommendlever(Integer recommendlever) {
+        this.recommendlever = recommendlever;
+    }
+
+    public Integer getCollnum() {
+        return collnum;
+    }
+
+    public void setCollnum(Integer collnum) {
+        this.collnum = collnum;
+    }
 
     public Integer getAdmin_id() {
         return admin_id;

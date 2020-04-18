@@ -25,7 +25,25 @@ public class Replay {
 
     private User user;
 
+    private Integer reppraise;
 
+    private Integer repnopraise;
+
+    public Integer getRepnopraise() {
+        return repnopraise;
+    }
+
+    public void setRepnopraise(Integer repnopraise) {
+        this.repnopraise = repnopraise;
+    }
+
+    public Integer getReppraise() {
+        return reppraise;
+    }
+
+    public void setReppraise(Integer reppraise) {
+        this.reppraise = reppraise;
+    }
 
     public Article getArticle() {
         return article;

@@ -45,7 +45,7 @@
                                 <ul>
                                     <li style="cursor: pointer"><a href="${pageContext.request.contextPath}/toPersonInfo.do?username=${sessionScope.user.username}" >个人信息</a></li>
                                     <li><span class="faitie_span" style="cursor: pointer">发帖</span></li>
-                                    <li style="cursor: pointer"><a href="#">帖子</a></li>
+                                    <li style="cursor: pointer"><a href="${pageContext.request.contextPath}/myAllArt.do?uid=${sessionScope.user.uid}">帖子</a></li>
                                     <li style="cursor: pointer"><a href="${pageContext.request.contextPath}/myCollections.do?uid=${sessionScope.user.uid}">我的收藏</a></li>
                                     <li><span>积分：${sessionScope.user.score}</span></li>
                                     <li style="cursor: pointer"><a  href="${pageContext.request.contextPath}/exit.do" >退出</a></li>

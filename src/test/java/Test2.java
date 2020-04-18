@@ -1,7 +1,10 @@
 
 import com.github.pagehelper.PageInfo;
+import com.lyh.itstudy.controller.ToOtherJieMian;
 import com.lyh.itstudy.model.Article;
 import com.lyh.itstudy.model.Categorysecond;
+import com.lyh.itstudy.service.ArticleService;
+import com.lyh.itstudy.service.CategorySecondService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +38,15 @@ public class Test2 {
     WebApplicationContext context;
 
     MockMvc mockMvc;
+
+    @Autowired
+    ArticleService articleService;
+
+    @Autowired
+    ToOtherJieMian toOtherJieMian;
+
+    @Autowired
+    CategorySecondService categorySecondService;
 
     @Before
     public void initMockMvc(){
@@ -72,5 +84,24 @@ public class Test2 {
 
             System.out.println(s!=null);
         }
+
+    @Test
+    public void fun2(){
+        for (Categorysecond categorysecond : categorySecondService.findCategory(1)) {
+            System.out.println(categorysecond);
+        }
+
+    }
+
+
+
+    @Test
+    public void fun3(){
+        for (Article categorysecond : articleService.myAllArt(8)) {
+            System.out.println(categorysecond);
+        }
+
+    }
+
 
 }

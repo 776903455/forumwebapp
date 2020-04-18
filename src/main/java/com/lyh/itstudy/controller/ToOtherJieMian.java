@@ -73,6 +73,8 @@ public class ToOtherJieMian {
         List<Article> articles4= articleService.findLookest4();
         /*查询第5-10条阅读最多主题*/
         List<Article> articles5= articleService.findLookest5();
+
+
         session.setAttribute("articles4",articles4);
         session.setAttribute("articles5",articles5);
 
@@ -99,6 +101,28 @@ public class ToOtherJieMian {
         model.addAttribute("articles3",articles3);
 
         return "WEB-INF/views/skillexchange";
+    }
+
+    /*主页转学习路线*/
+    @RequestMapping("toindexpath")
+    public String toindexpath(@RequestParam("cid")Integer cid, Model model)
+    {
+
+
+        List<Categorysecond> CList= categorySecondService.findCategory(cid);
+        model.addAttribute("csList",CList);
+
+        /*查询前五阅读最多主题*/
+        List<Article> articles6= articleService.findLookest6();
+
+        /*查询第5-10条阅读最多主题*/
+        List<Article> articles7= articleService.findLookest7();
+
+        model.addAttribute("articles6",articles6);
+
+        model.addAttribute("articles7",articles7);
+
+        return "WEB-INF/views/indexpath";
     }
 
     /*跳转学习路径界面*/

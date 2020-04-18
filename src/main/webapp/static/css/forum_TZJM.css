@@ -147,62 +147,19 @@
 
 
 /*用户回复列表*/
-.buttom_reply_list{
-    width: 800px;
-    height: auto;
-    margin-top: 60px;
 
-}
-.buttom_reply_list ul{
-    width: 800px;
-    height: auto;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-}
 .buttom_reply_list ul li{
 
     list-style-type: none;
-    height: 150px;
-    width: 800px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-.buttom_reply_list ul li:last-child{
-
-    list-style: none;
-    height: 150px;
-    width: 800px;
-    padding-top: 100px;
-    padding-left: 550px;
-    border-bottom:none;
-}
-
-.buttom_reply_list p{
-    padding: 0;
-    margin: 0;
-}
-.buttom_reply_list p img{
+.buttom_reply_list p img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-top: 5px;
 }
-.list_p1{
-    width: 800px;
-    height: 50px;
-}
-
-.list_p2{
-    width: 800px;
-    height: 60px;
-
-}
-.list_p3{
-    width: 800px;
-    height: 40px;
-    position: relative;
-}
-
-
 
 /*回复文本框*/
 .reply_texteare{

@@ -75,16 +75,24 @@ public class ArticleService {
         return articleMapper.findLookest5();
     }
 
-    public List<Article> findHotArtByCsid(Integer c1, Integer c2) {
-        return  articleMapper.findHotArtByCsid(c1,c2);
+
+    public  List<Article> findLookest6() {
+        return articleMapper.findLookest6();
+    }
+    public  List<Article> findLookest7() {
+        return articleMapper.findLookest7();
     }
 
-    public List<Article> findAllHotArt(Integer c1, Integer c2) {
-        return articleMapper.findAllHotArt(c1,c2);
+    public List<Article> findHotArtByCsid(Integer c1, Integer c2,Integer c3) {
+        return  articleMapper.findHotArtByCsid(c1,c2,c3);
     }
 
-    public List<Article> findAllNewsArt(Integer c1, Integer c2) {
-        return articleMapper.findAllNewsArt(c1,c2);
+    public List<Article> findAllHotArt(Integer c1, Integer c2,Integer c3) {
+        return articleMapper.findAllHotArt(c1,c2,c3);
+    }
+
+    public List<Article> findAllNewsArt(Integer c1, Integer c2,Integer c3) {
+        return articleMapper.findAllNewsArt(c1,c2,c3);
     }
 
     public Article selectCsByAid(Integer aid) {
@@ -99,6 +107,11 @@ public class ArticleService {
     public List<Article> adminFindAllArticle() {
 
         return articleMapper.adminFindAllArticle();
+    }
+
+
+    public Article findArtByAidForColl(Integer aid){
+        return articleMapper.findArtByAidForColl(aid);
     }
 
     public void deletearticle(Integer aid) {
@@ -141,5 +154,14 @@ public class ArticleService {
             return articles;
         }
         return null;
+    }
+
+    public void updateArtColls(Article article) {
+        articleMapper.updateArtColls(article);
+    }
+
+
+    public List<Article> myAllArt(Integer uid) {
+        return articleMapper.myAllArt(uid);
     }
 }

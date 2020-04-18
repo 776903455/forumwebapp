@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/layer/layer.js" type="text/javascript"></script>
 
     <title>一级目录管理</title>
 </head>
@@ -26,10 +27,26 @@
         <tr>
                 <td>${category.cid}</td>
                 <td>${category.cname}</td>
-                <td class="btn btn-danger"><a style="color: white" href="${pageContext.request.contextPath}/deleteCategory.do?cid=${category.cid}">删除</a></td>
+                <td id="deletecategory" onclick="deletecategory(${category.cid})" class="btn btn-danger">
+                    <span  style="color: white"  >删除</span>
+                </td>
                 <td class="btn btn-primary"><a style="color: white" href="${pageContext.request.contextPath}/toUpdateJM.do?cid=${category.cid}">修改</a></td>
         </tr>
         </c:forEach>
     </table>
 </div>
+    <script>
+
+        function deletecategory(cid) {
+
+            layer.confirm('是否删除此数据？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                location.href="${pageContext.request.contextPath}/deleteCategory.do?cid="+cid;
+            }, function(){
+
+            });
+        }
+
+    </script>
 </body>

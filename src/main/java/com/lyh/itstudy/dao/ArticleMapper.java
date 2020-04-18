@@ -135,13 +135,15 @@ public interface ArticleMapper {
     List<Article> findLookest3();
     List<Article> findLookest4();
     List<Article> findLookest5();
+    List<Article> findLookest6();
+    List<Article> findLookest7();
     void updateLookNum(@Param("aid") Integer aid,@Param("looknum")Integer looknum);
 
-    List<Article> findHotArtByCsid(@Param("c1") Integer c1,@Param("c2") Integer c2);
+    List<Article> findHotArtByCsid(@Param("c1") Integer c1,@Param("c2") Integer c2,@Param("c3") Integer c3);
 
-    List<Article> findAllHotArt(@Param("c1")Integer c1,@Param("c2") Integer c2);
+    List<Article> findAllHotArt(@Param("c1")Integer c1,@Param("c2") Integer c2,@Param("c3") Integer c3);
 
-    List<Article> findAllNewsArt(@Param("c1")Integer c1,@Param("c2") Integer c2);
+    List<Article> findAllNewsArt(@Param("c1")Integer c1,@Param("c2") Integer c2,@Param("c3") Integer c3);
 
     Article selectCsByAid(Integer aid);
 
@@ -164,5 +166,12 @@ public interface ArticleMapper {
 
     List<Article> findArtByAid(String artid);
 
+    Article findArtByAidForColl(Integer aid);
+
     List<Article> selectArtByTime( @Param("timevalue")Integer timevalue,@Param("csid")Integer csid);
+
+    void updateArtColls(Article article);
+
+
+    List<Article> myAllArt(Integer uid);
 }

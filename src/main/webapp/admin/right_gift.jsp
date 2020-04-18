@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/static/layer/layer.js" type="text/javascript"></script>
+
     <title>礼品分类</title>
 </head>
 <body>
@@ -33,7 +35,9 @@
             <td>${gift.marketPrice}</td>
             <td>${gift.gmoney}</td>
             <td>${gift.isHot==1?'是':'否'}</td>
-            <td class="btn btn-danger"><a style="color: white" href="${pageContext.request.contextPath}/deleteGift.do?gid=${gift.gid}">删除</a></td>
+            <td class="btn btn-danger" onclick="deletegift(${gift.gid})">
+                <span style="color: white">删除</span>
+            </td>
             <td class="btn btn-primary"><a style="color: white" href="${pageContext.request.contextPath}/toUpdateGift.do?gid=${gift.gid}">修改</a></td>
         </tr>
         </c:forEach>
@@ -86,5 +90,18 @@
 </div>
 
 </body>
+
+<script>
+    function deletegift(gid) {
+
+        layer.confirm('是否删除此数据？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            location.href="${pageContext.request.contextPath}/deleteGift.do?gid="+gid;
+        }, function(){
+
+        });
+    }
+</script>
 
 </html>

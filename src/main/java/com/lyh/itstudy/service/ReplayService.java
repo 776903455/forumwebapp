@@ -37,4 +37,16 @@ public class ReplayService {
 
 
     }
+
+    public Replay selectRepByRepid(Integer repid){
+        return replayMapper.selectRepByRepid(repid);
+    }
+
+    public int updatePraise(Integer repid, Integer reppraise) {
+        return replayMapper.updatePraise(repid,reppraise);
+    }
+
+    public int updateNoPraise(Integer repid, Integer repnopraise) {
+        return replayMapper.updateNoPraise(repid,repnopraise);
+    }
 }

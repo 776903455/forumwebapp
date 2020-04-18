@@ -144,7 +144,7 @@ public class TieZiController {
            PageInfo page = new PageInfo(artLists,5);
 
                /*封装每个帖子的回复信息*/
-            List<Article> article = page.getList();
+               List<Article> article = page.getList();
 
         for (Article article1 : article) {
             List<Replay> replays=replayService.selectRepByAid(article1.getAid());
@@ -263,25 +263,33 @@ public class TieZiController {
      * @return java.lang.String
     */
     @RequestMapping("findHotArtByCsid")
-    public String findHotArtByCsid(@RequestParam("c1") Integer c1,@RequestParam("c2") Integer c2,
+    public String findHotArtByCsid(Integer c1, Integer c2,Integer c3,
                                    @RequestParam(value = "pn",defaultValue="1")int pn,Model model){
 
         /*查询热门主题帖*/
-        List<Article> hotList=  articleService.findAllHotArt(c1,c2);
+        List<Article> hotList=  articleService.findAllHotArt(c1,c2,c3);
         model.addAttribute("hotList",hotList);
         /*查询最新主题帖*/
-        List<Article> newsList=  articleService.findAllNewsArt(c1,c2);
+        List<Article> newsList=  articleService.findAllNewsArt(c1,c2,c3);
         model.addAttribute("newsList",newsList);
 
        PageHelper.startPage(pn,5);
-        List<Article> articles= articleService.findHotArtByCsid(c1,c2);
+        List<Article> articles= articleService.findHotArtByCsid(c1,c2,c3);
         PageInfo page = new PageInfo(articles,5);
 
+        /*封装每个帖子的回复信息*/
+        List<Article> article = page.getList();
+
+        for (Article article1 : article) {
+            List<Replay> replays=replayService.selectRepByAid(article1.getAid());
+            article1.setReplist(replays);
+        }
 
 
         model.addAttribute("pageInfo",page);
         model.addAttribute("c1",c1);
         model.addAttribute("c2",c2);
+        model.addAttribute("c3",c3);
         return "WEB-INF/views/soure_list/forum-100-2";
     }
 
@@ -297,7 +305,7 @@ public class TieZiController {
     @RequestMapping("userCollections")
     public void userCollections(Model model, @RequestParam("uid")Integer uid, @RequestParam("aid")Integer aid, HttpServletResponse response) throws IOException {
 
-        System.out.println("asda"+aid+"-"+uid);
+        System.out.println("asda:"+aid+"-"+uid);
         response.setContentType("text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         /*查看用户有无其他收藏*/
@@ -308,11 +316,27 @@ public class TieZiController {
             userarticle.setUid(uid);
             userarticle.setArtid(String.valueOf(aid));
             articleService.addCollections(userarticle);
+
+            /*更新帖子收藏数*/
+            Article artByAidForColl = articleService.findArtByAidForColl(aid);
+            Integer collnum = artByAidForColl.getCollnum();
+            collnum=collnum+1;
+            artByAidForColl.setCollnum(collnum);
+            articleService.updateArtColls(artByAidForColl);
+
+
             response.getWriter().write("200");
         }else {
             /*有帖子收藏时将帖子id拼接到其他收藏的帖子id*/
             String artid = userarticle.getArtid();
             if(artid.contains(String.valueOf(aid))){
+                /*帖子收藏数减1*/
+                Article artByAidForColl = articleService.findArtByAidForColl(aid);
+                Integer collnum = artByAidForColl.getCollnum();
+                collnum=collnum-1;
+                artByAidForColl.setCollnum(collnum);
+                articleService.updateArtColls(artByAidForColl);
+
                 /*取消收藏*/
                 String newArtid=null;
                 String[] art = artid.split(",");
@@ -336,6 +360,15 @@ public class TieZiController {
                 articleService.updateCollections(userarticle);
                 response.getWriter().write("500");
             }else {
+                System.out.println("asdasda????????:");
+                /*帖子收藏数加1*/
+                Article artByAidForColl = articleService.findArtByAidForColl(aid);
+                System.out.println("asdasda:"+artByAidForColl);
+                Integer collnum = artByAidForColl.getCollnum();
+                collnum=collnum+1;
+                artByAidForColl.setCollnum(collnum);
+                articleService.updateArtColls(artByAidForColl);
+
                 artid=artid+","+aid;
                 userarticle.setArtid(artid);
                 articleService.updateCollections(userarticle);
@@ -349,7 +382,6 @@ public class TieZiController {
 
         /*根据时间查询帖子信息*/
         @RequestMapping("selectArtByTime")
-
        public void selectArtByTime(String timevalue, String csid,@RequestParam(value = "pn",defaultValue="1")int pn,HttpServletResponse response){
             System.out.println("timevalue:"+timevalue);
             PageHelper.startPage(pn,5);
@@ -369,5 +401,22 @@ public class TieZiController {
             }
             return;
         }
+
+
+
+    @RequestMapping("myAllArt")
+    public String myAllArt(Integer uid,Model model,@RequestParam(value = "pn",defaultValue="1")int pn){
+
+
+        PageHelper.startPage(pn,8);
+        List<Article> myart = articleService.myAllArt(uid);
+        if(myart!=null) {
+            PageInfo<Article> myartpage = new PageInfo(myart, 5);
+            model.addAttribute("myartpage", myartpage);
+            model.addAttribute("flag", 1);
+        }
+        return "WEB-INF/views/collection";
+    }
+
 
 }

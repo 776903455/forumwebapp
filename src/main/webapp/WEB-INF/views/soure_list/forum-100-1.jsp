@@ -76,10 +76,8 @@
     </style>
 </head>
 <body>
+
 <%@include file="../menu.jsp"%>
-
-
-
 
 <!--center-->
 <div style="background: url(${pageContext.request.contextPath}/static/img/tieziback.jpg);">
@@ -110,6 +108,17 @@
                 </div>
             </c:if>
 
+            <c:if test="${cs.csid>=20&&cs.csid<=26}">
+                <!--路径导航-->
+                <div class="path_navigation">
+                    <ol class="breadcrumb">
+                        <li><a href="${pageContext.request.contextPath}/toIndex.do">首页</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toFreeSource.do?cid=1">学习路径</a></li>
+                        <li><a href="#">${cs.csname}</a></li>
+                    </ol>
+                </div>
+            </c:if>
+
             <div class="head_title">
                <c:if test="${cs.csid>=1&&cs.csid<=8}">
             <span class="head_title_text">
@@ -123,6 +132,14 @@
                 <img class="mianfeiziyuan" src="${pageContext.request.contextPath}/static/img/mianfeiziyuan.jpg">
                <em style="line-height: 60px"> 免费资源</em>
                  <p class="jishidian">所有学科，全部资源，点击对应学科，通通免费下载啦！！</p>
+            </span>
+                </c:if>
+
+                <c:if test="${cs.csid>=20&&cs.csid<=26}">
+            <span class="head_title_text">
+                <img class="mianfeiziyuan" src="${pageContext.request.contextPath}/static/img/xuexijingli.jpg">
+               <em style="line-height: 60px"> 学习路径</em>
+                 <p class="jishidian">所有学科，全部资源，指明路径，明确学习！！</p>
             </span>
                 </c:if>
 

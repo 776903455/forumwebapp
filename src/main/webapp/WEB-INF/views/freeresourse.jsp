@@ -145,9 +145,9 @@
         </div>
         <div class="hot_resource_buttom">
             <div class="hot_top_buttom_top">
-                <span><a href=""><img src="${pageContext.request.contextPath}/static/img/hot_img1.jpg"></a></span>
-                <span><a href=""><img src="${pageContext.request.contextPath}/static/img/hot_img2.jpg"></a></span>
-                <span><a href=""><img src="${pageContext.request.contextPath}/static/img/hot_img3.jpg"></a></span>
+                <span><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=85"><img src="${pageContext.request.contextPath}/static/img/hot_img6.jpg"></a></span>
+                <span><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=90"><img src="${pageContext.request.contextPath}/static/img/hot_img7.jpg"></a></span>
+                <span><a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=86"><img src="${pageContext.request.contextPath}/static/img/hot_img8.jpg"></a></span>
             </div>
             <div class="hot_top_buttom_buttom">
                 <div class="hot_top_buttom_buttom_left">

@@ -58,7 +58,8 @@
         .skill{
             width: 200px;
             position: absolute;
-            opacity: 0;
+            /*opacity: 0;*/
+            display: none;
             height: 250px;
             list-style: none;
             border-right:1px gray solid ;
@@ -67,10 +68,24 @@
             width: 200px;
             height: 250px;
             position: absolute;
-            opacity: 0;
+          /*  opacity: 0;*/
+            display: block;
             list-style: none;
             border-right:1px gray solid ;
         }
+        .path{
+            width: 200px;
+            position: absolute;
+             display: none;
+            height: 250px;
+            list-style: none;
+            border-right:1px gray solid ;
+        }
+        .path li{
+            cursor: pointer;
+            padding-top: 5px;
+        }
+
         .skill li{
             cursor: pointer;
             padding-top: 5px;
@@ -85,6 +100,62 @@
             position: absolute;
             top: 25px;
             right: 20px;
+        }
+/*----------------------*/
+        .hot_top_buttom_top{
+            width: 1350px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .td{
+            width: 154px;
+            height: 9px;
+            border: 1px solid rgb(194,160,96);
+            position: absolute;
+            top: -5px;
+            left: 0;
+            background-color: pink;
+        }
+        .gd{
+            width: 1000px;
+            height: 5px;
+            background: #cccccc;
+            position: relative;
+            margin-top: 50px;
+        }
+        .hot_top_buttom_top  .clearfix{
+            width: 5000px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all .5s ease;
+        }
+        .clearfix  li{
+            width: 430px;
+            height: 230px;
+            margin-right: 20px;
+            float: left;
+            list-style: none;
+        }
+        .clearfix img{
+            width: 400px;
+            height: 196px;
+        }
+
+        .clearfix img:hover{
+            width: 412px;
+            height: 200px;
+        }
+        .clearfix:after{
+            visibility: hidden;
+            clear: both;
+            display: block;
+            content: ".";
+            height: 0;
+        }
+        .clearfix{
+            *zoom: 1;
         }
 
 
@@ -103,12 +174,12 @@
             <div class="col-md-1" id="lunbotu_left">
                 <ul>
                     <li><a href="#">热门主题</a></li>
-                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=1&c2=9">java</a></li>
-                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=6&c2=14">大数据</a></li>
-                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=4&c2=12">PHP/WEB前端</a></li>
-                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=2&c2=10">Phthon</a></li>
-                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=3&c2=11">C/C++</a></li>
-                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=7&c2=15">Android</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=1&c2=9&c3=20">java</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=6&c2=14&c3=25">大数据</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=4&c2=12&c3=23">PHP/WEB前端</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=2&c2=10&c3=21">Phthon</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=3&c2=11&c3=22">C/C++</a></li>
+                    <li><a href="${pageContext.request.contextPath}/findHotArtByCsid.do?c1=7&c2=15&c3=26">Android</a></li>
                 </ul>
             </div>
             <div class="col-md-8">
@@ -187,11 +258,46 @@
 					</span>
         </div>
         <div class="hot_resource_buttom">
+
             <div class="hot_top_buttom_top">
-                <span><a href=""><img src="${pageContext.request.contextPath}/static/img/hot_img1.jpg"></a></span>
+                <%--<span><a href=""><img src="${pageContext.request.contextPath}/static/img/hot_img1.jpg"></a></span>
                 <span><a href=""><img src="${pageContext.request.contextPath}/static/img/hot_img2.jpg"></a></span>
-                <span><a href=""><img src="${pageContext.request.contextPath}/static/img/hot_img3.jpg"></a></span>
+                <span><a href=""><img src="${pageContext.request.contextPath}/static/img/hot_img3.jpg"></a></span>--%>
+
+                        <ul class="clearfix" style="margin-left: 10px">
+                            <li>
+                                <div class="imgs">
+                                   <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=80"><img src="${pageContext.request.contextPath}/static/img/hot_img1.jpg"/></a>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="imgs">
+                                    <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=81"> <img src="${pageContext.request.contextPath}/static/img/hot_img2.jpg"/></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="imgs">
+                                    <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=82"> <img src="${pageContext.request.contextPath}/static/img/hot_img3.jpg"/></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="imgs">
+                                    <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=83"> <img src="${pageContext.request.contextPath}/static/img/hot_img4.jpg"/></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="imgs">
+                                    <a href="${pageContext.request.contextPath}/selectArtByAid.do?aid=84"> <img src="${pageContext.request.contextPath}/static/img/hot_img5.jpg"/></a>
+                                </div>
+                            </li>
+                        </ul>
             </div>
+
+            <div class="gd">
+                <div class="td"></div>
+            </div>
+
             <div class="hot_top_buttom_buttom">
                 <div class="hot_top_buttom_buttom_left">
                     <ul>
@@ -228,22 +334,22 @@
         <div class="study_resource_buttom">
             <div class="study_resource_buttom_top">
                 <div class="study_top_left">
-                    <a href="#"><img class="jishufenxiang" src="${pageContext.request.contextPath}/static/img/jishifenxiang.jpg"></a>
-                    <a href="#" style="text-decoration: none;color: black;">
+                    <a href="${pageContext.request.contextPath}/toSkillExchange.do?cid=3"><img class="jishufenxiang" src="${pageContext.request.contextPath}/static/img/jishifenxiang.jpg"></a>
+                    <a href="${pageContext.request.contextPath}/toSkillExchange.do?cid=3" style="text-decoration: none;color: black;">
                         <span>技术分享</span>
                     </a>
                     <p >
-                        <em>主题：2w</em>
+                        <em>主题：25</em>
                         <em>贴数：2w</em>
                     </p>
                 </div>
                 <div class="study_top_right">
-                    <a href="#"><img class="xuexiluxian" src="${pageContext.request.contextPath}/static/img/xuexiluxian.jpg"></a>
-                    <a href="#" style="text-decoration: none;color: black;">
+                    <a href="${pageContext.request.contextPath}/toindexpath.do?cid=2"><img class="xuexiluxian" src="${pageContext.request.contextPath}/static/img/xuexiluxian.jpg"></a>
+                    <a href="${pageContext.request.contextPath}/toindexpath.do?cid=2" style="text-decoration: none;color: black;">
                         <span>学习路线</span>
                     </a>
                     <p >
-                        <em>主题：2w</em>
+                        <em>主题：25</em>
                         <em>贴数：2w</em>
                     </p>
                 </div>
@@ -251,12 +357,12 @@
 
             <div class="study_resource_buttom_buttom">
                 <div class="study_button_left">
-                    <a href="#"><img class="mianfeiziyuan" src="${pageContext.request.contextPath}/static/img/mianfeiziyuan.jpg"></a>
-                    <a href="#" style="text-decoration: none;color: black;">
+                    <a href="${pageContext.request.contextPath}/toFreeSource.do?cid=1"><img class="mianfeiziyuan" src="${pageContext.request.contextPath}/static/img/mianfeiziyuan.jpg"></a>
+                    <a href="${pageContext.request.contextPath}/toFreeSource.do?cid=1" style="text-decoration: none;color: black;">
                         <span>免费资源</span>
                     </a>
                     <p >
-                        <em>主题：2w</em>
+                        <em>主题：25</em>
                         <em>贴数：2w</em>
                     </p>
                 </div>
@@ -266,7 +372,7 @@
                         <span>学习经历</span>
                     </a>
                     <p >
-                        <em>主题：2w</em>
+                        <em>主题：25</em>
                         <em>贴数：2w</em>
                     </p>
                 </div>
@@ -348,8 +454,18 @@
                             <li>Ul/UE资源</li>
                             <li>大数据资源</li>
                             <li>Android资源</li>
-                            <li>学习路径资源</li>
                             <li>学习经历资源</li>
+                        </ul>
+
+
+                        <ul class="path">
+                            <li>java学习路径</li>
+                            <li>Python学习路径</li>
+                            <li>C/C++学习路径</li>
+                            <li>前端学习路径</li>
+                            <li>Ul/UE学习路径</li>
+                            <li>大数据学习路径</li>
+                            <li>Android学习路径</li>
                         </ul>
                     </div>
 
@@ -389,6 +505,7 @@
     var qdgetscore = document.querySelector("#qd_getscore");
     var free=document.querySelectorAll(".free li");
     var skill=document.querySelectorAll(".skill li");
+    var path=document.querySelectorAll(".path li");
     var ul_title=document.querySelectorAll(".u1_title li");
     var span1=document.querySelector(".span1");
     var span2=document.querySelector(".span2");
@@ -470,6 +587,15 @@
             this.style.background="rgba(0,0,0,0.05)";
         }
     }
+    for(var j=0;j<path.length;j++) {
+        path[j].onclick=function(){
+            for(var i=0;i<path.length;i++){
+                path[i].style.background="rgba(0,0,0,0)";
+                span2.innerHTML=this.innerHTML;
+            }
+            this.style.background="rgba(0,0,0,0.05)";
+        }
+    }
     /*点击发帖按钮将选择的主题文本传到发帖界面*/
     faitiebtn.onclick=function(){
         var text=(span3.innerText);
@@ -487,23 +613,58 @@
     /*切换主题*/
     $(document).ready(function(){
         $(".study_skill").click(function(){
-            $(".skill").css("opacity","1");
-            $(".free").css("opacity","0");
-            $(".skill").css("z-index","2");
-            $(".free").css("z-index","1");
+            $(".skill").css("display","block");
+            $(".free").css("display","none");
+            $(".path").css("display","none")
+
         });
         $(".study_free").click(function(){
-            $(".free").css("opacity","1");
-            $(".skill").css("opacity","0");
-            $(".free").css("z-index","2");
-            $(".skill").css("z-index","1");
+            $(".skill").css("display","none");
+            $(".free").css("display","block");
+            $(".path").css("display","none")
+
         });
+        $(".study_path").click(function () {
+            $(".path").css("display","block");
+            $(".skill").css("display","none");
+            $(".free").css("display","none");
+        });
+
         $(".faitie_span").click(function () {
             $('#myModal').modal("show");
         });
     });
 
+    /*获取box*/
+    var box=document.querySelector(".hot_top_buttom_top");
+    /*获取ul*/
+    var ul=document.querySelector(".clearfix");
+    var td=document.querySelector(".td");
+    var ulLeft=ul.offsetLeft;
+    var tdLeft=td.offsetLeft;
 
+    $(".hot_top_buttom_top").mouseover(function (event) {
+        if( event.pageX>600){
+            if(ulLeft!==-900) {
+                console.log(ulLeft);
+                ulLeft = ulLeft - 50;
+                $(".clearfix").css("left", ulLeft + "px");
+                tdLeft = tdLeft + 50;
+                $(".td").css("left", tdLeft + "px");
+            }
+        }
+        if(event.pageX<600){
+            console.log(ulLeft);
+            if(ulLeft!==0){
+                ulLeft = ulLeft + 50;
+                $(".clearfix").css("left", ulLeft + "px");
+                tdLeft = tdLeft - 50;
+                $(".td").css("left", tdLeft + "px");
+            }
+
+        }
+
+    })
 
 </script>
 </html>
